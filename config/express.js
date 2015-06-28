@@ -11,6 +11,13 @@ var methodOverride = require('method-override');
 var passport = require('passport');
 var LocalStrategy = require('passport-local');
 
+var mongoose = require('mongoose'),
+    db = mongoose.connect('mongodb://localhost/sample_db', function (err) {
+        console.log(err);
+    });
+
+var UserModel = require('../app/models/user');
+
 module.exports = function (app, config) {
     app.set('views', config.root + '/app/views');
     app.set('view engine', 'ejs');
@@ -33,20 +40,23 @@ module.exports = function (app, config) {
     app.use(passport.session());
 
     passport.serializeUser(function (user, done) {
-        user.id = 0;
         done(null, user.id);
     });
 
     passport.deserializeUser(function (id, done) {
-        done(null, {
-            username: 'oskar.szura@gmail.com',
-            password: 'admin',
-            id: 0
+        UserModel.findOne(id, function (err, loggedUser) {
+            if (err) {
+                done(new Error('User ' + id + ' does not exist'));
+            } else {
+                return done(null, loggedUser);
+            }
         });
     });
 
     app.use(function (req, res, next) {
-        if (req.path == '/login' || req.isAuthenticated()) {
+        if (req.path == '/login'
+            || req.path == '/login/register'
+            || req.isAuthenticated()) {
             next();
         } else {
             res.redirect('/login');
@@ -90,14 +100,17 @@ module.exports = function (app, config) {
         },
         function (username, password, done) {
 
-            if (username === 'oskar.szura@gmail.com') {
-                return done(null, {
-                    username: 'oskar.szura@gmail.com',
-                    password: 'admin'
-                });
-            } else {
-                return done(null, false, {message: "Wrong password"});
-            }
+            UserModel.findOne({
+                username: username,
+                password: password
+            }, function (err, loggedUser) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    //return done(null, false, {message: "Wrong password"});
+                    return done(null, loggedUser);
+                }
+            });
 
         }
     ));
