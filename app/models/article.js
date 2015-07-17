@@ -1,12 +1,11 @@
-// Example model
+var mongoose = require('mongoose');
+var Schema = mongoose.schema;
 
+var ArticleSchema = new mongoose.Schema({
+    title: 'string',
+    content: 'string'
+});
 
-function Article (opts) {
-  if(!opts) opts = {};
-  this.title = opts.title || '';
-  this.url = opts.url || '';
-  this.text = opts.text || '';
-}
+var Article = mongoose.model('article', ArticleSchema);
 
 module.exports = Article;
-
