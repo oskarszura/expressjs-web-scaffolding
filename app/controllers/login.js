@@ -9,8 +9,14 @@ module.exports = function (app) {
 
 router.get('/', function (req, res, next) {
     res.render('login', {
-        title: 'Generator-Express MVC'
+        title: 'Generator-Express MVC',
+        error: false
     });
+});
+
+router.get('/logout', function (req, res, next) {
+    req.logout();
+    res.redirect('/');
 });
 
 router.post('/', function (req, res, next) {
@@ -21,7 +27,11 @@ router.post('/', function (req, res, next) {
         }
 
         if (!user) {
-            return res.redirect('/login');
+            res.render('login', {
+                title: 'Generator-Express MVC',
+                error: true
+            });
+            return next();
         }
 
         req.logIn(user, function (err) {
@@ -49,7 +59,6 @@ router.post('/register', function (req, res, nest) {
         if (err) {
             console.log(err);
         } else {
-            console.log(newUser);
             res.redirect('/login');
         }
     })

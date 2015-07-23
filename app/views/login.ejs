@@ -3,10 +3,19 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
-            <h1><%-title %></h1>
-            <p>Welcome to <%-title %></p>
+            <h1>My Welcome</h1>
+            <p>Welcome</p>
         </div>
     </div>
+    <%if(error) { %>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="alert alert-danger" role="alert">
+                User or password not found.
+            </div>
+        </div>
+    </div>
+    <% } %>
     <div class="row">
         <div class="col-sm-12">
             <form action="/login" method="post">
