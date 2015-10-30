@@ -1,7 +1,17 @@
 var gulp = require('gulp'),
   nodemon = require('gulp-nodemon'),
   livereload = require('gulp-livereload'),
-  babel = require("gulp-babel");
+  browserify = require("browserify"),
+  babelify = require("babelify"),
+  source = require('vinyl-source-stream');
+
+gulp.task('babelify', function() {
+    browserify({ entries: 'public/js/app.js', debug: true })
+        .transform(babelify)
+        .bundle()
+        .pipe(source('app.js'))
+        .pipe(gulp.dest('./public/dist/'));
+});
 
 gulp.task('develop', function () {
   livereload.listen();
@@ -16,7 +26,7 @@ gulp.task('develop', function () {
 });
 
 gulp.task("babel", function () {
-    return gulp.src("public/js/app.js")
+    return gulp.src("public/js/*")
         .pipe(babel())
         .pipe(gulp.dest("public/dist"));
 });
