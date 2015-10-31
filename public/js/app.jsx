@@ -1,13 +1,17 @@
 const React = require('react')
-    ,ReactDom = require('react-dom');
+    ,reactDom = require('react-dom');
 
-React.createClass({
+var CommentBox = React.createClass({
     render: function() {
-        return <div>Hello {this.props.name}</div>;
+        return (
+            <div className="commentBox">
+                Hello, world! I am a CommentBox.
+            </div>
+        );
     }
 });
 
-ReactDOM.render(
-    <Hello name="World" />,
-    document.body
-);
+/*reactDom.render(
+    <CommentBox />,
+    document.querySelector('.container')
+);*/
