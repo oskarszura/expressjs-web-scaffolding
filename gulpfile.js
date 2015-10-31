@@ -6,7 +6,11 @@ var gulp = require('gulp'),
   source = require('vinyl-source-stream');
 
 gulp.task('babelify', function() {
-    browserify({ entries: 'public/js/app.js', debug: true })
+    browserify({
+            entries: 'public/js/app.jsx',
+            debug: true,
+            extensions: ['.jsx']
+        })
         .transform(babelify)
         .bundle()
         .pipe(source('app.js'))
@@ -17,18 +21,12 @@ gulp.task('develop', function () {
   livereload.listen();
   nodemon({
     script: 'app.js',
-    ext: 'js ejs',
+    ext: 'js ejs jsx'
   }).on('restart', function () {
     setTimeout(function () {
       livereload.changed();
     }, 500);
   });
-});
-
-gulp.task("babel", function () {
-    return gulp.src("public/js/*")
-        .pipe(babel())
-        .pipe(gulp.dest("public/dist"));
 });
 
 gulp.task('default', ['develop']);
