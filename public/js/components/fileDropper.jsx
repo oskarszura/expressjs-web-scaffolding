@@ -2,12 +2,32 @@ const React = require('react');
 
 var FileDropper = React.createClass({
     allowDrop: function (e) {
+        e.stopPropagation();
         e.preventDefault();
+        e.dataTransfer.dropEffect = 'copy';
     },
 
     handleOnDrop: function(e) {
+        e.stopPropagation();
         e.preventDefault();
-        console.log(e)
+
+        var files = e.nativeEvent.dataTransfer.files
+
+        for(var key in files) {
+
+            var file = files[key]
+            , fileReader = new FileReader();
+
+            fileReader.onload = (function(file) {
+                return function(e) {
+                    console.log(file.fileName, e.target.result)
+                };
+            })(file);
+
+            fileReader.readAsDataURL(file);
+
+        }
+
     },
 
     render: function() {
