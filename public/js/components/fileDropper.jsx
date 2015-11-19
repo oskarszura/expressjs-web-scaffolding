@@ -1,42 +1,50 @@
-const React = require('react');
+const React = require('react')
 
-var FileDropper = React.createClass({
-    allowDrop: function (e) {
-        e.stopPropagation();
-        e.preventDefault();
-        e.dataTransfer.dropEffect = 'copy';
-    },
+    , FileDropper = React.createClass({
 
-    handleOnDrop: function(e) {
-        e.stopPropagation();
-        e.preventDefault();
+        allowDrop: e => {
 
-        var files = e.nativeEvent.dataTransfer.files
-
-        for(var key in files) {
-
-            var file = files[key]
-            , fileReader = new FileReader();
-
-            fileReader.onload = (function(file) {
-                return function(e) {
-                    console.log(file.fileName, e.target.result)
-                };
-            })(file);
-
-            fileReader.readAsDataURL(file);
+            e.stopPropagation();
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'copy';
 
         }
 
-    },
+        , handleOnDrop: e => {
 
-    render: function() {
-        return (
-            <div className="component-file-dropper" onDrop={this.handleOnDrop} onDragOver={this.allowDrop}>
-                Drop files here...
-            </div>
-        );
-    }
-});
+            e.stopPropagation();
+            e.preventDefault();
 
-module.exports = FileDropper
+            const files = e.nativeEvent.dataTransfer.files
+            , onLoad = file => e => {
+                console.log(file.fileName, e.target.result)
+            };
+
+            for ( let key in files ) {
+
+                let file = files[key]
+                , fileReader = new FileReader();
+
+                fileReader.onload = onLoad(file);
+                fileReader.readAsDataURL(file);
+
+            }
+
+
+        }
+
+        , render: function () {
+
+            return (
+                <div className="component-file-dropper"
+                     onDrop={this.handleOnDrop}
+                     onDragOver={this.allowDrop}>
+                    Drop files here...
+                </div>
+            );
+
+        }
+
+    });
+
+module.exports = FileDropper;
