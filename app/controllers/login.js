@@ -1,65 +1,67 @@
-var express = require('express'),
-    router = express.Router(),
-    passport = require('passport'),
-    UserModel = require('../models/user');
+var express = require('express')
+  , router = express.Router()
+  , passport = require('passport')
+  , UserModel = require('../models/user');
 
-module.exports = function (app) {
-    app.use('/login', router);
-};
+module.exports = function (app) { app.use('/login', router); };
 
 router.get('/', function (req, res, next) {
-    res.render('login', {
-        title: 'Generator-Express MVC',
-        error: false
-    });
+
+  res.render('login', {
+    title: 'Generator-Express MVC'
+  , error: false
+  });
+
 });
 
 router.get('/logout', function (req, res, next) {
-    req.logout();
-    res.redirect('/');
+
+  req.logout();
+  res.redirect('/');
+
 });
 
 router.post('/', function (req, res, next) {
 
-    passport.authenticate('local', function (err, user, info) {
-        if (err) {
-            return next(err);
-        }
+  passport.authenticate('local', function (err, user, info) {
 
-        if (!user) {
-            res.render('login', {
-                title: 'Generator-Express MVC',
-                error: true
-            });
-            return next();
-        }
+    if (err) return next(err);
 
-        req.logIn(user, function (err) {
-            if (err) {
-                req.session.messages = "Error";
-                return next(err);
-            }
+    if (!user) {
+      res.render('login', {
+        title: 'Generator-Express MVC'
+      , error: true
+      });
+      return next();
+    }
 
-            req.session.messages = "Login successfully";
-            return res.redirect('/');
-        });
+    req.logIn(user, function (err) {
+      if (err) {
+        req.session.messages = "Error";
+        return next(err);
+      }
 
-    })(req, res, next);
+      req.session.messages = "Login successfully";
+      return res.redirect('/');
+    });
+
+  })(req, res, next);
+
 });
 
 router.get('/register', function (req, res, nest) {
-    res.render('register', {
-        title: 'Generator-Express MVC'
-    });
+
+  res.render('register', { title: 'Generator-Express MVC' });
+
 });
 
 router.post('/register', function (req, res, nest) {
 
-    UserModel.create(req.body, function (err, newUser) {
-        if (err) {
-            console.log(err);
-        } else {
-            res.redirect('/login');
-        }
-    })
+  UserModel.create(req.body, function (err, newUser) {
+
+    if (err) { console.log(err); }
+    else { res.redirect('/login'); }
+
+  })
+
 });
