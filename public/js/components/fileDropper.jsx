@@ -1,4 +1,5 @@
 const React = require('react')
+  , $ = require('jquery')
 
     , FileDropper = React.createClass({
 
@@ -17,19 +18,31 @@ const React = require('react')
 
             const files = e.nativeEvent.dataTransfer.files
             , onLoad = file => e => {
-                console.log(file.fileName, e.target.result)
+
+                $.ajax({
+                  url: '/api/image'
+                  , dataType: 'json'
+                  , method: "POST"
+                  , cache: false
+                  , context: this
+                  , data: {
+                    name: file.fileName
+                    , content: e.target.result
+                  }
+                  , success: function(data) {
+
+                    console.log('fetch complete', data);
+
+                  }
+                });
+
             };
 
-            for ( let key in files ) {
+            let file = files[0]
+            , fileReader = new FileReader();
 
-                let file = files[key]
-                , fileReader = new FileReader();
-
-                fileReader.onload = onLoad(file);
-                fileReader.readAsDataURL(file);
-
-            }
-
+            fileReader.onload = onLoad(file);
+            fileReader.readAsDataURL(file);
 
         }
 
