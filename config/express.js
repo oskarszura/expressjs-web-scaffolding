@@ -10,8 +10,9 @@ var express = require('express')
   , passport = require('passport')
   , LocalStrategy = require('passport-local');
 
-var mongoose = require('mongoose'),
-  db = mongoose.connect('process.env.MONGOLAB_URI', function (err) {
+var mongoose = require('mongoose')
+  , mongoURI = 'mongodb://localhost/sample_db'
+  , db = mongoose.connect(process.env.MONGOLAB_URI || mongoURI, function (err) {
 
     console.log(err);
 
