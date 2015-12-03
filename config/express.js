@@ -11,7 +11,7 @@ var express = require('express')
   , LocalStrategy = require('passport-local');
 
 var mongoose = require('mongoose'),
-  db = mongoose.connect('mongodb://localhost/sample_db', function (err) {
+  db = mongoose.connect('process.env.MONGOLAB_URI', function (err) {
 
     console.log(err);
 
