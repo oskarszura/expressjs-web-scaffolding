@@ -34,5 +34,8 @@
     "babel-preset-react": "6.0.2",
     "vinyl-source-stream": "1.1.0",
     "babelify": "7.0.2"
+  },
+  "scripts": {
+    "postinstall": "gulp default"
   }
 }

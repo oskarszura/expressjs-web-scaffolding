@@ -30,4 +30,3 @@ gulp.task('develop', function () {
 });
 
 gulp.task('default', ['babelify']);
-gulp.task("heroku:production", ['babelify']);
