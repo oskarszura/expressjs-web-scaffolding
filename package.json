@@ -36,6 +36,6 @@
     "babelify": "7.0.2"
   },
   "scripts": {
-    "postinstall": "gulp default"
+    "prestart": "gulp default"
   }
 }
