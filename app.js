@@ -14,5 +14,5 @@ var app = express();
 
 require('./config/express')(app, config);
 
-http.createServer(app).listen(config.port);
+http.createServer(app).listen(process.env.PORT || config.port);
 https.createServer(options, app).listen(3500);
