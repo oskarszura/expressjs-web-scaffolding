@@ -29,4 +29,5 @@ gulp.task('develop', function () {
   });
 });
 
-gulp.task('default', ['develop']);
+gulp.task('default', ['babelify']);
+gulp.task("heroku:production", ['babelify']);
