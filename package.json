@@ -36,6 +36,7 @@
     "babelify": "7.0.2"
   },
   "scripts": {
-    "prestart": "gulp default"
+    "build": "gulp",
+    "start": "node app.js"
   }
 }
