@@ -7,7 +7,9 @@ module.exports = function () {
         <div class="container">
           <div class="row">
             <div class="col-sm-12">
-              You are logged in - congrats !!!
+              <h2>
+                Front Page
+              </h2>
             </div>
           </div>
         </div>
