@@ -36,7 +36,7 @@
     "babelify": "7.0.2"
   },
   "scripts": {
-    "build": "gulp",
-    "start": "node app.js"
+    "start": "node app.js",
+    "postinstall": "gulp default"
   }
 }
