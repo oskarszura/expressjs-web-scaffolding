@@ -1,5 +1,6 @@
 const React = require('react')
   , FileDropper = require('../components/fileDropper.jsx')
+  , List = require('../components/list.jsx')
 
 module.exports = function () {
   return (
@@ -16,6 +17,14 @@ module.exports = function () {
           <div class="row">
             <div class="col-sm-12">
               <FileDropper />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <List items={[{ text: 'Apple', key: 'apple' }
+                          , { text: 'Banana', key: 'banana' }
+                          , { text: 'Cranberry', key: 'cranberrt' }
+              ]} />
             </div>
           </div>
         </div>
