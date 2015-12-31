@@ -4,3 +4,4 @@ public/components
 .idea/
 npm-debug.log
 public/dist/
+public/css/
