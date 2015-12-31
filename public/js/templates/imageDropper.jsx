@@ -1,6 +1,11 @@
 const React = require('react')
   , FileDropper = require('../components/fileDropper.jsx')
   , List = require('../components/list.jsx')
+  , Store = require('../components/store.js')
+  , store = new Store([{ text: 'Apple', key: 'apple' }
+    , { text: 'Banana', key: 'banana' }
+    , { text: 'Cranberry', key: 'cranberrt' }
+  ])
 
 module.exports = function () {
   return (

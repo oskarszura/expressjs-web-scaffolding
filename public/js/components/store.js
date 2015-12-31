@@ -1,8 +1,9 @@
+/* @flow */
 const EventEmitter = require('events').EventEmitter;
 
 class Store {
 
-  constructor(items) {
+  constructor(items: Array) {
     this.items = items;
   }
 
