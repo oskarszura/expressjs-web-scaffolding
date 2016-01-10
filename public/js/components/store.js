@@ -4,8 +4,12 @@ const EventEmitter = require('events').EventEmitter;
 class Store {
 
   constructor(items: Array) {
-    this.items = items;
+    this._items = items;
   }
+
+  get allItems () { return this._items }
+
+
 
 }
 

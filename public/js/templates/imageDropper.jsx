@@ -26,10 +26,7 @@ module.exports = function () {
           </div>
           <div class="row">
             <div class="col-sm-12">
-              <List items={[{ text: 'Apple', key: 'apple' }
-                          , { text: 'Banana', key: 'banana' }
-                          , { text: 'Cranberry', key: 'cranberrt' }
-              ]} />
+              <List items={ store.allItems } />
             </div>
           </div>
         </div>
