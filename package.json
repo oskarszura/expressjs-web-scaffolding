@@ -6,7 +6,7 @@
   },
   "private": true,
   "scripts": {
-    "start": "node app.js --harmony_shipping --use_strict"
+    "start": "node --harmony_shipping --use_strict app.js"
   },
   "dependencies": {
     "express": "~4.2.0",
