@@ -1,30 +1,25 @@
-var express = require('express')
+const express = require('express')
   , router = express.Router()
   , passport = require('passport')
   , UserModel = require('../models/user');
 
-module.exports = function (app) { app.use('/login', router); };
+module.exports = app => { app.use('/login', router); };
 
-router.get('/', function (req, res, next) {
-
+router.get('/', (req, res, next) => {
   res.render('login', {
     title: 'Generator-Express MVC'
   , error: false
   });
-
 });
 
-router.get('/logout', function (req, res, next) {
-
+router.get('/logout', (req, res, next) => {
   req.logout();
   res.redirect('/');
-
 });
 
-router.post('/', function (req, res, next) {
+router.post('/', (req, res, next) => {
 
-  passport.authenticate('local', function (err, user, info) {
-
+  passport.authenticate('local', (err, user, info) => {
     if (err) return next(err);
 
     if (!user) {
@@ -35,7 +30,7 @@ router.post('/', function (req, res, next) {
       return next();
     }
 
-    req.logIn(user, function (err) {
+    req.logIn(user, err => {
       if (err) {
         req.session.messages = "Error";
         return next(err);
@@ -49,19 +44,13 @@ router.post('/', function (req, res, next) {
 
 });
 
-router.get('/register', function (req, res, nest) {
-
+router.get('/register', (req, res, nest) => {
   res.render('register', { title: 'Generator-Express MVC' });
-
 });
 
-router.post('/register', function (req, res, nest) {
-
-  UserModel.create(req.body, function (err, newUser) {
-
+router.post('/register', (req, res, nest) => {
+  UserModel.create(req.body, (err, newUser) => {
     if (err) { console.log(err); }
     else { res.redirect('/login'); }
-
   })
-
 });

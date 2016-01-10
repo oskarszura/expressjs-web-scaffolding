@@ -1,7 +1,7 @@
 var express = require('express'),
     https = require('https'),
     http = require('http'),
-    fs = require('fs')
+    fs = require('fs'),
     config = require('./config/config'),
     hskey = fs.readFileSync('hacksparrow-key.pem'),
     hscert = fs.readFileSync('hacksparrow-cert.pem'),

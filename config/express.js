@@ -1,4 +1,4 @@
-var express = require('express')
+const express = require('express')
   , session = require('express-session')
   , glob = require('glob')
   , favicon = require('serve-favicon')
@@ -8,19 +8,16 @@ var express = require('express')
   , compress = require('compression')
   , methodOverride = require('method-override')
   , passport = require('passport')
-  , LocalStrategy = require('passport-local');
-
-var mongoose = require('mongoose')
+  , LocalStrategy = require('passport-local')
+  , mongoose = require('mongoose')
   , mongoURI = 'mongodb://localhost/sample_db'
-  , db = mongoose.connect(process.env.MONGOLAB_URI || mongoURI, function (err) {
-
+  , db = mongoose.connect(process.env.MONGOLAB_URI || mongoURI, err => {
     console.log(err);
-
   });
 
 var UserModel = require('../app/models/user');
 
-module.exports = function (app, config) {
+module.exports = (app, config) => {
 
   app.set('views', config.root + '/app/views');
   app.set('view engine', 'ejs');
@@ -37,23 +34,20 @@ module.exports = function (app, config) {
   app.use(passport.initialize());
   app.use(passport.session());
 
-  passport.serializeUser(function (user, done) { done(null, user.id); });
-  passport.deserializeUser(function (id, done) {
+  passport.serializeUser((user, done) => { done(null, user.id); });
+  passport.deserializeUser((id, done) => {
 
-    UserModel.findOne(id, function (err, loggedUser) {
-
+    UserModel.findOne(id, (err, loggedUser) => {
       if (err) {
         done(new Error('User ' + id + ' does not exist'));
       } else {
         return done(null, loggedUser);
       }
-
     });
 
   });
 
-  app.use(function (req, res, next) {
-
+  app.use((req, res, next) => {
       if (req.path == '/login'
           || req.path == '/login/register'
           || req.isAuthenticated()) {
@@ -62,7 +56,6 @@ module.exports = function (app, config) {
       } else {
           res.redirect('/login');
       }
-
   });
 
   var controllers = glob.sync(config.root + '/app/controllers/*.js');

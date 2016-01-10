@@ -21,7 +21,10 @@ gulp.task('develop', function () {
   livereload.listen();
   nodemon({
     script: 'app.js',
-    ext: 'js ejs jsx'
+    ext: 'js ejs jsx',
+    execMap: {
+      js: "node --debug --harmony_shipping --use_strict"
+    }
   }).on('restart', function () {
     setTimeout(function () {
       livereload.changed();

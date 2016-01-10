@@ -1,31 +1,30 @@
-var path = require('path')
+const path = require('path')
   , rootPath = path.normalize(__dirname + '/..')
-  , env = process.env.NODE_ENV || 'development';
-
-var config = {
-  development: {
-    root: rootPath
-  , app: {
-      name: 'expressjs-web-scaffolding'
+  , env = process.env.NODE_ENV || 'development'
+  , config = {
+    development: {
+      root: rootPath
+    , app: {
+        name: 'expressjs-web-scaffolding'
+      }
+    , port: 3400
     }
-  , port: 3400
-  }
 
-, test: {
-    root: rootPath
-  , app: {
-      name: 'expressjs-web-scaffolding'
+  , test: {
+      root: rootPath
+    , app: {
+        name: 'expressjs-web-scaffolding'
+      }
+    , port: 3400
     }
-  , port: 3400
-  }
 
- , production: {
-    root: rootPath
-  , app: {
-      name: 'expressjs-web-scaffolding'
+   , production: {
+      root: rootPath
+    , app: {
+        name: 'expressjs-web-scaffolding'
+      }
+    , port: 3400
     }
-  , port: 3400
-  }
-};
+  };
 
 module.exports = config[env];
