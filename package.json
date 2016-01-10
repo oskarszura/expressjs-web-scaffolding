@@ -1,6 +1,9 @@
 {
   "name": "expressjs-web-scaffolding",
   "version": "0.0.1",
+  "engines": {
+    "node": "5.4.0"
+  },
   "private": true,
   "scripts": {
     "start": "node app.js"
