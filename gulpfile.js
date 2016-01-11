@@ -1,4 +1,4 @@
-const gulp = require('gulp')
+var gulp = require('gulp')
   , nodemon = require('gulp-nodemon')
   , livereload = require('gulp-livereload')
   , browserify = require("browserify")
@@ -6,7 +6,7 @@ const gulp = require('gulp')
   , source = require('vinyl-source-stream')
   , compass = require('gulp-compass');
 
-gulp.task('babelify', () => {
+gulp.task('babelify', function() {
     browserify({
             entries: 'public/js/app.jsx',
             debug: true,
@@ -28,7 +28,7 @@ gulp.task('compass', function() {
     .pipe(gulp.dest('public/css'));
 });
 
-gulp.task('develop', () => {
+gulp.task('develop', function() {
   livereload.listen();
   nodemon({
     script: 'app.js',
@@ -36,8 +36,8 @@ gulp.task('develop', () => {
     execMap: {
       js: "node --debug --harmony_shipping --use_strict"
     }
-  }).on('restart', () => {
-    setTimeout(() => {
+  }).on('restart', function() {
+    setTimeout(function() {
       livereload.changed();
     }, 500);
   });
