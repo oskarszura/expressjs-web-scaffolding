@@ -45,4 +45,4 @@ gulp.task('develop', function() {
 
 
 
-gulp.task('default', ['babelify']);
+gulp.task('default', ['babelify', 'compass']);
