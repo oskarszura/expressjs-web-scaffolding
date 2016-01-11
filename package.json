@@ -5,9 +5,6 @@
     "node": "5.4.0"
   },
   "private": true,
-  "scripts": {
-    "start": "node --harmony_shipping --use_strict app.js"
-  },
   "dependencies": {
     "express": "~4.2.0",
     "express-session": "1.11.3",
@@ -40,7 +37,7 @@
     "request": "2.67.0"
   },
   "scripts": {
-    "start": "node app.js",
+    "start": "node --harmony_shipping --use_strict app.js",
     "postinstall": "gulp default"
   }
 }
