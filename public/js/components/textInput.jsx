@@ -8,15 +8,16 @@ class TextInput extends React.Component {
     , inputStream = Rx.Observable.fromEvent(inputElement, 'keyup');
 
     inputStream.subscribe(keyboardEvent => {
-                 console.log(String.fromCharCode(keyboardEvent.keyCode))
+                 //console.log(String.fromCharCode(keyboardEvent.keyCode))
                });
   }
 
   render() {
     return (
       <div>
-        <label>Name</label>
+        <label>{this.props.label}</label>
         <input type="text"
+               name={this.props.name}
                ref="inputElement"
                className="form-control" />
       </div>
