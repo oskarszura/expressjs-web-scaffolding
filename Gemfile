@@ -1,2 +1,2 @@
 source "http://rubygems.org"
-gem "compass"
+gem 'compass', '~> 1.0', '>= 1.0.3'

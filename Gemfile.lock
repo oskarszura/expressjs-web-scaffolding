@@ -1,7 +1,0 @@
-GEM
-  remote: http://rubygems.org/
-  specs:
-    compass (1.0.1)
-
-PLATFORMS
-  ruby
