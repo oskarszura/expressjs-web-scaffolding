@@ -60,19 +60,11 @@ module.exports = (app, config) => {
 
   var controllers = glob.sync(config.root + '/app/controllers/*.js');
 
-  controllers.forEach(function (controller) {
-
+  controllers.forEach(controller => {
     require(controller)(app, config);
-
   });
 
-  app.use(function (req, res, next) {
-
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
-
-  });
+  app.use((req, res) => { res.redirect('/error/404'); });
 
   if (app.get('env') === 'development') {
     app.use(function (err, req, res) {
@@ -118,9 +110,6 @@ module.exports = (app, config) => {
       }
 
     });
-
     }
-
   ));
-
 };

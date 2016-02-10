@@ -1,0 +1,5 @@
+.main-banner {
+  @extend .col-sm-12;
+  background-image: url('/img/header-background.jpg');
+  min-height: 400px;
+}

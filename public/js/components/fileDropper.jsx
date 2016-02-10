@@ -1,63 +1,49 @@
 const React = require('react')
   , $ = require('jquery')
 
-    , FileDropper = React.createClass({
+class FileDropper extends React.Component {
+  allowDrop (e) {
+    e.stopPropagation();
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'copy';
+  }
 
-        allowDrop: e => {
+  handleOnDrop (e) {
+    e.stopPropagation();
+    e.preventDefault();
 
-            e.stopPropagation();
-            e.preventDefault();
-            e.dataTransfer.dropEffect = 'copy';
-
+    const files = e.nativeEvent.dataTransfer.files
+      , onLoad = file => e => {
+      $.ajax({
+        url: '/api/image'
+        , dataType: 'json'
+        , method: "POST"
+        , cache: false
+        , context: this
+        , data: {
+          name: file.fileName
+          , content: e.target.result
         }
+        , success: data => { console.log('fetch complete', data); }
+      });
+    };
 
-        , handleOnDrop: e => {
+    let file = files[0]
+      , fileReader = new FileReader();
 
-            e.stopPropagation();
-            e.preventDefault();
+    fileReader.onload = onLoad(file);
+    fileReader.readAsDataURL(file);
+  }
 
-            const files = e.nativeEvent.dataTransfer.files
-            , onLoad = file => e => {
-
-                $.ajax({
-                  url: '/api/image'
-                  , dataType: 'json'
-                  , method: "POST"
-                  , cache: false
-                  , context: this
-                  , data: {
-                    name: file.fileName
-                    , content: e.target.result
-                  }
-                  , success: function(data) {
-
-                    console.log('fetch complete', data);
-
-                  }
-                });
-
-            };
-
-            let file = files[0]
-            , fileReader = new FileReader();
-
-            fileReader.onload = onLoad(file);
-            fileReader.readAsDataURL(file);
-
-        }
-
-        , render: function () {
-
-            return (
-                <div className="component-file-dropper"
-                     onDrop={this.handleOnDrop}
-                     onDragOver={this.allowDrop}>
-                    Drop files here...
-                </div>
-            );
-
-        }
-
-    });
+  render() {
+    return (
+      <div className="component-file-dropper"
+           onDrop={this.handleOnDrop}
+           onDragOver={this.allowDrop}>
+        Drop files here...
+      </div>
+    );
+  }
+}
 
 module.exports = FileDropper;

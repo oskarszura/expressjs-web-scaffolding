@@ -8,3 +8,37 @@
   <script src="http://localhost:35729/livereload.js"></script>
 </head>
 <body>
+ <div class="container-fluid">
+   <div class="row">
+     <nav class="col-sm-12">
+       <ul class="main-navigation">
+         <% if (logged) { %>
+         <li class="main-navigation__option"
+             role="presentation">
+           <a href="/">
+             List
+           </a>
+         </li>
+         <li class="main-navigation__option"
+             role="presentation">
+           <a href="/admin">
+             Admin
+           </a>
+         </li>
+         <li class="main-navigation__option"
+             role="presentation">
+           <a href="#/none">
+             None
+           </a>
+         </li>
+         <li class="main-navigation__option"
+             role="presentation">
+           <a href="/login/logout">
+             Logout
+           </a>
+         </li>
+         <% } %>
+       </ul>
+     </nav>
+   </div>
+ </div>

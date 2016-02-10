@@ -34,7 +34,7 @@ gulp.task('develop', function() {
     script: 'app.js',
     ext: 'js ejs jsx',
     execMap: {
-      js: "node --debug --harmony_shipping --use_strict"
+      js: "node --debug --harmony --use_strict"
     }
   }).on('restart', function() {
     setTimeout(function() {
@@ -45,4 +45,4 @@ gulp.task('develop', function() {
 
 
 
-gulp.task('default', ['babelify']);
+gulp.task('default', ['babelify', 'compass']);

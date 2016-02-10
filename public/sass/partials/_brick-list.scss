@@ -1,0 +1,7 @@
+.brick-list {
+  @extend .row;
+
+  &__cell {
+    @extend .col-sm-3;
+  }
+}

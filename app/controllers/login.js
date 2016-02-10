@@ -1,14 +1,15 @@
 const express = require('express')
   , router = express.Router()
   , passport = require('passport')
-  , UserModel = require('../models/user');
+  , UserModel = require('../models/user')
+  , renderer = require('../services/renderer');
 
 module.exports = app => { app.use('/login', router); };
 
 router.get('/', (req, res, next) => {
-  res.render('login', {
-    title: 'Generator-Express MVC'
-  , error: false
+  renderer(req, res, 'login', {
+    title: 'Login page'
+    , error: false
   });
 });
 
@@ -23,8 +24,8 @@ router.post('/', (req, res, next) => {
     if (err) return next(err);
 
     if (!user) {
-      res.render('login', {
-        title: 'Generator-Express MVC'
+      renderer(req, res, 'login', {
+        title: 'Login page'
       , error: true
       });
       return next();
@@ -45,12 +46,14 @@ router.post('/', (req, res, next) => {
 });
 
 router.get('/register', (req, res, nest) => {
-  res.render('register', { title: 'Generator-Express MVC' });
+  renderer(req, res, 'register', {
+    title: 'Registration page'
+  });
 });
 
 router.post('/register', (req, res, nest) => {
   UserModel.create(req.body, (err, newUser) => {
-    if (err) { console.log(err); }
-    else { res.redirect('/login'); }
+    if (err) console.log(err);
+    else res.redirect('/login');
   })
 });

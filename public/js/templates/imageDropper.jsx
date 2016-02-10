@@ -9,23 +9,23 @@ const React = require('react')
 
 module.exports = function () {
   return (
-    <div class="row">
-      <div class="col-sm-12">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-12">
+    <div className="row">
+      <div className="col-sm-12">
+        <div className="container">
+          <div className="row">
+            <div className="col-sm-12">
               <h2>
                 Image Dropper
               </h2>
             </div>
           </div>
-          <div class="row">
-            <div class="col-sm-12">
+          <div className="row">
+            <div className="col-sm-12">
               <FileDropper />
             </div>
           </div>
-          <div class="row">
-            <div class="col-sm-12">
+          <div className="row">
+            <div className="col-sm-12">
               <List items={ store.allItems } />
             </div>
           </div>
