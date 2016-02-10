@@ -7,8 +7,3 @@ GEM
 
 PLATFORMS
   ruby
-
-DEPENDENCIES
-  sass
-  compass
-  compass-core
