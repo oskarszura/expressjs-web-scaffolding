@@ -1,8 +1,10 @@
 const React = require('react')
+    , List = require('../components/list.jsx')
 
 module.exports = function () {
   return (
-    <div className="brick-list">
+    <List source="/api/article"></List>
+    /*<div className="brick-list">
       <div className="brick-list__cell">
         Brick 1
       </div>
@@ -15,6 +17,6 @@ module.exports = function () {
       <div className="brick-list__cell">
         Brick 4
       </div>
-    </div>
+    </div>*/
   );
 }

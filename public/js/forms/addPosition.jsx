@@ -15,27 +15,7 @@ class addPositionForm extends React.Component {
     Rx.Observable.merge(nameStream, descriptionStream, submitStream)
       .subscribe(value => {
 
-        /*const files = e.nativeEvent.dataTransfer.files
-          , onLoad = file => e => {
-          $.ajax({
-            url: '/api/image'
-            , dataType: 'json'
-            , method: "POST"
-            , cache: false
-            , context: this
-            , data: {
-              name: file.fileName
-              , content: e.target.result
-            }
-            , success: data => { console.log('fetch complete', data); }
-          });
-        };
 
-        let file = files[0]
-          , fileReader = new FileReader();
-
-        fileReader.onload = onLoad(file);
-        fileReader.readAsDataURL(file);*/
       });
   }
 

@@ -3,7 +3,9 @@ const mongoose = require('mongoose')
 
   , ArticleSchema = new mongoose.Schema({
     title: 'string'
-  , content: 'string'
+  , image: 'string'
+  , imageName: 'string'
+  , description: 'string'
   })
 
   , Article = mongoose.model('article', ArticleSchema);

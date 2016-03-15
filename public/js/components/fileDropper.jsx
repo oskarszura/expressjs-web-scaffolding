@@ -13,20 +13,17 @@ class FileDropper extends React.Component {
     e.preventDefault();
 
     const files = e.nativeEvent.dataTransfer.files
-      , onLoad = file => e => {
-      $.ajax({
-        url: '/api/image'
-        , dataType: 'json'
-        , method: "POST"
-        , cache: false
-        , context: this
-        , data: {
-          name: file.fileName
-          , content: e.target.result
-        }
-        , success: data => { console.log('fetch complete', data); }
-      });
-    };
+      , component = this
+      , onLoad = function(file) {
+          return function(e)  {
+            this.setState({
+              imageName: file.fileName
+              , image: e.target.result
+            });
+
+            this.forceUpdate();
+        }.bind(this);
+      }.bind(this);
 
     let file = files[0]
       , fileReader = new FileReader();
@@ -36,11 +33,29 @@ class FileDropper extends React.Component {
   }
 
   render() {
+    if(!this.state) {
+      return (
+        <div className="component-file-dropper">
+          <div className="component-file-dropper__dropzone"
+               onDrop={this.handleOnDrop.bind(this)}
+               onDragOver={this.allowDrop.bind(this)}>
+            Drop files here...
+          </div>
+        </div>
+      );
+    }
+
     return (
-      <div className="component-file-dropper"
-           onDrop={this.handleOnDrop}
-           onDragOver={this.allowDrop}>
-        Drop files here...
+      <div className="component-file-dropper">
+        <div className="component-file-dropper__dropzone"
+          onDrop={this.handleOnDrop.bind(this)}
+          onDragOver={this.allowDrop.bind(this)}>
+          Drop files here...
+        </div>
+        <div className="component-file-dropper__preview">}
+          <input type="hidden" defaultValue={this.state.image} />
+          <img src={this.state.image} />
+        </div>
       </div>
     );
   }

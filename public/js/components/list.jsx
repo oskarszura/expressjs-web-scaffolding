@@ -1,22 +1,44 @@
 const React = require('react')
-  , $ = require('jquery');
+    , $ = require('jquery')
+    , R = require('ramda');
 
 class ListItem extends React.Component {
   render() {
     return (
       <li data-key={this.props.key}>
-        {this.props.text}
+        <div>
+          {this.props.text}
+        </div>
+        <div>
+          <img src="{this.props.imageURL}"/>
+        </div>
       </li>);
   }
 }
 
 class List extends React.Component {
+  componentWillMount() {
+    this.source = $.get(this.props.source, function(result) {
+      this.setState({
+        items: result
+      });
+
+      this.forceUpdate();
+    }.bind(this));
+  }
+
   render() {
-    const items = this.props.items;
+    if(!this.state) {
+      return (
+        <div>List not loaded - no data yet...</div>
+      )
+    }
 
     return (
       <ul className="component-list">
-        { items.map(item => <ListItem key={item.key} text={item.text} /> )}
+        { this.state.items.map(item => <ListItem key={item._id}
+                                                 title={item.title}
+                                                 image={item.content} /> )}
       </ul>
     );
   }
