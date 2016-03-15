@@ -12,11 +12,10 @@ class addPositionForm extends React.Component {
       , descriptionStream = Rx.Observable.fromEvent(descriptionElement, 'keyup')
       , submitStream = Rx.Observable.fromEvent(submitElement, 'click');
 
-    Rx.Observable.merge(nameStream, descriptionStream, submitStream)
-      .subscribe(value => {
-
-
-      });
+    submitStream.subscribe(value => {
+      // works as expected
+      // here form submission
+    });
   }
 
   render() {

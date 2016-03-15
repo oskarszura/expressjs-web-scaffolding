@@ -13,7 +13,6 @@ class FileDropper extends React.Component {
     e.preventDefault();
 
     const files = e.nativeEvent.dataTransfer.files
-      , component = this
       , onLoad = function(file) {
           return function(e)  {
             this.setState({
