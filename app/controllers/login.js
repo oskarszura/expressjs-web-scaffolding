@@ -22,20 +22,20 @@ router.get('/logout', (req, res, next) => {
 router.post('/', (req, res, next) => {
 
   passport.authenticate('local', (err, user, info) => {
-    if (err) return next(err);
+    if (err) return res.end();
 
     if (!user) {
       renderer(req, res, 'login', {
         title: 'Login page'
       , error: true
       });
-      return next();
+      return res.end();
     }
 
     req.logIn(user, err => {
       if (err) {
         req.session.messages = "Error";
-        return next(err);
+        return res.end();
       }
 
       req.session.messages = "Login successfully";
