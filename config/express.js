@@ -10,6 +10,8 @@ const express = require('express')
   , passport = require('passport')
   , LocalStrategy = require('passport-local')
   , mongoose = require('mongoose')
+  , passwordManager = require('../app/services/passwordManager')
+
   , mongoURI = 'mongodb://localhost/sample_db'
   , db = mongoose.connect(process.env.MONGOLAB_URI || mongoURI, err => {
     console.log(err);
@@ -98,7 +100,7 @@ module.exports = (app, config) => {
 
     UserModel.findOne({
       username: username
-    , password: password
+    , password: passwordManager.encrypt(password)
     }
     , function (err, loggedUser) {
 

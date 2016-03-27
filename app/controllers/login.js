@@ -2,7 +2,8 @@ const express = require('express')
   , router = express.Router()
   , passport = require('passport')
   , UserModel = require('../models/user')
-  , renderer = require('../services/renderer');
+  , renderer = require('../services/renderer')
+  , passwordManager = require('../services/passwordManager');
 
 module.exports = app => { app.use('/login', router); };
 
@@ -45,14 +46,18 @@ router.post('/', (req, res, next) => {
 
 });
 
-router.get('/register', (req, res, nest) => {
+router.get('/register', (req, res, next) => {
   renderer(req, res, 'register', {
     title: 'Registration page'
   });
 });
 
-router.post('/register', (req, res, nest) => {
-  UserModel.create(req.body, (err, newUser) => {
+router.post('/register', (req, res, next) => {
+  let user = req.body;
+
+  user.password = passwordManager.encrypt(user.password)
+
+  UserModel.create(user, (err, newUser) => {
     if (err) console.log(err);
     else res.redirect('/login');
   })
