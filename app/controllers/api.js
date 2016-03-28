@@ -32,14 +32,33 @@ module.exports = (app, config) => {
     })
 
     router.get('/:collection?/:document?', (req, res, next) => {
-        const responseModel = models[req.params.collection]
+        const collectionName = req.params.collection
+          , responseModel = models[collectionName]
           , onFind = (err, models) => {
               const outputData = models;
               res.json(outputData);
 
             }
-        if ( !responseModel ) { res.json({ status: 404 }); }
-        else { responseModel.find().exec(onFind); }
+
+        if ( !responseModel ) {
+          res.json({ status: 404 });
+        } else if(
+          collectionName === 'article'
+          && req.query.description
+        ) {
+          const searchWord = req.query.description;
+
+          responseModel.find({
+            $or:[{
+              description: new RegExp(searchWord, 'i')
+            }, {
+              title: new RegExp(searchWord, 'i')
+            }]})
+          .exec(onFind);
+
+        } else {
+          responseModel.find().exec(onFind);
+        }
     });
 
     router.post('/:collection?', (req, res, next) => {
