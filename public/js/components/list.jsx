@@ -5,12 +5,13 @@ const React = require('react')
 class ListItem extends React.Component {
   render() {
     return (
-      <li data-key={this.props.key}>
+      <li className={this.props.itemClass}
+          data-key={this.props.key}>
         <div>
-          {this.props.text}
+          {this.props.title}
         </div>
         <div>
-          <img src="{this.props.imageURL}"/>
+          <img src={this.props.image}/>
         </div>
       </li>);
   }
@@ -35,10 +36,15 @@ class List extends React.Component {
     }
 
     return (
-      <ul className="component-list">
-        { this.state.items.map(item => <ListItem key={item._id}
-                                                 title={item.title}
-                                                 image={item.content} /> )}
+      <ul className={this.props.blockClass}>
+        { this.state
+              .items
+              .map(function(item) {
+                return <ListItem key={item._id}
+                                 title={item.title}
+                                 image={item.image}
+                                 itemClass={this.props.itemClass}
+                /> }.bind(this))}
       </ul>
     );
   }
