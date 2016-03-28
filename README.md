@@ -1,11 +1,11 @@
 # ExpressJS Web Scaffolding
 
-# About the project
+## About the project
 A complete, full-stack, generic website scaffolding project for ExpressJS based websites.
 
 **Reason:** Built just for fun and exercise.
 
-# Stacks:
+## Stacks:
 
 **Front-end stack:**
 * SASS
@@ -23,10 +23,10 @@ A complete, full-stack, generic website scaffolding project for ExpressJS based 
 * REST API
 * Backend ACL
 
-# In Plans:
+## In Plans:
 1. Currently random implementations 
 
-# How to run the application:
+## How to run the application:
 1. Run mongo deamon (ex. `$ mongod` )
 2. Run development (ex. `$ gulp develop` )
 
