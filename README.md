@@ -1,9 +1,23 @@
 # ExpressJS Web Scaffolding
-A basic scaffolding for expressjs based websites.
+A complete full-stack website scaffolding projects for expressjs based websites.
 
-Includes:
+**Reason:** Built just for fun.
+
+# Stacks:
+
+Front-end stack:
 * Twitter's bootstrap (SASS edition)
-* Integrated PassportJS with local strategy
+* ReactJS
+
+Back-end stack:
+* NodeJS
+* ExpressJS
+* MongoDB integration
+* Integrated PassportJS authentication with local strategy
+* REST API
+* Backend ACL
+
+Plans:
 
 # How to run the application:
 1. Run mongo deamon (ex. $ mongod )
