@@ -1,7 +1,8 @@
 const React = require('react')
     , reactDom = require('react-dom')
     , ListRouter = require('./routers/list.jsx')
-    , AddPositionRouter = require('./routers/addPosition.jsx');
+    , AddPositionRouter = require('./routers/addPosition.jsx')
+    , Search = require('./components/search.jsx')
 
 function handleNewHash () {
   const location = window.location.hash.replace(/^#\/?|\/$/g, '').split('/')
@@ -9,7 +10,11 @@ function handleNewHash () {
       , listAppContainer = document.getElementById('js-app-list')
       , addPositionApp = <AddPositionRouter location={location} />
       , addPositionAppContainer = document.getElementById('js-app-add-position')
+      , searchApp = <Search redirectTo="/" />
+      , searchAppContainer = document.getElementById('js-app-search')
 
+  if(searchAppContainer)
+    reactDom.render(searchApp, searchAppContainer);
   if(listAppContainer)
     reactDom.render(listApp, listAppContainer);
   if(addPositionAppContainer)

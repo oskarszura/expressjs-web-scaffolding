@@ -44,9 +44,9 @@ module.exports = (app, config) => {
           res.json({ status: 404 });
         } else if(
           collectionName === 'article'
-          && req.query.description
+          && req.query.search
         ) {
-          const searchWord = req.query.description;
+          const searchWord = req.query.search;
 
           responseModel.find({
             $or:[{

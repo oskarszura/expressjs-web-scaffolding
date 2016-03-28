@@ -1,0 +1,16 @@
+.component-search {
+  @extend .input-group;
+
+  &__textfield {
+    @extend .form-control;
+  }
+
+  &__buttons {
+    @extend .input-group-btn;
+  }
+
+  &__submit-button {
+    @extend .btn;
+    @extend .btn-default;
+  }
+}
