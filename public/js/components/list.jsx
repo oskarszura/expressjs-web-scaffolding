@@ -7,12 +7,14 @@ class ListItem extends React.Component {
     return (
       <li className={this.props.itemClass}
           data-key={this.props.key}>
-        <div>
+        <div className={this.props.titleClass}>
           {this.props.title}
         </div>
-        <div>
-          <img src={this.props.image}/>
-        </div>
+        <img className={this.props.imageClass}
+             src={this.props.image}/>
+        <p className={this.props.descriptionClass}>
+          {this.props.description}
+        </p>
       </li>);
   }
 }
@@ -43,7 +45,11 @@ class List extends React.Component {
                 return <ListItem key={item._id}
                                  title={item.title}
                                  image={item.image}
+                                 description={item.description}
                                  itemClass={this.props.itemClass}
+                                 imageClass={this.props.imageClass}
+                                 titleClass={this.props.titleClass}
+                                 descriptionClass={this.props.descriptionClass}
                 /> }.bind(this))}
       </ul>
     );

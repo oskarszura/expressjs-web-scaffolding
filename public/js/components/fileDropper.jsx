@@ -51,10 +51,9 @@ class FileDropper extends React.Component {
           onDragOver={this.allowDrop.bind(this)}>
           Drop files here...
         </div>
-        <div className="component-file-dropper__preview">}
-          <input type="hidden" defaultValue={this.state.image} />
-          <img src={this.state.image} />
-        </div>
+        <input type="hidden" defaultValue={this.state.image} />
+        <img className="component-file-dropper__preview"
+             src={this.state.image} />
       </div>
     );
   }
