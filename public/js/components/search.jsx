@@ -36,7 +36,7 @@ class Search extends React.Component {
           <button className="component-search__submit-button"
                   type="submit"
                   ref="submitElement">
-            Search
+            Go
           </button>
         </div>
       </div>

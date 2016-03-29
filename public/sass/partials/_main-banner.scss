@@ -1,6 +1,7 @@
 .main-banner {
   @extend .col-sm-12;
   @extend .jumbotron;
+  background-image: url('/img/header-background.jpg');
   border-radius: 0px !important;
   min-height: 400px;
 }

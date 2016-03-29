@@ -1,8 +1,11 @@
 .component-search {
   @extend .input-group;
+  padding: 0px 10%;
 
   &__textfield {
     @extend .form-control;
+    height: 50px !important;
+    font-size: 24px !important;
   }
 
   &__buttons {
@@ -12,5 +15,9 @@
   &__submit-button {
     @extend .btn;
     @extend .btn-default;
+    background-color: $color-bleu-de-france !important;
+    color: $color-white !important;
+    height: 50px !important;
+    font-size: 24px !important;
   }
 }

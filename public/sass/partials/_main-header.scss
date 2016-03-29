@@ -1,0 +1,6 @@
+.main-header {
+  @extend h1;
+  font-size: 48px !important;
+  color: $color-white !important;
+  text-align: center;
+}
