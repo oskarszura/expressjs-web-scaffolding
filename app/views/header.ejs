@@ -19,13 +19,27 @@
      </div>
      <nav class="col-sm-9">
        <ul class="main-navigation">
-         <% if (logged) { %>
          <li class="main-navigation__option"
              role="presentation">
            <a href="/">
-             List
+             Home
            </a>
          </li>
+         <% if (!logged) { %>
+         <li class="main-navigation__option"
+             role="presentation">
+           <a href="/login">
+             Login
+           </a>
+         </li>
+         <li class="main-navigation__option"
+             role="presentation">
+           <a href="/login/register">
+             Register
+           </a>
+         </li>
+         <% } %>
+         <% if (logged) { %>
          <li class="main-navigation__option"
              role="presentation">
            <a href="/admin">
