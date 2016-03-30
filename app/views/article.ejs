@@ -1,0 +1,22 @@
+<% include header %>
+
+<div class="container-fluid">
+  <div class="row">
+    <% include main-banner %>
+  </div>
+  <div class="row">
+    <div id="js-app-article" class="col-sm-12">
+      <p>
+        <%= article.title %>
+      </p>
+      <p>
+        <%= article.description %>
+      </p>
+      <p>
+        <img src="<%= article.image %>"/>
+      </p>
+    </div>
+  </div>
+</div>
+
+<% include footer %>
