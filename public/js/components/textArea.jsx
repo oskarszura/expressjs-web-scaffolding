@@ -13,7 +13,7 @@ class TextInput extends React.Component {
 
   componentDidMount () {
     const inputElement = this.refs.inputElement
-    , inputStream = Rx.Observable.fromEvent(inputElement, 'keyup');
+      , inputStream = Rx.Observable.fromEvent(inputElement, 'keyup');
 
     inputStream.subscribe(function(keyboardEvent) {
       this.setState({
@@ -24,15 +24,17 @@ class TextInput extends React.Component {
 
   render() {
     return (
-      <div className="component-text-input">
-        <label className="component-text-input__label">
+      <div className="component-text-area">
+        <label className="component-text-area__label">
           {this.props.label}
         </label>
-        <input type="text"
-               name={this.props.name}
-               ref="inputElement"
-               className="component-text-input__input"
-               text={this.state.text} />
+        <textarea type="text"
+                  rows="3"
+                  name={this.props.name}
+                  ref="inputElement"
+                  className="component-text-area__input"
+                  text={this.state.text} >
+        </textarea>
       </div>
     );
   }

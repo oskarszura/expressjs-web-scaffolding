@@ -1,0 +1,11 @@
+.component-text-input {
+  @extend .form-group;
+
+  &__input {
+    @extend .form-control;
+  }
+
+  &__label {
+
+  }
+}

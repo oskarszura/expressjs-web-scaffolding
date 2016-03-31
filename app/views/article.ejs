@@ -5,17 +5,18 @@
     <% include main-banner %>
   </div>
   <div class="row">
-    <div id="js-app-article" class="col-sm-12">
-      <p>
+    <article class="col-sm-12">
+      <header>
         <%= article.title %>
-      </p>
-      <p>
+      </header>
+      <section class="component-image-slider">
+        <img class="component-image-slider__item"
+             src="<%= article.image %>"/>
+      </section>
+      <section>
         <%= article.description %>
-      </p>
-      <p>
-        <img src="<%= article.image %>"/>
-      </p>
-    </div>
+      </section>
+    </article>
   </div>
 </div>
 
