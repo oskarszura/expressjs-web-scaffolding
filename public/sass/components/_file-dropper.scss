@@ -10,5 +10,10 @@
     margin-top: 10px;
     height: auto;
     width: 100%;
+    border: 3px dashed $color-gray-x11;
+
+    &:hover {
+      opacity: 0.8;
+    }
   }
 }
