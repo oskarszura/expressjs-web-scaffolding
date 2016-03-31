@@ -6,6 +6,19 @@ const mongoose = require('mongoose')
   , image: 'string'
   , imageName: 'string'
   , description: 'string'
+  , areaElement: 'string'
+  , priceElement: 'string'
+  , floorElement: 'string'
+  , constructionYear: 'string'
+  , countryElement: 'string'
+  , provinceElement: 'string'
+  , cityElement: 'string'
+  , zipCodeElement: 'string'
+  , streetElement: 'string'
+  , houseNrElement: 'string'
+  , appartmentNrElement: 'string'
+  , telephoneElement: 'string'
+  , emailElement: 'string'
   })
 
   , Article = mongoose.model('article', ArticleSchema);
