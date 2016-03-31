@@ -74,6 +74,12 @@ class addPositionForm extends React.Component {
                        name="description"
                        ref="descriptionElement"
             />
+            <div className="form-group">
+              <label>
+                Image
+              </label>
+              <FileDropper ref="imageElement"/>
+            </div>
           </section>
           <section className="col-sm-3">
             <h3>
@@ -142,14 +148,6 @@ class addPositionForm extends React.Component {
                        ref="emailElement"
             />
           </section>
-        </div>
-        <div className="row">
-          <div className="col-sm-12">
-            <div className="form-group">
-              <FileDropper ref="imageElement"/>
-            </div>
-
-          </div>
         </div>
         <div className="row">
           <div className="col-sm-12">

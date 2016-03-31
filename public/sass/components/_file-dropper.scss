@@ -1,13 +1,14 @@
 .component-file-dropper {
   &__dropzone {
-    border: 3px dashed;
+    border: 3px dashed $color-gray-x11;
     padding: 10px;
     text-align: center;
+    color: $color-gray-x11;
   }
 
   &__preview {
     margin-top: 10px;
-    height: 300px;
-    width: auto;
+    height: auto;
+    width: 100%;
   }
 }
