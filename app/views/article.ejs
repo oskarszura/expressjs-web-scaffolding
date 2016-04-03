@@ -5,18 +5,109 @@
     <% include main-banner %>
   </div>
   <div class="row">
-    <article class="col-sm-12">
-      <header>
+    <article class="article">
+      <header class="article__header">
         <%= article.title %>
       </header>
-      <section class="component-image-slider">
-        <img class="component-image-slider__item"
-             src="<%= article.image %>"/>
+      <section id="js-app-image-slider"
+               data-id="<%= article._id %>">
+        Image slider loading...
       </section>
-      <section>
+      <section class="article__description">
         <%= article.description %>
       </section>
     </article>
+    <aside class="col-sm-3">
+      <table class="table table-striped">
+        <tbody>
+        <tr>
+          <td>
+            Adres:
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Miejscowość:
+          </td>
+          <td>
+
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Województwo:
+          </td>
+          <td>
+
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Powierzchnia:
+          </td>
+          <td>
+
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Powierzchnia działki:
+          </td>
+          <td>
+
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Cena:
+          </td>
+          <td>
+
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Kategoria:
+          </td>
+          <td>
+
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Rynek:
+          </td>
+          <td>
+
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Liczba pięter:
+          </td>
+          <td>
+
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Liczba pokoi:
+          </td>
+          <td>
+
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Rok budowy:
+          </td>
+          <td>
+
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </aside>
   </div>
 </div>
 

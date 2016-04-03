@@ -1,0 +1,11 @@
+.article {
+  @extend .col-sm-9;
+
+  &__header {
+    @extend h4;
+  }
+
+  &__description {
+    margin-top: 20px;
+  }
+}

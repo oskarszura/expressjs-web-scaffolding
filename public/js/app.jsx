@@ -3,6 +3,7 @@ const React = require('react')
     , ListRouter = require('./routers/list.jsx')
     , AddPositionRouter = require('./routers/addPosition.jsx')
     , Search = require('./components/search.jsx')
+    , ImageSlider = require('./components/imageSlider.jsx')
 
 function handleNewHash () {
   const location = window.location.hash.replace(/^#\/?|\/$/g, '').split('/')
@@ -12,6 +13,7 @@ function handleNewHash () {
       , addPositionAppContainer = document.getElementById('js-app-add-position')
       , searchApp = <Search redirectTo="/" />
       , searchAppContainer = document.getElementById('js-app-search')
+      , imageSliderAppContainer = document.getElementById('js-app-image-slider')
 
   if(searchAppContainer)
     reactDom.render(searchApp, searchAppContainer);
@@ -19,6 +21,13 @@ function handleNewHash () {
     reactDom.render(listApp, listAppContainer);
   if(addPositionAppContainer)
     reactDom.render(addPositionApp, addPositionAppContainer);
+  if(imageSliderAppContainer) {
+    const articleId = imageSliderAppContainer.dataset.id
+
+    reactDom.render(
+      <ImageSlider source={`api/article?${articleId}`} />
+      , imageSliderAppContainer);
+  }
 }
 
 handleNewHash()

@@ -2,7 +2,7 @@ const React = require('react')
   , $ = require('jquery')
   , TextInput = require('../components/textInput.jsx')
   , TextArea = require('../components/textArea.jsx')
-  , FileDropper = require('../components/fileDropper.jsx')
+  , ListFileDropper = require('../components/listFileDropper.jsx')
   , Rx = require('rxjs');
 
 class addPositionForm extends React.Component {
@@ -78,7 +78,7 @@ class addPositionForm extends React.Component {
               <label>
                 Image
               </label>
-              <FileDropper ref="imageElement"/>
+              <ListFileDropper ref="imageElement"/>
             </div>
           </section>
           <section className="col-sm-3">
