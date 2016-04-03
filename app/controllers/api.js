@@ -56,6 +56,17 @@ module.exports = (app, config) => {
             }]})
           .exec(onFind);
 
+        } else if(
+          collectionName === 'article'
+          && req.query.userId
+        ) {
+          const userId = req.query.userId;
+
+          responseModel.find({
+                userId: userId
+              })
+            .exec(onFind);
+          
         } else {
           responseModel.find().exec(onFind);
         }

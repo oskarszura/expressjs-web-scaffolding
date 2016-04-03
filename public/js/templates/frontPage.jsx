@@ -6,7 +6,7 @@ module.exports = function () {
   const queryObject = {
       search: utils.getParameterByName('search')
     }
-    , resource = `api/article?${utils.serializeObject(queryObject)}`
+    , resource = `/api/article?${utils.serializeObject(queryObject)}`
 
   return (
     <List source={resource}

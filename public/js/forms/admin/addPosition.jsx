@@ -3,12 +3,12 @@ const React = require('react')
   , TextInput = require('../../components/textInput.jsx')
   , TextArea = require('../../components/textArea.jsx')
   , ListFileDropper = require('../../components/listFileDropper.jsx')
-  , Rx = require('rxjs');
+  , Rx = require('rxjs')
+  , user = require('../../services/user');
 
 class addPositionForm extends React.Component {
   componentDidMount () {
-    const submitElement = this.refs.submitElement
-      , nameElement = this.refs.nameElement
+    const nameElement = this.refs.nameElement
       , descriptionElement = this.refs.descriptionElement
 
       , areaElement = this.refs.areaElement
@@ -29,6 +29,8 @@ class addPositionForm extends React.Component {
 
       , imageListElement = this.refs.imageListElement
 
+      , userIdElement = this.refs.userIdElement
+      , submitElement = this.refs.submitElement
       , submitStream = Rx.Observable.fromEvent(submitElement, 'click');
 
     submitStream.subscribe(function(value) {
@@ -37,19 +39,20 @@ class addPositionForm extends React.Component {
         title: nameElement.state.text
       , description: descriptionElement.state.text
       , images: imageListElement.getAllFiles()
-      , areaElement: areaElement.state.text
-      , priceElement: priceElement.state.text
-      , floorElement: floorElement.state.text
+      , area: areaElement.state.text
+      , price: priceElement.state.text
+      , floor: floorElement.state.text
       , constructionYear: constructionYearElement.state.text
-      , countryElement: countryElement.state.text
-      , provinceElement: provinceElement.state.text
-      , cityElement: cityElement.state.text
-      , zipCodeElement: zipCodeElement.state.text
-      , streetElement: streetElement.state.text
-      , houseNrElement: houseNrElement.state.text
-      , appartmentNrElement: appartmentNrElement.state.text
-      , telephoneElement: telephoneElement.state.text
-      , emailElement: emailElement.state.text
+      , country: countryElement.state.text
+      , province: provinceElement.state.text
+      , city: cityElement.state.text
+      , zipCode: zipCodeElement.state.text
+      , street: streetElement.state.text
+      , houseNr: houseNrElement.state.text
+      , appartmentNr: appartmentNrElement.state.text
+      , telephone: telephoneElement.state.text
+      , email: emailElement.state.text
+      , userId: userIdElement.value
       }, data => {
         console.log('fetch complete', data);
       });
@@ -150,6 +153,11 @@ class addPositionForm extends React.Component {
         </div>
         <div className="row">
           <div className="col-sm-12">
+            <input type="hidden"
+                   name="userId"
+                   ref="userIdElement"
+                   value={user.getUserId()} />
+
             <button className="btn btn-primary btn-block"
                     ref="submitElement">Submit</button>
           </div>
