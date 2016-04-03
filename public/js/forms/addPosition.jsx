@@ -27,7 +27,7 @@ class addPositionForm extends React.Component {
       , telephoneElement = this.refs.telephoneElement
       , emailElement = this.refs.emailElement
 
-      , imageElement = this.refs.imageElement
+      , imageListElement = this.refs.imageListElement
 
       , submitStream = Rx.Observable.fromEvent(submitElement, 'click');
 
@@ -36,8 +36,7 @@ class addPositionForm extends React.Component {
       $.post('/api/article', {
         title: nameElement.state.text
       , description: descriptionElement.state.text
-      , image: imageElement.state.image
-      , imageName: imageElement.state.imageName
+      , images: imageListElement.getAllFiles()
       , areaElement: areaElement.state.text
       , priceElement: priceElement.state.text
       , floorElement: floorElement.state.text
@@ -78,7 +77,7 @@ class addPositionForm extends React.Component {
               <label>
                 Image
               </label>
-              <ListFileDropper ref="imageElement"/>
+              <ListFileDropper ref="imageListElement"/>
             </div>
           </section>
           <section className="col-sm-3">

@@ -25,7 +25,7 @@ function handleNewHash () {
     const articleId = imageSliderAppContainer.dataset.id
 
     reactDom.render(
-      <ImageSlider source={`api/article?${articleId}`} />
+      <ImageSlider source={`/api/article/${articleId}`} />
       , imageSliderAppContainer);
   }
 }

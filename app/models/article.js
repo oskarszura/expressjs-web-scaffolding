@@ -3,8 +3,7 @@ const mongoose = require('mongoose')
 
   , ArticleSchema = new mongoose.Schema({
     title: 'string'
-  , image: 'string'
-  , imageName: 'string'
+  , images: ['string']
   , description: 'string'
   , areaElement: 'string'
   , priceElement: 'string'

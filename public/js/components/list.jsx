@@ -46,7 +46,7 @@ class List extends React.Component {
               .map(function(item) {
                 return <ListItem key={item._id}
                                  title={item.title}
-                                 image={item.image}
+                                 image={item.images[0]}
                                  _id={item._id}
                                  description={item.description}
                                  itemClass={this.props.itemClass}

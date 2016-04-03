@@ -11,8 +11,9 @@ class ListFileDropper extends React.Component {
     this.setState({
       zones: [{
         id: 0
+      , dropZoneRef: 'fileDropper-0'
       }]
-    , nextId: 0
+    , nextId: 1
     })
   }
 
@@ -24,6 +25,7 @@ class ListFileDropper extends React.Component {
       this.setState({
         zones: this.state.zones.concat([{
           id: this.state.nextId
+        , dropZoneRef: `fileDropper-${this.state.nextId}`
         }])
       , nextId: this.state.nextId + 1
       })
@@ -40,15 +42,21 @@ class ListFileDropper extends React.Component {
     });
   }
 
+  getAllFiles () {
+    return this.state.zones
+                     .map(function(zone) {
+                       return this.refs[zone.dropZoneRef].state.image;
+                     }.bind(this))
+  }
+
   render () {
     return (<div className="component-list-file-dropper">
       { this.state
         .zones
         .map((zone, zoneIndex) => {
-          return <div ref={`zone-${zone.id}`}>
-           <FileDropper/>
-            <button zoneIndex={zoneIndex}
-                    className="component-list-file-dropper__remove"
+          return <div key={`zone-${zone.id}`}>
+            <FileDropper ref={zone.dropZoneRef} />
+            <button className="component-list-file-dropper__remove"
                     onClick={this.removeZone.bind(this, zoneIndex)} >
               Remove zone
             </button>
