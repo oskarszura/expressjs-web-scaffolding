@@ -1,8 +1,8 @@
 const React = require('react')
   , $ = require('jquery')
-  , TextInput = require('../components/textInput.jsx')
-  , TextArea = require('../components/textArea.jsx')
-  , ListFileDropper = require('../components/listFileDropper.jsx')
+  , TextInput = require('../../components/textInput.jsx')
+  , TextArea = require('../../components/textArea.jsx')
+  , ListFileDropper = require('../../components/listFileDropper.jsx')
   , Rx = require('rxjs');
 
 class addPositionForm extends React.Component {

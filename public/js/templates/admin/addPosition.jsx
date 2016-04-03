@@ -1,5 +1,5 @@
 const React = require('react')
-  , AddPositionForm = require('../forms/addPosition.jsx')
+  , AddPositionForm = require('../../forms/admin/addPosition.jsx')
 
 module.exports = function () {
   return (

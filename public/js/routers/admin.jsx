@@ -1,11 +1,16 @@
 const React = require('react')
-  , templateAddPosition = require('../templates/addPosition.jsx')
+  , templateList = require('../templates/admin/list.jsx')
+  , templateAddPosition = require('../templates/admin/addPosition.jsx')
   , templateNotFound = require('../templates/notFound.jsx');
 
 class Router extends React.Component {
   render() {
     switch (this.props.location[0])  {
       case '':
+        return templateList.call(this);
+        break;
+
+      case 'add':
         return templateAddPosition.call(this);
         break;
 
