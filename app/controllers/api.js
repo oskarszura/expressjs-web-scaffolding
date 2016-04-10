@@ -33,6 +33,7 @@ module.exports = (app, config) => {
 
     router.get('/:collection?/:document?', (req, res, next) => {
         const collectionName = req.params.collection
+          , documentName = req.params.document
           , responseModel = models[collectionName]
           , onFind = (err, models) => {
               const outputData = models;
@@ -68,7 +69,9 @@ module.exports = (app, config) => {
             .exec(onFind);
           
         } else {
-          responseModel.find().exec(onFind);
+          let search = documentName ? { _id : documentName } : {};
+
+          responseModel.find(search).exec(onFind);
         }
     });
 

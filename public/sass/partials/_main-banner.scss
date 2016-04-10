@@ -1,7 +1,9 @@
 .main-banner {
+  @include single-box-shadow(0px, -1px, 1px, 1px, $color-boulder);
   @extend .col-sm-12;
   @extend .jumbotron;
   background-image: url('/img/header-background.jpg');
+  background-position-y: -125px;
   border-radius: 0px !important;
   min-height: 400px;
   margin-bottom: 10px;

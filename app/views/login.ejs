@@ -1,6 +1,6 @@
 <% include header %>
 
-<main class="template-main container">
+<main class="template-main template-main--margined">
     <%if(error) { %>
     <div class="row">
         <div class="col-sm-12">
@@ -11,7 +11,7 @@
     </div>
     <% } %>
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-12">
             <h2>Login</h2>
 
             <form action="/login" method="post">
@@ -31,16 +31,16 @@
                            placeholder="Password"
                            name="password">
                 </div>
-                <button type="submit" class="btn btn-default">Submit</button>
+                <button type="submit" class="btn btn-default">
+                    Login
+                </button>
+                or
+                <a class="btn btn-primary"
+                   href="/login/register">
+                    Sign up
+                </a>
+                (if you don't have an account yet)
             </form>
-        </div>
-        <div class="col-sm-6">
-            <h2>Register</h2>
-
-            <a class="btn btn-primary"
-                    href="/login/register">
-                Create account
-            </a>
         </div>
     </div>
 </main>

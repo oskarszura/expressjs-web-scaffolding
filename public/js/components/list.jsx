@@ -15,10 +15,10 @@ class ListItem extends React.Component {
                src={this.props.image}/>
           <div className={this.props.descriptionClass}>
             <p>
-              {this.props.country} {this.props.province} {this.props.city}
+              {this.props.country}, {this.props.province}, {this.props.city}
             </p>
             <p>
-              {this.props.area} m<sup>2</sup>
+              {this.props.area} m<sup>2</sup> - {this.props.price} USD
             </p>
           </div>
         </a>
@@ -57,6 +57,7 @@ class List extends React.Component {
                                  country={item.country}
                                  province={item.province}
                                  city={item.city}
+                                 price={item.price}
                                  itemClass={this.props.itemClass}
                                  imageClass={this.props.imageClass}
                                  titleClass={this.props.titleClass}

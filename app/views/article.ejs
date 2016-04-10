@@ -9,85 +9,88 @@
       <header class="article__header">
         <%= article.title %>
       </header>
+
       <section id="js-app-image-slider"
                data-id="<%= article._id %>">
         Image slider loading...
       </section>
+
       <section class="article__description">
         <%= article.description %>
       </section>
+
+      <section class="article__data">
+        <table class="table table-striped">
+          <tbody>
+          <tr>
+            <td>
+              Country:
+            </td>
+            <td>
+              <%= article.country %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Province:
+            </td>
+            <td>
+              <%= article.province %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              City:
+            </td>
+            <td>
+              <%= article.city %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Address:
+            </td>
+            <td>
+              <%= article.zipCode %>, <%= article.street %>
+              <%= article.houseNr %> / <%= article.appartmentNr %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Area:
+            </td>
+            <td>
+              <%= article.area %> m<sup>2</sup>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Year of construction:
+            </td>
+            <td>
+              <%= article.constructionYear %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Floor:
+            </td>
+            <td>
+              <%= article.floor %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Price:
+            </td>
+            <td>
+              <%= article.price %> USD
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </section>
     </article>
-    <aside class="col-sm-3">
-      <table class="table table-striped">
-        <tbody>
-        <tr>
-          <td>
-            Country:
-          </td>
-          <td>
-            <%= article.country %>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Province:
-          </td>
-          <td>
-            <%= article.province %>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            City:
-          </td>
-          <td>
-            <%= article.city %>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Address:
-          </td>
-          <td>
-            <%= article.zipCode %>, <%= article.street %>
-            <%= article.houseNr %> / <%= article.appartmentNr %>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Area:
-          </td>
-          <td>
-            <%= article.area %> m<sup>2</sup>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Year of construction:
-          </td>
-          <td>
-            <%= article.constructionYear %>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Floor:
-          </td>
-          <td>
-            <%= article.floor %>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Price:
-          </td>
-          <td>
-            <%= article.price %> USD
-          </td>
-        </tr>
-        </tbody>
-      </table>
-    </aside>
   </div>
 </main>
 

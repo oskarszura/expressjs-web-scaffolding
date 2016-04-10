@@ -10,21 +10,16 @@
 <body data-user-id="<%-userId %>">
  <header class="template-header">
    <div class="row">
-     <div class="logo">
+     <a class="logo"
+        href="/">
        <span class="logo__blue">
          UR
        </span><span class="logo__gray">
          HOME
        </span>
-     </div>
-     <nav class="col-sm-9">
+     </a>
+     <nav class="col-sm-10">
        <ul class="main-navigation">
-         <li class="main-navigation__option"
-             role="presentation">
-           <a href="/">
-             Home
-           </a>
-         </li>
          <% if (!logged) { %>
          <li class="main-navigation__option"
              role="presentation">
@@ -35,7 +30,7 @@
          <li class="main-navigation__option"
              role="presentation">
            <a href="/login/register">
-             Register
+             Sign up
            </a>
          </li>
          <% } %>

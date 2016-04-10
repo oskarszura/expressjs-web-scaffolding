@@ -19,7 +19,7 @@ class ImageSlider extends React.Component {
   }
 
   showNext () {
-    if(this.state.currentImage + 1 <= this.state.images.length)
+    if(this.state.currentImage + 1 < this.state.images.length)
       this.setState({ currentImage: this.state.currentImage + 1 })
   }
 
