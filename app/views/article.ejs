@@ -22,87 +22,67 @@
         <tbody>
         <tr>
           <td>
-            Adres:
+            Country:
+          </td>
+          <td>
+            <%= article.country %>
           </td>
         </tr>
         <tr>
           <td>
-            Miejscowość:
+            Province:
           </td>
           <td>
-
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Województwo:
-          </td>
-          <td>
-
+            <%= article.province %>
           </td>
         </tr>
         <tr>
           <td>
-            Powierzchnia:
+            City:
           </td>
           <td>
-
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Powierzchnia działki:
-          </td>
-          <td>
-
+            <%= article.city %>
           </td>
         </tr>
         <tr>
           <td>
-            Cena:
+            Address:
           </td>
           <td>
-
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Kategoria:
-          </td>
-          <td>
-
+            <%= article.zipCode %>, <%= article.street %>
+            <%= article.houseNr %> / <%= article.appartmentNr %>
           </td>
         </tr>
         <tr>
           <td>
-            Rynek:
+            Area:
           </td>
           <td>
-
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Liczba pięter:
-          </td>
-          <td>
-
+            <%= article.area %> m<sup>2</sup>
           </td>
         </tr>
         <tr>
           <td>
-            Liczba pokoi:
+            Year of construction:
           </td>
           <td>
-
+            <%= article.constructionYear %>
           </td>
         </tr>
         <tr>
           <td>
-            Rok budowy:
+            Floor:
           </td>
           <td>
-
+            <%= article.floor %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Price:
+          </td>
+          <td>
+            <%= article.price %> USD
           </td>
         </tr>
         </tbody>

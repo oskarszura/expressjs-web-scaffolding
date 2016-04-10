@@ -13,9 +13,14 @@ class ListItem extends React.Component {
           </div>
           <img className={this.props.imageClass}
                src={this.props.image}/>
-          <p className={this.props.descriptionClass}>
-            {this.props.description}
-          </p>
+          <div className={this.props.descriptionClass}>
+            <p>
+              {this.props.country} {this.props.province} {this.props.city}
+            </p>
+            <p>
+              {this.props.area} m<sup>2</sup>
+            </p>
+          </div>
         </a>
       </li>);
   }
@@ -48,7 +53,10 @@ class List extends React.Component {
                                  title={item.title}
                                  image={item.images[0]}
                                  _id={item._id}
-                                 description={item.description}
+                                 area={item.area}
+                                 country={item.country}
+                                 province={item.province}
+                                 city={item.city}
                                  itemClass={this.props.itemClass}
                                  imageClass={this.props.imageClass}
                                  titleClass={this.props.titleClass}
