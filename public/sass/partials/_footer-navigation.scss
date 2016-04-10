@@ -1,0 +1,30 @@
+.footer-navigation {
+  @extend .nav;
+  @extend .nav-tabs;
+  font-size: 13px;
+  margin: 10px 100px;
+  border-bottom: 0px;
+
+  &__option {
+
+    &--active {
+      @extend .active;
+    }
+
+    a {
+      border-radius: 0px !important;
+      line-height: 25px !important;
+      padding-top: 0px !important;
+      padding-bottom: 0px !important;
+      text-transform: uppercase;
+      font-weight: bold;
+      color: $color-shady-lady !important;
+
+      &:hover, &:active {
+        color: $color-white !important;
+        background-color: transparent !important;
+        border-color: transparent !important;
+      }
+    }
+  }
+}
