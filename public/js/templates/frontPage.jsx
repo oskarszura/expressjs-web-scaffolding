@@ -10,6 +10,7 @@ module.exports = function () {
 
   return (
     <List source={resource}
+          view="/article/:id"
           blockClass="brick-list"
           itemClass="brick-list__cell"
           imageClass="brick-list__image"

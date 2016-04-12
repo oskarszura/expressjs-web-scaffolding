@@ -14,6 +14,7 @@ module.exports = function () {
     <div className="row">
       <div className="col-sm-12">
         <List source={resource}
+              view="/admin#edit/:id"
               blockClass="brick-list"
               itemClass="brick-list__cell"
               imageClass="brick-list__image"

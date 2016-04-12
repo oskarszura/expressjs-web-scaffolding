@@ -14,6 +14,10 @@ class Router extends React.Component {
         return templateAddPosition.call(this);
         break;
 
+      case 'edit':
+        return templateAddPosition.call(this, this.props.location[1]);
+        break;
+
       default:
         return templateNotFound.call(this);
     }

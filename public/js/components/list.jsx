@@ -7,7 +7,7 @@ class ListItem extends React.Component {
     return (
       <li className={this.props.itemClass}
           data-key={this.props.key}>
-        <a href={"/article/" + this.props._id}>
+        <a href={this.props.view.replace(':id', this.props._id)}>
           <div className={this.props.titleClass}>
             {this.props.title}
           </div>
@@ -50,6 +50,7 @@ class List extends React.Component {
               .items
               .map(function(item) {
                 return <ListItem key={item._id}
+                                 view={this.props.view}
                                  title={item.title}
                                  image={item.images[0]}
                                  _id={item._id}

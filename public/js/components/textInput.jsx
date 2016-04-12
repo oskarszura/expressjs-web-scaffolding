@@ -9,17 +9,19 @@ class TextInput extends React.Component {
     this.state = {
       text: ''
     };
+    this.source = new Rx.Subject()
   }
 
   componentDidMount () {
-    const inputElement = this.refs.inputElement
-    , inputStream = Rx.Observable.fromEvent(inputElement, 'keyup');
-
-    inputStream.subscribe(function(keyboardEvent) {
+    this.source.subscribe(function(newValue) {
       this.setState({
-        text: inputElement.value
+        text: newValue
       })
-    }.bind(this));
+    }.bind(this))
+  }
+
+  _onChangeHandler(e) {
+    this.source.next(e.target.value)
   }
 
   render() {
@@ -32,7 +34,8 @@ class TextInput extends React.Component {
                name={this.props.name}
                ref="inputElement"
                className="component-text-input__input"
-               text={this.state.text} />
+               onChange={this._onChangeHandler.bind(this)}
+               value={this.state.text} />
       </div>
     );
   }

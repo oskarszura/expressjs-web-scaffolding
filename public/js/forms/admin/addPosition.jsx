@@ -58,6 +58,29 @@ class addPositionForm extends React.Component {
       });
 
     }.bind(this));
+
+    if(this.props.id) {
+      $.get(`/api/article/${this.props.id}`, data => {
+        let article = data[0]
+
+        nameElement.setState({ text: article.title })
+        descriptionElement.setState({ text: article.description })
+        //imageListElement.getAllFiles()
+        areaElement.setState({ text: article.area })
+        priceElement.setState({ text: article.price })
+        floorElement.setState({ text: article.floor })
+        constructionYearElement.setState({ text: article.constructionYear })
+        countryElement.setState({ text: article.country })
+        provinceElement.setState({ text: article.province })
+        cityElement.setState({ text: article.city })
+        zipCodeElement.setState({ text: article.zipCode })
+        streetElement.setState({ text: article.street })
+        houseNrElement.setState({ text: article.houseNr })
+        appartmentNrElement.setState({ text: article.appartmentNr })
+        telephoneElement.setState({ text: article.telephone })
+        emailElement.setState({ text: article.email })
+      });
+    }
   }
 
   render() {
