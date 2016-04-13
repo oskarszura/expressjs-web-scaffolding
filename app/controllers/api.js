@@ -75,8 +75,11 @@ module.exports = (app, config) => {
         }
     });
 
-    router.post('/:collection?', (req, res, next) => {
-      const responseModel = models[req.params.collection](req.body)
+    router.post('/:collection?/:document?', (req, res, next) => {
+      const responseModel = models[req.params.collection]
+        , objectData = req.body
+        , documentId = req.params.document
+
         , onSave = (err, model) => {
             const outputData = {
               status: 200
@@ -84,7 +87,38 @@ module.exports = (app, config) => {
             };
 
             res.json(outputData);
-          }
-      responseModel.save(onSave)
+        }
+
+        , onUpdate = (err, model) => {
+          const outputData = {
+            status: 200
+            , model: model
+          };
+
+          res.json(outputData);
+        }
+
+      if(documentId) {
+        responseModel.findByIdAndUpdate({_id : documentId}, objectData,onUpdate)
+      } else{
+        responseModel.create(objectData, onSave)
+      }
+    });
+
+    router.delete('/:collection?/:document?', (req, res, next) => {
+      const responseModel = models[req.params.collection]
+        , documentId = req.params.document
+
+        , onDelete = (err, model) => {
+          const outputData = {
+            status: 200
+            , model: model
+          };
+
+          res.json(outputData);
+        }
+
+        responseModel.where({_id: documentId})
+          .findOneAndRemove(onDelete)
     });
 };

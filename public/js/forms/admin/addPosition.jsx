@@ -7,6 +7,14 @@ const React = require('react')
   , user = require('../../services/user');
 
 class addPositionForm extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      _id: ''
+    };
+  }
+
   componentDidMount () {
     const nameElement = this.refs.nameElement
       , descriptionElement = this.refs.descriptionElement
@@ -30,37 +38,60 @@ class addPositionForm extends React.Component {
       , imageListElement = this.refs.imageListElement
 
       , userIdElement = this.refs.userIdElement
+      , idElement = this.refs.idElement
+      , removeElement = this.refs.removeElement
+      , removeStream = Rx.Observable.fromEvent(removeElement, 'click')
       , submitElement = this.refs.submitElement
       , submitStream = Rx.Observable.fromEvent(submitElement, 'click');
 
-    submitStream.subscribe(function(value) {
+    removeStream.subscribe(function(value) {
+      let id = idElement.value;
 
-      $.post('/api/article', {
-        title: nameElement.state.text
-      , description: descriptionElement.state.text
-      , images: imageListElement.getAllFiles()
-      , area: areaElement.state.text
-      , price: priceElement.state.text
-      , floor: floorElement.state.text
-      , constructionYear: constructionYearElement.state.text
-      , country: countryElement.state.text
-      , province: provinceElement.state.text
-      , city: cityElement.state.text
-      , zipCode: zipCodeElement.state.text
-      , street: streetElement.state.text
-      , houseNr: houseNrElement.state.text
-      , appartmentNr: appartmentNrElement.state.text
-      , telephone: telephoneElement.state.text
-      , email: emailElement.state.text
-      , userId: userIdElement.value
-      }, data => {
-        console.log('fetch complete', data);
+      $.ajax({
+        url: `/api/article/${id}`,
+        type: 'DELETE',
+        success: function(result) {
+
+        }
       });
+    });
 
+    submitStream.subscribe(function(value) {
+      let id = idElement.value
+        , payload = {
+          title: nameElement.state.text
+        , description: descriptionElement.state.text
+        , images: imageListElement.getAllFiles()
+        , area: areaElement.state.text
+        , price: priceElement.state.text
+        , floor: floorElement.state.text
+        , constructionYear: constructionYearElement.state.text
+        , country: countryElement.state.text
+        , province: provinceElement.state.text
+        , city: cityElement.state.text
+        , zipCode: zipCodeElement.state.text
+        , street: streetElement.state.text
+        , houseNr: houseNrElement.state.text
+        , appartmentNr: appartmentNrElement.state.text
+        , telephone: telephoneElement.state.text
+        , email: emailElement.state.text
+        , userId: userIdElement.value
+      }
+
+
+      if(id) {
+        $.post(`/api/article/${id}`, payload, data => {
+
+        });
+      } else {
+        $.post('/api/article', payload, data => {
+
+        });
+      }
     }.bind(this));
 
     if(this.props.id) {
-      $.get(`/api/article/${this.props.id}`, data => {
+      $.get(`/api/article/${this.props.id}`, function(data) {
         let article = data[0]
 
         nameElement.setState({ text: article.title })
@@ -79,7 +110,9 @@ class addPositionForm extends React.Component {
         appartmentNrElement.setState({ text: article.appartmentNr })
         telephoneElement.setState({ text: article.telephone })
         emailElement.setState({ text: article.email })
-      });
+
+        this.setState({ _id: article._id })
+      }.bind(this));
     }
   }
 
@@ -181,8 +214,21 @@ class addPositionForm extends React.Component {
                    ref="userIdElement"
                    value={user.getUserId()} />
 
+            <input type="hidden"
+                   name="id"
+                   ref="idElement"
+                   value={this.state._id} />
+
+            <button className={`btn btn-danger btn-block
+                                ${this.state._id ? '' : 'is-hidden'}`}
+                    ref="removeElement">
+              Remove
+            </button>
+
             <button className="btn btn-primary btn-block"
-                    ref="submitElement">Submit</button>
+                    ref="submitElement">
+              Submit
+            </button>
           </div>
         </div>
       </div>
