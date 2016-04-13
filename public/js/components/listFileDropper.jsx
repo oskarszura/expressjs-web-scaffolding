@@ -5,15 +5,33 @@ const React = require('react')
 class ListFileDropper extends React.Component {
   constructor (props) {
     super(props);
+
+    const zones = props.images.map((image, index) => {
+      return {
+        id: index
+        , dropZoneRef: `fileDropper-${index}`
+        , image: image
+      }
+    })
+
+    this.state = {
+      zones: zones
+      , nextId: zones.length + 1
+    }
   }
 
-  componentWillMount() {
+  componentWillReceiveProps (props) {
+    const zones = props.images.map((image, index) => {
+      return {
+        id: index
+        , dropZoneRef: `fileDropper-${index}`
+        , image: image
+      }
+    })
+
     this.setState({
-      zones: [{
-        id: 0
-      , dropZoneRef: 'fileDropper-0'
-      }]
-    , nextId: 1
+      zones: zones
+      , nextId: zones.length + 1
     })
   }
 
@@ -55,7 +73,8 @@ class ListFileDropper extends React.Component {
         .zones
         .map((zone, zoneIndex) => {
           return <div key={`zone-${zone.id}`}>
-            <FileDropper ref={zone.dropZoneRef} />
+            <FileDropper ref={zone.dropZoneRef}
+                         image={zone.image}/>
             <button className="component-list-file-dropper__remove"
                     onClick={this.removeZone.bind(this, zoneIndex)} >
               Remove zone

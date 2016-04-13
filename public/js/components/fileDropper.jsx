@@ -2,6 +2,15 @@ const React = require('react')
   , $ = require('jquery')
 
 class FileDropper extends React.Component {
+  constructor (props) {
+    super(props);
+
+    this.state = {
+      image: props.image
+    , imageName: ''
+    }
+  }
+
   allowDrop (e) {
     e.stopPropagation();
     e.preventDefault();

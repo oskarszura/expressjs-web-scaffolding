@@ -12,6 +12,7 @@ class addPositionForm extends React.Component {
 
     this.state = {
       _id: ''
+    , images: []
     };
   }
 
@@ -96,7 +97,6 @@ class addPositionForm extends React.Component {
 
         nameElement.setState({ text: article.title })
         descriptionElement.setState({ text: article.description })
-        //imageListElement.getAllFiles()
         areaElement.setState({ text: article.area })
         priceElement.setState({ text: article.price })
         floorElement.setState({ text: article.floor })
@@ -111,7 +111,11 @@ class addPositionForm extends React.Component {
         telephoneElement.setState({ text: article.telephone })
         emailElement.setState({ text: article.email })
 
-        this.setState({ _id: article._id })
+        this.setState({
+          _id: article._id
+        , images: article.images
+        })
+
       }.bind(this));
     }
   }
@@ -136,7 +140,8 @@ class addPositionForm extends React.Component {
               <label>
                 Image
               </label>
-              <ListFileDropper ref="imageListElement"/>
+              <ListFileDropper ref="imageListElement"
+                               images={this.state.images}/>
             </div>
           </section>
           <section className="col-sm-3">
