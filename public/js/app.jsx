@@ -1,14 +1,14 @@
 const React = require('react')
     , reactDom = require('react-dom')
-    , ListRouter = require('./routers/list.jsx')
+    , FrontPageRouter = require('./routers/frontPage.jsx')
     , AdminRouter = require('./routers/admin.jsx')
     , Search = require('./components/search.jsx')
     , ImageSlider = require('./components/imageSlider.jsx')
 
 function handleNewHash () {
   const location = window.location.hash.replace(/^#\/?|\/$/g, '').split('/')
-      , listApp = <ListRouter location={location} />
-      , listAppContainer = document.getElementById('js-app-list')
+      , frontPageApp = <FrontPageRouter location={location} />
+      , frontPageAppContainer = document.getElementById('js-app-list')
       , adminApp = <AdminRouter location={location} />
       , adminAppContainer = document.getElementById('js-app-admin')
       , searchApp = <Search redirectTo="/" />
@@ -17,8 +17,8 @@ function handleNewHash () {
 
   if(searchAppContainer)
     reactDom.render(searchApp, searchAppContainer);
-  if(listAppContainer)
-    reactDom.render(listApp, listAppContainer);
+  if(frontPageAppContainer)
+    reactDom.render(frontPageApp, frontPageAppContainer);
   if(adminAppContainer)
     reactDom.render(adminApp, adminAppContainer);
   if(imageSliderAppContainer) {

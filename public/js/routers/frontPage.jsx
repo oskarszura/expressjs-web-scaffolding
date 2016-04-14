@@ -1,12 +1,12 @@
 const React = require('react')
-  , templateFrontPage = require('../templates/frontPage.jsx')
+  , templateListArticle = require('../templates/frontPage/listArticle.jsx')
   , templateNotFound = require('../templates/notFound.jsx');
 
 class Router extends React.Component {
   render() {
     switch (this.props.location[0]) {
       case '':
-        return templateFrontPage.call(this);
+        return templateListArticle.call(this);
         break;
 
       default:

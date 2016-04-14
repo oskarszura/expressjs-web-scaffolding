@@ -1,6 +1,6 @@
 const React = require('react')
-    , List = require('../components/list.jsx')
-    , utils = require('../services/utils')
+    , List = require('../../components/list.jsx')
+    , utils = require('../../services/utils')
 
 module.exports = function () {
   const queryObject = {
