@@ -1,12 +1,12 @@
 const React = require('react')
   , $ = require('jquery')
-  , TextInput = require('../../components/textInput.jsx')
-  , TextArea = require('../../components/textArea.jsx')
-  , ListFileDropper = require('../../components/listFileDropper.jsx')
+  , TextInput = require('../../../components/textInput.jsx')
+  , TextArea = require('../../../components/textArea.jsx')
+  , ListFileDropper = require('../../../components/listFileDropper.jsx')
   , Rx = require('rxjs')
-  , user = require('../../services/user');
+  , user = require('../../../services/user');
 
-class addPositionForm extends React.Component {
+class manageArticleForm extends React.Component {
   constructor(props) {
     super(props);
 
@@ -241,4 +241,4 @@ class addPositionForm extends React.Component {
   }
 }
 
-module.exports = addPositionForm;
+module.exports = manageArticleForm;
