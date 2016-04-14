@@ -122,122 +122,121 @@ class manageArticleForm extends React.Component {
 
   render() {
     return (
-      <div>
-        <div className="row">
-          <section className="col-sm-3">
-            <h3>
-              Estate details
-            </h3>
-            <TextInput label="Name"
-                       name="name"
-                       ref="nameElement"
-            />
-            <TextArea label="Description"
-                       name="description"
-                       ref="descriptionElement"
-            />
-            <div className="form-group">
-              <label>
-                Image
-              </label>
-              <ListFileDropper ref="imageListElement"
-                               images={this.state.images}/>
-            </div>
-          </section>
-          <section className="col-sm-3">
-            <h3>
-              Estate data
-            </h3>
-            <TextInput label="Area"
-                       name="area"
-                       ref="areaElement"
-            />
-            <TextInput label="Price"
-                       name="price"
-                       ref="priceElement"
-            />
-            <TextInput label="Floor"
-                       name="floor"
-                       ref="floorElement"
-            />
-            <TextInput label="Year of construction"
-                       name="constructionYear"
-                       ref="constructionYearElement"
-            />
-          </section>
-          <section className="col-sm-3">
-            <h3>
-              Estate address
-            </h3>
-            <TextInput label="Country"
-                       name="country"
-                       ref="countryElement"
-            />
-            <TextInput label="Province"
-                       name="province"
-                       ref="provinceElement"
-            />
-            <TextInput label="City"
-                       name="city"
-                       ref="cityElement"
-            />
-            <TextInput label="Zip Code"
-                       name="zipCode"
-                       ref="zipCodeElement"
-            />
-            <TextInput label="Street"
-                       name="street"
-                       ref="streetElement"
-            />
-            <TextInput label="House Number"
-                       name="houseNr"
-                       ref="houseNrElement"
-            />
-            <TextInput label="Appartment Number"
-                       name="appartmentNr"
-                       ref="appartmentNrElement"
-            />
-          </section>
-          <section className="col-sm-3">
-            <h3>
-              Contact information
-            </h3>
-            <TextInput label="Telephone"
-                       name="telephone"
-                       ref="telephoneElement"
-            />
-            <TextInput label="Email"
-                       name="email"
-                       ref="emailElement"
-            />
-          </section>
-        </div>
-        <div className="row">
-          <div className="col-sm-12">
-            <input type="hidden"
-                   name="userId"
-                   ref="userIdElement"
-                   value={user.getUserId()} />
-
-            <input type="hidden"
-                   name="id"
-                   ref="idElement"
-                   value={this.state._id} />
-
-            <button className={`btn btn-danger btn-block
-                                ${this.state._id ? '' : 'is-hidden'}`}
-                    ref="removeElement">
-              Remove
-            </button>
-
-            <button className="btn btn-primary btn-block"
-                    ref="submitElement">
-              Submit
-            </button>
+      <article className="component-form-wizard">
+        <section className="component-form-wizard__area">
+          <h3 className="component-form-wizard__header">
+            Estate details
+          </h3>
+          <TextInput label="Name"
+                     name="name"
+                     ref="nameElement"
+          />
+          <TextArea label="Description"
+                     name="description"
+                     ref="descriptionElement"
+          />
+          <div className="form-group">
+            <label>
+              Image
+            </label>
+            <ListFileDropper ref="imageListElement"
+                             images={this.state.images}/>
           </div>
-        </div>
-      </div>
-    );
+        </section>
+
+        <section className="component-form-wizard__area">
+          <h3 className="component-form-wizard__header">
+            Estate data
+          </h3>
+          <TextInput label="Area"
+                     name="area"
+                     ref="areaElement"
+          />
+          <TextInput label="Price"
+                     name="price"
+                     ref="priceElement"
+          />
+          <TextInput label="Floor"
+                     name="floor"
+                     ref="floorElement"
+          />
+          <TextInput label="Year of construction"
+                     name="constructionYear"
+                     ref="constructionYearElement"
+          />
+        </section>
+
+        <section className="component-form-wizard__area">
+          <h3 className="component-form-wizard__header">
+            Estate address
+          </h3>
+          <TextInput label="Country"
+                     name="country"
+                     ref="countryElement"
+          />
+          <TextInput label="Province"
+                     name="province"
+                     ref="provinceElement"
+          />
+          <TextInput label="City"
+                     name="city"
+                     ref="cityElement"
+          />
+          <TextInput label="Zip Code"
+                     name="zipCode"
+                     ref="zipCodeElement"
+          />
+          <TextInput label="Street"
+                     name="street"
+                     ref="streetElement"
+          />
+          <TextInput label="House Number"
+                     name="houseNr"
+                     ref="houseNrElement"
+          />
+          <TextInput label="Appartment Number"
+                     name="appartmentNr"
+                     ref="appartmentNrElement"
+          />
+        </section>
+
+        <section className="component-form-wizard__area">
+          <h3 className="component-form-wizard__header">
+            Contact information
+          </h3>
+          <TextInput label="Telephone"
+                     name="telephone"
+                     ref="telephoneElement"
+          />
+          <TextInput label="Email"
+                     name="email"
+                     ref="emailElement"
+          />
+        </section>
+
+        <section className="component-form-wizard__area">
+          <input type="hidden"
+                 name="userId"
+                 ref="userIdElement"
+                 value={user.getUserId()} />
+
+          <input type="hidden"
+                 name="id"
+                 ref="idElement"
+                 value={this.state._id} />
+
+          <button className={`component-form-wizard__remove
+                              ${this.state._id ? '' : 'is-hidden'}`}
+                  ref="removeElement">
+            Remove
+          </button>
+
+          <button className="component-form-wizard__submit"
+                  ref="submitElement">
+            Submit
+          </button>
+      </section>
+    </article>);
   }
 }
 
