@@ -5,17 +5,20 @@ const React = require('react')
 
 class Router extends React.Component {
   render() {
-    switch (this.props.location[0])  {
+    const view = this.props.location[0];
+
+    switch (view)  {
       case '':
         return templateListArticle.call(this);
         break;
 
       case 'add':
-        return templateManageArticle.call(this);
+        return templateManageArticle.call(this, 'add');
         break;
 
       case 'edit':
-        return templateManageArticle.call(this, this.props.location[1]);
+        const id = this.props.location[1]
+        return templateManageArticle.call(this, 'edit', id);
         break;
 
       default:

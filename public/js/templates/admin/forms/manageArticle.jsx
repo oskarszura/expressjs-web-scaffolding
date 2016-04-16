@@ -82,11 +82,11 @@ class manageArticleForm extends React.Component {
 
       if(id) {
         $.post(`/api/article/${id}`, payload, data => {
-
+          window.location.href = "/admin#/";
         });
       } else {
-        $.post('/api/article', payload, data => {
-
+        $.post('/api/article', payload,  data => {
+          window.location.href = "/admin#/";
         });
       }
     }.bind(this));
@@ -117,13 +117,20 @@ class manageArticleForm extends React.Component {
         })
 
       }.bind(this));
+    } else {
+      this.clearForm();
     }
+  }
+
+  clearForm () {
+    this.refs.formElement.getDOMNode().reset();
   }
 
   render() {
     return (
-      <article className="component-form-wizard">
-        <section className="component-form-wizard__area">
+      <form className="component-form-wizard"
+            ref="formElement">
+        <fieldset className="component-form-wizard__area">
           <h3 className="component-form-wizard__header">
             Estate details
           </h3>
@@ -142,9 +149,9 @@ class manageArticleForm extends React.Component {
             <ListFileDropper ref="imageListElement"
                              images={this.state.images}/>
           </div>
-        </section>
+        </fieldset>
 
-        <section className="component-form-wizard__area">
+        <fieldset className="component-form-wizard__area">
           <h3 className="component-form-wizard__header">
             Estate data
           </h3>
@@ -164,9 +171,9 @@ class manageArticleForm extends React.Component {
                      name="constructionYear"
                      ref="constructionYearElement"
           />
-        </section>
+        </fieldset>
 
-        <section className="component-form-wizard__area">
+        <fieldset className="component-form-wizard__area">
           <h3 className="component-form-wizard__header">
             Estate address
           </h3>
@@ -198,9 +205,9 @@ class manageArticleForm extends React.Component {
                      name="appartmentNr"
                      ref="appartmentNrElement"
           />
-        </section>
+        </fieldset>
 
-        <section className="component-form-wizard__area">
+        <fieldset className="component-form-wizard__area">
           <h3 className="component-form-wizard__header">
             Contact information
           </h3>
@@ -212,9 +219,9 @@ class manageArticleForm extends React.Component {
                      name="email"
                      ref="emailElement"
           />
-        </section>
+        </fieldset>
 
-        <section className="component-form-wizard__area">
+        <fieldset className="component-form-wizard__area">
           <input type="hidden"
                  name="userId"
                  ref="userIdElement"
@@ -235,8 +242,8 @@ class manageArticleForm extends React.Component {
                   ref="submitElement">
             Submit
           </button>
-      </section>
-    </article>);
+      </fieldset>
+    </form>);
   }
 }
 
