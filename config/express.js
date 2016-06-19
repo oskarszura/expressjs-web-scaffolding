@@ -11,7 +11,7 @@ const express = require('express')
   , mongoose = require('mongoose')
 
   , error404 = require('../app/middlewares/404')
-  , login = require('../app/middlewares/login')
+  , acl = require('../app/middlewares/acl')
   , passportConfig = require('./passport')
 
   , mongoURI = 'mongodb://localhost/sample_db'
@@ -39,7 +39,7 @@ module.exports = (app, config) => {
   app.use(session({ secret: 'keyboard cat' }));
   app.use(passport.initialize());
   app.use(passport.session());
-  app.use(login);
+  app.use(acl);
 
   controllers.forEach(controller => {
     require(controller)(app, config);

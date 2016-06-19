@@ -30,4 +30,6 @@ A complete, full-stack, generic website scaffolding project for ExpressJS based 
 1. Run mongo deamon (ex. `$ mongod` )
 2. Run development (ex. `$ gulp develop` )
 
+See [Demo page](https://express-scaffolding.herokuapp.com)
+
 
