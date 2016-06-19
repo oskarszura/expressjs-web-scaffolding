@@ -5,12 +5,12 @@ module.exports = (req, res) => {
     , documentId = req.params.document
 
     , onDelete = (err, model) => {
-      const outputData = {
-        status: 200
-        , model: model
+        const outputData = {
+          status: 200
+          , model: model
+        };
+        res.json(outputData);
       };
-      res.json(outputData);
-    };
 
   responseModel.where({_id: documentId}).findOneAndRemove(onDelete)
 }

@@ -6,9 +6,9 @@ module.exports = (req, res) => {
     , responseModel = models[collectionName]
 
     , onFind = (err, models) => {
-      const outputData = models;
-      res.json(outputData);
-    }
+        const outputData = models;
+        res.json(outputData);
+      }
 
   if (!responseModel) {
     res.json({ status: 404 });

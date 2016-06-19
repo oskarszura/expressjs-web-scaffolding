@@ -6,22 +6,22 @@ module.exports = (req, res) => {
     , documentId = req.params.document
 
     , onSave = (err, model) => {
-      const outputData = {
-        status: 200
-        , model: model
-      };
+        const outputData = {
+          status: 200
+          , model: model
+        };
 
-      res.json(outputData);
-    }
+        res.json(outputData);
+      }
 
     , onUpdate = (err, model) => {
-      const outputData = {
-        status: 200
-        , model: model
-      };
+        const outputData = {
+          status: 200
+          , model: model
+        };
 
-      res.json(outputData);
-    }
+        res.json(outputData);
+      }
 
   if(documentId) {
     responseModel.findByIdAndUpdate({_id : documentId}, objectData, onUpdate)

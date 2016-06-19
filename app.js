@@ -1,18 +1,28 @@
-var express = require('express'),
-    https = require('https'),
-    http = require('http'),
-    fs = require('fs'),
-    config = require('./config/config'),
-    hskey = fs.readFileSync('hacksparrow-key.pem'),
-    hscert = fs.readFileSync('hacksparrow-cert.pem'),
-    options = {
+const express = require('express')
+  , https = require('https')
+  , http = require('http')
+  , fs = require('fs')
+  , cluster = require('cluster')
+
+  , config = require('./config/config')
+  , hskey = fs.readFileSync('hacksparrow-key.pem')
+  , hscert = fs.readFileSync('hacksparrow-cert.pem')
+  , options = {
       key: hskey,
       cert: hscert
-    };
+    }
+  , workers = 4;
 
 var app = express();
 
 require('./config/express')(app, config);
 
-http.createServer(app).listen(process.env.PORT || config.port);
-https.createServer(options, app).listen(3500);
+
+if (cluster.isMaster) {
+  for (var i = 0; i < workers; i++) {
+    cluster.fork();
+  }
+} else {
+  http.createServer(app).listen(process.env.PORT || config.port);
+  https.createServer(options, app).listen(3500);
+}
