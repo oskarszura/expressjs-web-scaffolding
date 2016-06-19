@@ -5,12 +5,16 @@ module.exports = (req, res) => {
     , documentName = req.params.document
     , responseModel = models[collectionName]
 
+    , isSearchable = model => model.description && model.title
+
+    , isBelongable = model => model.userId
+
     , onFind = (err, models) => {
         const outputData = models;
         res.json(outputData);
       }
 
-  let searchObject
+  let searchObject = {}
 
   if (!responseModel) {
     res.json({
@@ -19,7 +23,7 @@ module.exports = (req, res) => {
     });
   }
 
-  if(collectionName === 'article' && req.query.search) {
+  if(req.query.search && isSearchable(responseModel)) {
     searchObject = {
         $or:[{
           description: new RegExp(req.query.search, 'i')
@@ -27,7 +31,7 @@ module.exports = (req, res) => {
           title: new RegExp(req.query.search, 'i')
         }]
       }
-  } else if(collectionName === 'article' && req.query.userId) {
+  } else if(req.query.userId && isBelongable(responseModel)) {
     searchObject = { userId: req.query.userId };
   } else {
     searchObject = documentName ? { _id : documentName } : {};
