@@ -10,24 +10,28 @@ module.exports = (req, res) => {
         res.json(outputData);
       }
 
+  let searchObject
+
   if (!responseModel) {
-    res.json({ status: 404 });
-  } else if(collectionName === 'article' && req.query.search) {
-    const searchWord = req.query.search;
-
-    responseModel.find({
-        $or:[{
-          description: new RegExp(searchWord, 'i')
-        }, {
-          title: new RegExp(searchWord, 'i')
-        }]})
-      .exec(onFind);
-
-  } else if(collectionName === 'article' && req.query.userId) {
-    const userId = req.query.userId;
-    responseModel.find({ userId: userId }).exec(onFind);
-  } else {
-    let search = documentName ? { _id : documentName } : {};
-    responseModel.find(search).exec(onFind);
+    res.json({
+      message: 'Document doesn\'t exist'
+    , status: 404
+    });
   }
+
+  if(collectionName === 'article' && req.query.search) {
+    searchObject = {
+        $or:[{
+          description: new RegExp(req.query.search, 'i')
+        }, {
+          title: new RegExp(req.query.search, 'i')
+        }]
+      }
+  } else if(collectionName === 'article' && req.query.userId) {
+    searchObject = { userId: req.query.userId };
+  } else {
+    searchObject = documentName ? { _id : documentName } : {};
+  }
+
+  responseModel.find(searchObject).exec(onFind);
 }
