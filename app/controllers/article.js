@@ -4,14 +4,14 @@ const express = require('express')
   , Article = require('../models/article')
 
   , articleGet = (req, res) => {
-      Article.findOne({
-        '_id': req.params.id
-      }, function (err, article) {
+      const onFind = (err, article) => {
         renderer(req, res, 'article', {
           title: 'Article page'
           , article: article
         });
-      })
+      }
+
+      Article.findOne({ '_id': req.params.id }, onFind)
     };
 
 module.exports = app => { app.use('/article', router); };

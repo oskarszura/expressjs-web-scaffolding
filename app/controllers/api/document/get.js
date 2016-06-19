@@ -10,12 +10,9 @@ module.exports = (req, res) => {
       res.json(outputData);
     }
 
-  if ( !responseModel ) {
+  if (!responseModel) {
     res.json({ status: 404 });
-  } else if(
-    collectionName === 'article'
-    && req.query.search
-  ) {
+  } else if(collectionName === 'article' && req.query.search) {
     const searchWord = req.query.search;
 
     responseModel.find({
@@ -26,20 +23,11 @@ module.exports = (req, res) => {
         }]})
       .exec(onFind);
 
-  } else if(
-    collectionName === 'article'
-    && req.query.userId
-  ) {
+  } else if(collectionName === 'article' && req.query.userId) {
     const userId = req.query.userId;
-
-    responseModel.find({
-        userId: userId
-      })
-      .exec(onFind);
-
+    responseModel.find({ userId: userId }).exec(onFind);
   } else {
     let search = documentName ? { _id : documentName } : {};
-
     responseModel.find(search).exec(onFind);
   }
 }

@@ -20,11 +20,11 @@ module.exports = (req, res) => {
         , model: model
       };
 
-    res.json(outputData);
-  }
+      res.json(outputData);
+    }
 
   if(documentId) {
-    responseModel.findByIdAndUpdate({_id : documentId}, objectData,onUpdate)
+    responseModel.findByIdAndUpdate({_id : documentId}, objectData, onUpdate)
   } else{
     responseModel.create(objectData, onSave)
   }

@@ -9,10 +9,8 @@ module.exports = (req, res) => {
         status: 200
         , model: model
       };
+      res.json(outputData);
+    };
 
-    res.json(outputData);
-  }
-
-  responseModel.where({_id: documentId})
-    .findOneAndRemove(onDelete)
+  responseModel.where({_id: documentId}).findOneAndRemove(onDelete)
 }
