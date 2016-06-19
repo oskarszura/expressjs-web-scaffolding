@@ -5,16 +5,16 @@ const express = require('express')
   , cluster = require('cluster')
 
   , config = require('./config/config')
+
   , hskey = fs.readFileSync('hacksparrow-key.pem')
   , hscert = fs.readFileSync('hacksparrow-cert.pem')
   , options = {
       key: hskey,
       cert: hscert
     }
-  , workers = 4
-  , app = express();
-
-require('./config/express')(app, config);
+  , workers = 1
+  , app = express()
+  , expressApp = require('./config/express')(app, config)
 
 
 if (cluster.isMaster) {
@@ -22,6 +22,6 @@ if (cluster.isMaster) {
     cluster.fork();
   }
 } else {
-  http.createServer(app).listen(process.env.PORT || config.port);
-  https.createServer(options, app).listen(3500);
+  http.createServer(expressApp).listen(process.env.PORT || config.port);
+  https.createServer(options, expressApp).listen(3500);
 }

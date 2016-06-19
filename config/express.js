@@ -8,18 +8,22 @@ const express = require('express')
   , compress = require('compression')
   , methodOverride = require('method-override')
   , passport = require('passport')
-  , LocalStrategy = require('passport-local')
   , mongoose = require('mongoose')
-  , passwordManager = require('../app/services/passwordManager')
+
+  , error404 = require('../app/middlewares/404')
+  , login = require('../app/middlewares/login')
+  , passportConfig = require('./passport')
 
   , mongoURI = 'mongodb://localhost/sample_db'
-  , db = mongoose.connect(process.env.MONGOLAB_URI || mongoURI, err => {
-    console.log(err);
-  });
 
-var UserModel = require('../app/models/user');
+  , onDbConnect = err => {
+      console.log(err);
+    }
+
+  , db = mongoose.connect(process.env.MONGOLAB_URI || mongoURI, onDbConnect)
 
 module.exports = (app, config) => {
+  const controllers = glob.sync(config.root + '/app/controllers/*(*.js|api)')
 
   app.set('views', config.root + '/app/views');
   app.set('view engine', 'ejs');
@@ -35,85 +39,17 @@ module.exports = (app, config) => {
   app.use(session({ secret: 'keyboard cat' }));
   app.use(passport.initialize());
   app.use(passport.session());
-
-  passport.serializeUser((user, done) => { done(null, user.id); });
-  passport.deserializeUser((id, done) => {
-
-    UserModel.findOne(id, (err, loggedUser) => {
-      if (err) {
-        done(new Error('User ' + id + ' does not exist'));
-      } else {
-        return done(null, loggedUser);
-      }
-    });
-
-  });
-
-  app.use((req, res, next) => {
-      if (req.path == '/login'
-          || req.path == '/login/register'
-          || req.path == '/'
-          || req.path == '/api/article'
-          || req.isAuthenticated()) {
-          //|| true) { // @TODO - remove
-          next();
-      } else {
-          res.redirect('/login');
-      }
-  });
-
-  var controllers = glob.sync(config.root + '/app/controllers/*(*.js|api)');
+  app.use(login);
 
   controllers.forEach(controller => {
     require(controller)(app, config);
   });
 
-  app.use((req, res) => { res.redirect('/error/404'); });
+  app.use(error404);
 
-  if (app.get('env') === 'development') {
-    app.use(function (err, req, res) {
+  passport.serializeUser(passportConfig.serializeUser);
+  passport.deserializeUser(passportConfig.deserializeUser);
+  passport.use(passportConfig.strategy());
 
-      res.status(err.status || 500);
-      res.render('error', {
-          message: err.message,
-          error: err,
-          title: 'error'
-      });
-
-    });
-  }
-
-  app.use(function (err, req, res) {
-
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: {},
-        title: 'error'
-    });
-
-  });
-
-  passport.use(new LocalStrategy({
-      usernameField: 'username'
-    , passwordField: 'password'
-    }
-  , function (username, password, done) {
-
-    UserModel.findOne({
-      username: username
-    , password: passwordManager.encrypt(password)
-    }
-    , function (err, loggedUser) {
-
-      if (err) {
-        console.log(err);
-      } else {
-        //return done(null, false, {message: "Wrong password"});
-        return done(null, loggedUser);
-      }
-
-    });
-    }
-  ));
+  return app;
 };
