@@ -62,7 +62,7 @@ module.exports = (app, config) => {
       }
   });
 
-  var controllers = glob.sync(config.root + '/app/controllers/*.js');
+  var controllers = glob.sync(config.root + '/app/controllers/*(*.js|api)');
 
   controllers.forEach(controller => {
     require(controller)(app, config);

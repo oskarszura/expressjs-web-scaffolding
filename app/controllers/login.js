@@ -3,62 +3,69 @@ const express = require('express')
   , passport = require('passport')
   , UserModel = require('../models/user')
   , renderer = require('../services/renderer')
-  , passwordManager = require('../services/passwordManager');
+  , passwordManager = require('../services/passwordManager')
+
+  , loginGet = (req, res) => {
+      renderer(req, res, 'login', {
+        title: 'Login page'
+        , error: false
+      });
+    }
+
+  , loginPost = (req, res, next) => {
+      const onLogin = err => {
+        if (err) {
+          req.session.messages = "Error";
+          return res.end();
+        }
+
+        req.session.messages = "Login successfully";
+        return res.redirect('/');
+      }
+
+      , onAuthenticate = (err, user, info) => {
+          if (err) return res.end();
+
+          if (!user) {
+            renderer(req, res, 'login', {
+              title: 'Login page'
+              , error: true
+            });
+            return res.end();
+          }
+
+          req.logIn(user, onLogin);
+        }
+
+      passport.authenticate('local', onAuthenticate)(req, res, next);
+    }
+
+  , loginLogoutGet = (req, res) => {
+      req.logout();
+      res.redirect('/');
+    }
+
+  , loginRegisterGet = (req, res) => {
+      renderer(req, res, 'register', {
+        title: 'Registration page'
+      });
+    }
+
+  , loginRegisterPost = (req, res) => {
+      let user = req.body;
+
+      user.password = passwordManager.encrypt(user.password)
+
+      UserModel.create(user, (err, newUser) => {
+        if (err) console.log(err);
+        else res.redirect('/login');
+      })
+    };
 
 module.exports = app => { app.use('/login', router); };
 
-router.get('/', (req, res, next) => {
-  renderer(req, res, 'login', {
-    title: 'Login page'
-    , error: false
-  });
-});
-
-router.get('/logout', (req, res, next) => {
-  req.logout();
-  res.redirect('/');
-});
-
-router.post('/', (req, res, next) => {
-
-  passport.authenticate('local', (err, user, info) => {
-    if (err) return res.end();
-
-    if (!user) {
-      renderer(req, res, 'login', {
-        title: 'Login page'
-      , error: true
-      });
-      return res.end();
-    }
-
-    req.logIn(user, err => {
-      if (err) {
-        req.session.messages = "Error";
-        return res.end();
-      }
-
-      req.session.messages = "Login successfully";
-      return res.redirect('/');
-    });
-
-  })(req, res, next);
-
-});
-
-router.get('/register', (req, res, next) => {
-  renderer(req, res, 'register', {
-    title: 'Registration page'
-  });
-});
-
-router.post('/register', (req, res, next) => {
-  let user = req.body;
-
-  user.password = passwordManager.encrypt(user.password)
-
-  UserModel.create(user, (err, newUser) => {
-    if (err) console.log(err);
-    else res.redirect('/login');
-  })
-});
+router.get('/', loginGet)
+  .post('/', loginPost)
+  .get('/logout', loginLogoutGet)
+  .get('/register', loginRegisterGet)
+  .post('/register', loginRegisterPost);
