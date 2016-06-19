@@ -11,9 +11,8 @@ const express = require('express')
       key: hskey,
       cert: hscert
     }
-  , workers = 4;
-
-var app = express();
+  , workers = 4
+  , app = express();
 
 require('./config/express')(app, config);
 
