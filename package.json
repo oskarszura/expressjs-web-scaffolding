@@ -38,7 +38,8 @@
     "gulp-compass": "2.1.0",
     "rxjs": "5.0.0-beta.1",
     "bootstrap-sass": "3.3.6",
-    "ramda": "0.19.1"
+    "ramda": "0.19.1",
+    "node-logging-stream": "0.0.1"
   },
   "scripts": {
     "start": "node --harmony_shipping --use_strict app.js",

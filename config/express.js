@@ -14,8 +14,8 @@ const express = require('express')
   , error404 = require('../app/middlewares/404')
   , acl = require('../app/middlewares/acl')
   , passportConfig = require('./passport')
-  , MongoStore = connectMongo(session)
 
+  , MongoStore = connectMongo(session)
   , mongoURI = 'mongodb://localhost/sample_db'
 
   , onDbConnect = err => {
@@ -31,6 +31,10 @@ module.exports = (app, config) => {
   app.set('view engine', 'ejs');
 
   // app.use(favicon(config.root + '/public/img/favicon.ico'));
+  app.use((req, res, next) => {
+    process.send('new request');
+    next()
+  })
   app.use(logger('dev'));
   app.use(bodyParser.json({limit: '50mb'}));
   app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));

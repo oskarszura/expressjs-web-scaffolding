@@ -3,6 +3,7 @@ const express = require('express')
   , http = require('http')
   , fs = require('fs')
   , cluster = require('cluster')
+  , childProcess = require('child_process')
   , os = require('os')
 
   , config = require('./config/config')
@@ -17,12 +18,34 @@ const express = require('express')
   , app = express()
   , expressApp = require('./config/express')(app, config)
 
-
 if (cluster.isMaster) {
+  let logger = childProcess.spawn('node'
+    , ['./node_modules/node-logging-stream/index.js']);
+
+  logger.stdout.on('data', function(data) {
+    console.log('Logger [out]: ' + data);
+  });
+  logger.stderr.on('data', function(data) {
+    console.log('Logger [err]: ' + data);
+  });
+  logger.on('close', function(code) {
+    console.log('Logger [close[: ' + code);
+  });
+
+  logger.stdin.write('[master] Start logging');
+
+  process.on('uncaughtException', err => {
+    logger.stdin.write(`[master] ${JSON.stringify(err)}`);
+  });
+
   for (var i = 0; i < workers; i++) {
     let worker = cluster.fork();
+    worker.on('message', msg => {
+      logger.stdin.write(`[worker-${worker.id}] ${msg}`);
+    });
   }
 } else {
   http.createServer(expressApp).listen(process.env.PORT || config.port);
   https.createServer(options, expressApp).listen(3500);
+  process.send('Created expressjs server');
 }
