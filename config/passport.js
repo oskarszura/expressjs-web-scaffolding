@@ -23,7 +23,7 @@ const LocalStrategy = require('passport-local')
     }
     , (username, password, done) => {
       const onFind = (err, loggedUser) => {
-        console.log('onFind')
+
         if (err) {
           console.log(err);
         } else {

@@ -9,10 +9,12 @@ const express = require('express')
   , methodOverride = require('method-override')
   , passport = require('passport')
   , mongoose = require('mongoose')
+  , connectMongo = require('connect-mongo')
 
   , error404 = require('../app/middlewares/404')
   , acl = require('../app/middlewares/acl')
   , passportConfig = require('./passport')
+  , MongoStore = connectMongo(session)
 
   , mongoURI = 'mongodb://localhost/sample_db'
 
@@ -36,7 +38,10 @@ module.exports = (app, config) => {
   app.use(compress());
   app.use(express.static(config.root + '/public'));
   app.use(methodOverride());
-  app.use(session({ secret: 'keyboard cat' }));
+  app.use(session({
+    store: new MongoStore({ mongooseConnection: db.connection })
+  , secret: 'keyboard cat'
+  }));
   app.use(passport.initialize());
   app.use(passport.session());
   app.use(acl);

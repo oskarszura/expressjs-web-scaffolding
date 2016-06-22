@@ -3,6 +3,7 @@ const express = require('express')
   , http = require('http')
   , fs = require('fs')
   , cluster = require('cluster')
+  , os = require('os')
 
   , config = require('./config/config')
 
@@ -12,14 +13,14 @@ const express = require('express')
       key: hskey,
       cert: hscert
     }
-  , workers = 1
+  , workers = os.cpus().length
   , app = express()
   , expressApp = require('./config/express')(app, config)
 
 
 if (cluster.isMaster) {
   for (var i = 0; i < workers; i++) {
-    cluster.fork();
+    let worker = cluster.fork();
   }
 } else {
   http.createServer(expressApp).listen(process.env.PORT || config.port);
