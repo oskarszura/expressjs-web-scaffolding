@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/oskarszura/expressjs-web-scaffolding.svg?branch=master)](https://travis-ci.org/oskarszura/expressjs-web-scaffolding)
+[![Build Status](https://travis-ci.org/oskarszura/expressjs-web-scaffolding.svg?branch=master)](https://travis-ci.org/oskarszura/expressjs-web-scaffolding) [![Dependency Status](https://david-dm.org/oskarszura/expressjs-web-scaffolding.svg)](https://david-dm.org/oskarszura/expressjs-web-scaffolding)
 
 # ExpressJS Web Scaffolding
 
