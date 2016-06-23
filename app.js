@@ -22,7 +22,7 @@ const express = require('express')
 let logger = {};
 
 if (cluster.isMaster) {
-  if(env === 'development') {
+  /*if(env === 'development') {
     logger = childProcess.spawn('node'
       , ['./node_modules/node-logging-stream/index.js']);
 
@@ -41,12 +41,12 @@ if (cluster.isMaster) {
     process.on('uncaughtException', err => {
       logger.stdin.write(`[master] ${JSON.stringify(err)}`);
     });
-  }
+  }*/
 
   for (var i = 0; i < workers; i++) {
     let worker = cluster.fork();
     worker.on('message', msg => {
-      logger.stdin.write(`[worker-${worker.id}] ${msg}`);
+      //logger.stdin.write(`[worker-${worker.id}] ${msg}`);
     });
   }
 } else {
