@@ -1,28 +1,23 @@
-const express = require('express')
-  , https = require('https')
-  , http = require('http')
-  , fs = require('fs')
-  , cluster = require('cluster')
-  , childProcess = require('child_process')
-  , os = require('os')
+const express = require('express');
+const https = require('https');
+const http = require('http');
+const fs = require('fs');
+const cluster = require('cluster');
+const os = require('os');
+const config = require('./config/config');
 
-  , config = require('./config/config')
-
-  , hskey = fs.readFileSync('hacksparrow-key.pem')
-  , hscert = fs.readFileSync('hacksparrow-cert.pem')
-  , options = {
-      key: hskey,
-      cert: hscert
-    }
-  , workers = os.cpus().length
-  , app = express()
-  , expressApp = require('./config/express')(app, config)
-  , env = process.env.NODE_ENV || 'development';
-
-let logger = {};
+const hskey = fs.readFileSync('hacksparrow-key.pem');
+const hscert = fs.readFileSync('hacksparrow-cert.pem');
+const options = {
+  key: hskey,
+  cert: hscert,
+};
+const workers = os.cpus().length;
+const app = express();
+const expressApp = require('./config/express')(app, config);
 
 if (cluster.isMaster) {
-  /*if(env === 'development') {
+  /* if(env === 'development') {
     logger = childProcess.spawn('node'
       , ['./node_modules/node-logging-stream/index.js']);
 
@@ -43,10 +38,10 @@ if (cluster.isMaster) {
     });
   }*/
 
-  for (var i = 0; i < workers; i++) {
-    let worker = cluster.fork();
-    worker.on('message', msg => {
-      //logger.stdin.write(`[worker-${worker.id}] ${msg}`);
+  for (let i = 0; i < workers; i += 1) {
+    const worker = cluster.fork();
+    worker.on('message', () => {
+      // logger.stdin.write(`[worker-${worker.id}] ${msg}`);
     });
   }
 } else {
