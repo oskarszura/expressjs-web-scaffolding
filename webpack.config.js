@@ -20,7 +20,7 @@ module.exports = {
         test: /\.scss/,
         loader: ExtractTextPlugin.extract(
           'style-loader',
-          'css-loader!postcss-loader?parser=postcss-scss!sass-loader'
+          'css-loader!postcss-loader!sass-loader'
         ),
       },
     ],
