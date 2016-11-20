@@ -1,7 +1,0 @@
-.main-header {
-  @include single-text-shadow(0px, 0px, 6px, true, $color-tauatara);
-  @extend h1;
-  font-size: 48px !important;
-  color: $color-white !important;
-  text-align: center;
-}
