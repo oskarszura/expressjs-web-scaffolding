@@ -1,0 +1,21 @@
+.t-header {
+  display: flex;
+
+  &__logo {
+    flex-basis: 10%;
+    flex-grow: 1;
+  }
+
+  &__navigation {
+    flex-basis: 90%;
+    flex-grow: 9;
+  }
+
+  &__navigation-list {
+    list-style: none;
+  }
+
+  &__navigation-option {
+    display: inline-block;
+  }
+}

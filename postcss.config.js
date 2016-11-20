@@ -1,11 +1,9 @@
 const precss = require('precss');
-const autoprefixer = require('autoprefixer');
-const cssvariables = require('postcss-css-variables');
+const cssNext = require('postcss-cssnext');
 
 module.exports = {
   plugins: {
     precss: {},
-    autoprefixer: {},
-    'postcss-css-variables': {},
+    'postcss-cssnext': {},
   },
 };

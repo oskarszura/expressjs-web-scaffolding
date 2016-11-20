@@ -1,28 +1,3 @@
-:root {
-  --foo-width: 100px;
-  --foo-bg-color: rgba(255, 0, 0, 0.85);
-}
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss";
 
-.foo {
-  /* red */
-  color: var(--foo-bg-color);
-}
-
-.phone {
-  &_title {
-    width: 500px;
-    flex: 1;
-
-    @media (max-width: 500px) {
-      width: auto;
-    }
-
-    body.is_dark & {
-      color: white;
-    }
-  }
-
-  img {
-    display: block;
-  }
-}
+@import "./templates/_header.scss";

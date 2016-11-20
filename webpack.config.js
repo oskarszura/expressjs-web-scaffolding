@@ -4,7 +4,7 @@ module.exports = {
   context: `${__dirname}/client`,
   entry: {
     scripts: './scripts/app.js',
-    styles: './styles/styles.scss',
+  //  styles: './styles/styles.scss',
   },
   output: {
     path: `${__dirname}/public`,
@@ -13,19 +13,22 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /(node_modules)/,
         loader: 'babel-loader',
       }, {
         test: /\.scss/,
         loader: ExtractTextPlugin.extract(
           'style-loader',
-          'css-loader!postcss-loader'
+          'css-loader!postcss-loader?parser=postcss-scss'
         ),
       },
     ],
   },
+  resolve: {
+    extensions: ['', '.js', '.jsx'],
+  },
   plugins: [
-    new ExtractTextPlugin('style.css', { allChunks: true }),
+    new ExtractTextPlugin('styles.css', { allChunks: true }),
   ],
 };
