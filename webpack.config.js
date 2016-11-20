@@ -4,7 +4,7 @@ module.exports = {
   context: `${__dirname}/client`,
   entry: {
     scripts: './scripts/app.js',
-    styles: './styles/styles.scss',
+    css: './styles/styles.scss',
   },
   output: {
     path: `${__dirname}/public`,
