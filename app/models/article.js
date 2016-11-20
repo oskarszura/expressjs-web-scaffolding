@@ -5,19 +5,6 @@ const mongoose = require('mongoose')
     title: 'string'
   , images: ['string']
   , description: 'string'
-  , area: 'string'
-  , price: 'string'
-  , floor: 'string'
-  , constructionYear: 'string'
-  , country: 'string'
-  , province: 'string'
-  , city: 'string'
-  , zipCode: 'string'
-  , street: 'string'
-  , houseNr: 'string'
-  , appartmentNr: 'string'
-  , telephone: 'string'
-  , email: 'string'
   , userId: 'string'
   })
 
