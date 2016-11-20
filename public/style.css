@@ -1,6 +1,26 @@
-.some {
-    color: red;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
+.foo {
+  /* red */
+  color: rgba(255, 0, 0, 0.85);
+}
+
+.phone img {
+  display: block;
+}
+
+.phone_title {
+  width: 500px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+body.is_dark .phone_title {
+  color: white;
+}
+
+@media (max-width: 500px) {
+
+  .phone_title {
+    width: auto;
+  }
 }

@@ -4,7 +4,7 @@ module.exports = {
   context: `${__dirname}/client`,
   entry: {
     scripts: './scripts/app.js',
-    styles: './styles/styles.css',
+    styles: './styles/styles.scss',
   },
   output: {
     path: `${__dirname}/public`,
@@ -17,7 +17,7 @@ module.exports = {
         exclude: /(node_modules)/,
         loader: 'babel-loader',
       }, {
-        test: /\.css$/,
+        test: /\.scss/,
         loader: ExtractTextPlugin.extract(
           'style-loader',
           'css-loader!postcss-loader'

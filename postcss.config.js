@@ -1,9 +1,11 @@
 const precss = require('precss');
 const autoprefixer = require('autoprefixer');
+const cssvariables = require('postcss-css-variables');
 
 module.exports = {
   plugins: {
-    precss: {/* ...options */},
-    autoprefixer: {/* ...options */},
+    precss: {},
+    autoprefixer: {},
+    'postcss-css-variables': {},
   },
 };

@@ -1,0 +1,28 @@
+:root {
+  --foo-width: 100px;
+  --foo-bg-color: rgba(255, 0, 0, 0.85);
+}
+
+.foo {
+  /* red */
+  color: var(--foo-bg-color);
+}
+
+.phone {
+  &_title {
+    width: 500px;
+    flex: 1;
+
+    @media (max-width: 500px) {
+      width: auto;
+    }
+
+    body.is_dark & {
+      color: white;
+    }
+  }
+
+  img {
+    display: block;
+  }
+}
