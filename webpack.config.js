@@ -4,7 +4,7 @@ module.exports = {
   context: `${__dirname}/client`,
   entry: {
     scripts: './scripts/app.js',
-  //  styles: './styles/styles.scss',
+    styles: './styles/styles.scss',
   },
   output: {
     path: `${__dirname}/public`,
@@ -20,7 +20,7 @@ module.exports = {
         test: /\.scss/,
         loader: ExtractTextPlugin.extract(
           'style-loader',
-          'css-loader!postcss-loader?parser=postcss-scss'
+          'css-loader!postcss-loader?parser=postcss-scss!sass-loader'
         ),
       },
     ],
