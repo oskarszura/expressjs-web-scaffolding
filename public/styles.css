@@ -4243,23 +4243,38 @@ button.close {
   .hidden-print {
     display: none !important; } }
 
-.t-header {
+.header {
   display: -webkit-box;
   display: -ms-flexbox;
-  display: flex; }
-  .t-header__logo {
+  display: flex;
+  box-shadow: 0 13px 7px -14px rgba(0, 0, 0, 0.75);
+  background-color: #FFFFFF; }
+  .header__logo {
     -ms-flex-preferred-size: 10%;
         flex-basis: 10%;
     -webkit-box-flex: 1;
         -ms-flex-positive: 1;
-            flex-grow: 1; }
-  .t-header__navigation {
+            flex-grow: 1;
+    display: block;
+    padding: 15px 10px; }
+  .header__navigation {
     -ms-flex-preferred-size: 90%;
         flex-basis: 90%;
     -webkit-box-flex: 9;
         -ms-flex-positive: 9;
             flex-grow: 9; }
-  .t-header__navigation-list {
-    list-style: none; }
-  .t-header__navigation-option {
+  .header__navigation-list {
+    list-style: none;
+    margin: 0;
+    padding: 0; }
+  .header__navigation-option {
     display: inline-block; }
+    .header__navigation-option a {
+      display: block;
+      padding: 15px 10px; }
+
+.main-content {
+  padding: 0 10px; }
+
+body {
+  background-color: #D7DADF; }

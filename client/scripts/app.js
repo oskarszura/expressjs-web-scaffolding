@@ -1,1 +1,2 @@
-import './module';
+import { createStore } from 'redux';
+import './admin';

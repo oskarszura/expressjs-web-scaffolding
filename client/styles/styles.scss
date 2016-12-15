@@ -66,4 +66,10 @@
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/_utilities.scss";
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/_responsive-utilities.scss";
 
+@import "variables";
 @import "./templates/header";
+@import "./templates/main-content";
+
+body {
+  background-color: $color-michka;
+}

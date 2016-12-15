@@ -1,13 +1,14 @@
-const express = require('express')
-  , router = express.Router()
-  , renderer = require('../services/renderer')
+const express = require('express');
+const renderer = require('../services/renderer');
 
-  , adminGet = (req, res) => {
-      renderer(req, res, 'admin', {
-        title: 'Admin'
-      });
-    };
+const router = express.Router;
 
-module.exports = app => { app.use('/admin', router); };
+const adminGet = (req, res) => {
+  renderer(req, res, 'admin', {
+    title: 'Admin',
+  });
+};
+
+module.exports = app => { app.use('/admin', router()); };
 
 router.get('/', adminGet);

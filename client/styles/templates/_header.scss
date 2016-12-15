@@ -1,9 +1,15 @@
-.t-header {
+$header-archor-padding: 15px 10px;
+
+.header {
   display: flex;
+  box-shadow: 0 13px 7px -14px rgba(0, 0, 0, 0.75);
+  background-color: $color-white;
 
   &__logo {
     flex-basis: 10%;
     flex-grow: 1;
+    display: block;
+    padding: $header-archor-padding;
   }
 
   &__navigation {
@@ -13,9 +19,16 @@
 
   &__navigation-list {
     list-style: none;
+    margin: 0;
+    padding: 0;
   }
 
   &__navigation-option {
     display: inline-block;
+
+    a {
+      display: block;
+      padding: $header-archor-padding;
+    }
   }
 }
