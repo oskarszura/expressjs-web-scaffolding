@@ -22010,17 +22010,106 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _ColourList = __webpack_require__(202);
+
+	var _ColourList2 = _interopRequireDefault(_ColourList);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var colours = [{
+	  code: 'fff'
+	}, {
+	  code: 'f00'
+	}, {
+	  code: '0f0'
+	}];
 
 	var App = function App() {
 	  return _react2.default.createElement(
 	    'div',
 	    null,
-	    'Admin Application'
+	    'Admin Application',
+	    _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement(_ColourList2.default, { colours: colours })
+	    )
 	  );
 	};
 
 	exports.default = App;
+
+/***/ },
+/* 202 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(24);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _ColourRow = __webpack_require__(203);
+
+	var _ColourRow2 = _interopRequireDefault(_ColourRow);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var ColourList = function ColourList(_ref) {
+	  var colours = _ref.colours;
+	  return _react2.default.createElement(
+	    'ul',
+	    null,
+	    colours.map(function (colour) {
+	      return _react2.default.createElement(_ColourRow2.default, {
+	        code: colour.code
+	      });
+	    })
+	  );
+	};
+
+	ColourList.propTypes = {
+	  colours: _react.PropTypes.arrayOf(_react.PropTypes.shape({
+	    code: _react.PropTypes.string.isRequired
+	  }).isRequired).isRequired
+	};
+
+	exports.default = ColourList;
+
+/***/ },
+/* 203 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(24);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var ColourRow = function ColourRow(_ref) {
+	  var code = _ref.code;
+	  return _react2.default.createElement(
+	    'li',
+	    null,
+	    code
+	  );
+	};
+
+	ColourRow.propTypes = {
+	  code: _react.PropTypes.string.isRequired
+	};
+
+	exports.default = ColourRow;
 
 /***/ }
 /******/ ]);
