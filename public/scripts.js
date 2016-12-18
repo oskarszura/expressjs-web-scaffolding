@@ -48,7 +48,7 @@
 
 	var _redux = __webpack_require__(1);
 
-	__webpack_require__(199);
+	__webpack_require__(23);
 
 /***/ },
 /* 1 */
@@ -1270,7 +1270,40 @@
 	}
 
 /***/ },
-/* 23 */,
+/* 23 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _react = __webpack_require__(24);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(180);
+
+	var _reactRedux = __webpack_require__(181);
+
+	var _redux = __webpack_require__(1);
+
+	var _reducers = __webpack_require__(198);
+
+	var _reducers2 = _interopRequireDefault(_reducers);
+
+	var _App = __webpack_require__(200);
+
+	var _App2 = _interopRequireDefault(_App);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var store = (0, _redux.createStore)(_reducers2.default);
+
+	(0, _reactDom.render)(_react2.default.createElement(
+	  _reactRedux.Provider,
+	  { store: store },
+	  _react2.default.createElement(_App2.default, null)
+	), document.querySelector('.js-admin'));
+
+/***/ },
 /* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -20750,8 +20783,7 @@
 
 
 /***/ },
-/* 181 */,
-/* 182 */
+/* 181 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20759,15 +20791,15 @@
 	exports.__esModule = true;
 	exports.connect = exports.connectAdvanced = exports.Provider = undefined;
 
-	var _Provider = __webpack_require__(183);
+	var _Provider = __webpack_require__(182);
 
 	var _Provider2 = _interopRequireDefault(_Provider);
 
-	var _connectAdvanced = __webpack_require__(186);
+	var _connectAdvanced = __webpack_require__(185);
 
 	var _connectAdvanced2 = _interopRequireDefault(_connectAdvanced);
 
-	var _connect = __webpack_require__(190);
+	var _connect = __webpack_require__(189);
 
 	var _connect2 = _interopRequireDefault(_connect);
 
@@ -20778,7 +20810,7 @@
 	exports.connect = _connect2.default;
 
 /***/ },
-/* 183 */
+/* 182 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -20788,11 +20820,11 @@
 
 	var _react = __webpack_require__(24);
 
-	var _storeShape = __webpack_require__(184);
+	var _storeShape = __webpack_require__(183);
 
 	var _storeShape2 = _interopRequireDefault(_storeShape);
 
-	var _warning = __webpack_require__(185);
+	var _warning = __webpack_require__(184);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
@@ -20863,7 +20895,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ },
-/* 184 */
+/* 183 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20879,7 +20911,7 @@
 	});
 
 /***/ },
-/* 185 */
+/* 184 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -20909,7 +20941,7 @@
 	}
 
 /***/ },
-/* 186 */
+/* 185 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -20920,21 +20952,21 @@
 
 	exports.default = connectAdvanced;
 
-	var _hoistNonReactStatics = __webpack_require__(187);
+	var _hoistNonReactStatics = __webpack_require__(186);
 
 	var _hoistNonReactStatics2 = _interopRequireDefault(_hoistNonReactStatics);
 
-	var _invariant = __webpack_require__(188);
+	var _invariant = __webpack_require__(187);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
 	var _react = __webpack_require__(24);
 
-	var _Subscription = __webpack_require__(189);
+	var _Subscription = __webpack_require__(188);
 
 	var _Subscription2 = _interopRequireDefault(_Subscription);
 
-	var _storeShape = __webpack_require__(184);
+	var _storeShape = __webpack_require__(183);
 
 	var _storeShape2 = _interopRequireDefault(_storeShape);
 
@@ -21191,7 +21223,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ },
-/* 187 */
+/* 186 */
 /***/ function(module, exports) {
 
 	/**
@@ -21247,7 +21279,7 @@
 
 
 /***/ },
-/* 188 */
+/* 187 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -21305,7 +21337,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ },
-/* 189 */
+/* 188 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -21403,7 +21435,7 @@
 	exports.default = Subscription;
 
 /***/ },
-/* 190 */
+/* 189 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21414,27 +21446,27 @@
 
 	exports.createConnect = createConnect;
 
-	var _connectAdvanced = __webpack_require__(186);
+	var _connectAdvanced = __webpack_require__(185);
 
 	var _connectAdvanced2 = _interopRequireDefault(_connectAdvanced);
 
-	var _shallowEqual = __webpack_require__(191);
+	var _shallowEqual = __webpack_require__(190);
 
 	var _shallowEqual2 = _interopRequireDefault(_shallowEqual);
 
-	var _mapDispatchToProps = __webpack_require__(192);
+	var _mapDispatchToProps = __webpack_require__(191);
 
 	var _mapDispatchToProps2 = _interopRequireDefault(_mapDispatchToProps);
 
-	var _mapStateToProps = __webpack_require__(195);
+	var _mapStateToProps = __webpack_require__(194);
 
 	var _mapStateToProps2 = _interopRequireDefault(_mapStateToProps);
 
-	var _mergeProps = __webpack_require__(196);
+	var _mergeProps = __webpack_require__(195);
 
 	var _mergeProps2 = _interopRequireDefault(_mergeProps);
 
-	var _selectorFactory = __webpack_require__(197);
+	var _selectorFactory = __webpack_require__(196);
 
 	var _selectorFactory2 = _interopRequireDefault(_selectorFactory);
 
@@ -21536,7 +21568,7 @@
 	exports.default = createConnect();
 
 /***/ },
-/* 191 */
+/* 190 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -21564,7 +21596,7 @@
 	}
 
 /***/ },
-/* 192 */
+/* 191 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21576,7 +21608,7 @@
 
 	var _redux = __webpack_require__(1);
 
-	var _wrapMapToProps = __webpack_require__(193);
+	var _wrapMapToProps = __webpack_require__(192);
 
 	function whenMapDispatchToPropsIsFunction(mapDispatchToProps) {
 	  return typeof mapDispatchToProps === 'function' ? (0, _wrapMapToProps.wrapMapToPropsFunc)(mapDispatchToProps, 'mapDispatchToProps') : undefined;
@@ -21597,7 +21629,7 @@
 	exports.default = [whenMapDispatchToPropsIsFunction, whenMapDispatchToPropsIsMissing, whenMapDispatchToPropsIsObject];
 
 /***/ },
-/* 193 */
+/* 192 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -21607,7 +21639,7 @@
 	exports.getDependsOnOwnProps = getDependsOnOwnProps;
 	exports.wrapMapToPropsFunc = wrapMapToPropsFunc;
 
-	var _verifyPlainObject = __webpack_require__(194);
+	var _verifyPlainObject = __webpack_require__(193);
 
 	var _verifyPlainObject2 = _interopRequireDefault(_verifyPlainObject);
 
@@ -21679,7 +21711,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ },
-/* 194 */
+/* 193 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21691,7 +21723,7 @@
 
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 
-	var _warning = __webpack_require__(185);
+	var _warning = __webpack_require__(184);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
@@ -21704,7 +21736,7 @@
 	}
 
 /***/ },
-/* 195 */
+/* 194 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21713,7 +21745,7 @@
 	exports.whenMapStateToPropsIsFunction = whenMapStateToPropsIsFunction;
 	exports.whenMapStateToPropsIsMissing = whenMapStateToPropsIsMissing;
 
-	var _wrapMapToProps = __webpack_require__(193);
+	var _wrapMapToProps = __webpack_require__(192);
 
 	function whenMapStateToPropsIsFunction(mapStateToProps) {
 	  return typeof mapStateToProps === 'function' ? (0, _wrapMapToProps.wrapMapToPropsFunc)(mapStateToProps, 'mapStateToProps') : undefined;
@@ -21728,7 +21760,7 @@
 	exports.default = [whenMapStateToPropsIsFunction, whenMapStateToPropsIsMissing];
 
 /***/ },
-/* 196 */
+/* 195 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -21742,7 +21774,7 @@
 	exports.whenMergePropsIsFunction = whenMergePropsIsFunction;
 	exports.whenMergePropsIsOmitted = whenMergePropsIsOmitted;
 
-	var _verifyPlainObject = __webpack_require__(194);
+	var _verifyPlainObject = __webpack_require__(193);
 
 	var _verifyPlainObject2 = _interopRequireDefault(_verifyPlainObject);
 
@@ -21792,7 +21824,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ },
-/* 197 */
+/* 196 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -21802,7 +21834,7 @@
 	exports.pureFinalPropsSelectorFactory = pureFinalPropsSelectorFactory;
 	exports.default = finalPropsSelectorFactory;
 
-	var _verifySubselectors = __webpack_require__(198);
+	var _verifySubselectors = __webpack_require__(197);
 
 	var _verifySubselectors2 = _interopRequireDefault(_verifySubselectors);
 
@@ -21911,7 +21943,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ },
-/* 198 */
+/* 197 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21919,7 +21951,7 @@
 	exports.__esModule = true;
 	exports.default = verifySubselectors;
 
-	var _warning = __webpack_require__(185);
+	var _warning = __webpack_require__(184);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
@@ -21942,59 +21974,114 @@
 	}
 
 /***/ },
-/* 199 */
+/* 198 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _react = __webpack_require__(24);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactDom = __webpack_require__(180);
-
-	var _reactRedux = __webpack_require__(182);
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
 
 	var _redux = __webpack_require__(1);
 
-	var _reducers = __webpack_require__(200);
+	var _colours = __webpack_require__(199);
 
-	var _reducers2 = _interopRequireDefault(_reducers);
-
-	var _App = __webpack_require__(201);
-
-	var _App2 = _interopRequireDefault(_App);
+	var _colours2 = _interopRequireDefault(_colours);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var store = (0, _redux.createStore)(_reducers2.default);
+	var adminApp = (0, _redux.combineReducers)({
+	  colours: _colours2.default
+	});
 
-	(0, _reactDom.render)(_react2.default.createElement(
-	  _reactRedux.Provider,
-	  { store: store },
-	  _react2.default.createElement(_App2.default, null)
-	), document.querySelector('.js-admin'));
+	exports.default = adminApp;
 
 /***/ },
-/* 200 */
+/* 199 */
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	var reducer = function reducer() {
-	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+	var colour = function colour() {
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 	  var action = arguments[1];
 
 	  switch (action.type) {
+	    case 'ADD_COLOUR':
+	      return {
+	        code: action.code
+	      };
+
 	    default:
 	      return state;
 	  }
 	};
 
-	exports.default = reducer;
+	var colours = function colours() {
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+	  var action = arguments[1];
+
+	  switch (action.type) {
+	    case 'ADD_COLOUR':
+	      console.log('action add colour zzz', state);
+	      return [].concat(_toConsumableArray(state), [colour(undefined, action)]);
+	    case 'TOGGLE_TODO':
+	      return state.map(function (t) {
+	        return colour(t, action);
+	      });
+	    default:
+	      return state;
+	  }
+	};
+
+	exports.default = colours;
+
+/***/ },
+/* 200 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(24);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _ColourList = __webpack_require__(205);
+
+	var _ColourList2 = _interopRequireDefault(_ColourList);
+
+	var _AddColour = __webpack_require__(203);
+
+	var _AddColour2 = _interopRequireDefault(_AddColour);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var App = function App() {
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    'Admin Application',
+	    _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement(_ColourList2.default, null),
+	      _react2.default.createElement(_AddColour2.default, null)
+	    )
+	  );
+	};
+
+	exports.default = App;
 
 /***/ },
 /* 201 */
@@ -22010,50 +22097,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _ColourList = __webpack_require__(202);
-
-	var _ColourList2 = _interopRequireDefault(_ColourList);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var colours = [{
-	  code: 'fff'
-	}, {
-	  code: 'f00'
-	}, {
-	  code: '0f0'
-	}];
-
-	var App = function App() {
-	  return _react2.default.createElement(
-	    'div',
-	    null,
-	    'Admin Application',
-	    _react2.default.createElement(
-	      'div',
-	      null,
-	      _react2.default.createElement(_ColourList2.default, { colours: colours })
-	    )
-	  );
-	};
-
-	exports.default = App;
-
-/***/ },
-/* 202 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(24);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _ColourRow = __webpack_require__(203);
+	var _ColourRow = __webpack_require__(202);
 
 	var _ColourRow2 = _interopRequireDefault(_ColourRow);
 
@@ -22081,7 +22125,7 @@
 	exports.default = ColourList;
 
 /***/ },
-/* 203 */
+/* 202 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22110,6 +22154,121 @@
 	};
 
 	exports.default = ColourRow;
+
+/***/ },
+/* 203 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(24);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(181);
+
+	var _actions = __webpack_require__(204);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var AddColour = function AddColour(_ref) {
+	  var dispatch = _ref.dispatch;
+
+	  var input = void 0;
+
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    _react2.default.createElement(
+	      'form',
+	      {
+	        onSubmit: function onSubmit(e) {
+	          e.preventDefault();
+
+	          if (!input.value.trim()) {
+	            return;
+	          }
+
+	          dispatch((0, _actions.addColour)(input.value));
+	          input.value = '';
+	        }
+	      },
+	      _react2.default.createElement('input', {
+	        ref: function ref(node) {
+	          input = node;
+	        }
+	      }),
+	      _react2.default.createElement(
+	        'button',
+	        { type: 'submit' },
+	        'Add Colour'
+	      )
+	    )
+	  );
+	};
+
+	AddColour = (0, _reactRedux.connect)()(AddColour);
+
+	exports.default = AddColour;
+
+/***/ },
+/* 204 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var nextColourId = 0;
+
+	var addColour = exports.addColour = function addColour(code) {
+	  return {
+	    type: 'ADD_COLOUR',
+	    id: nextColourId += 1,
+	    code: code
+	  };
+	};
+
+	var removeColour = exports.removeColour = function removeColour() {
+	  return {};
+	};
+
+/***/ },
+/* 205 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _reactRedux = __webpack_require__(181);
+
+	var _ColourList = __webpack_require__(201);
+
+	var _ColourList2 = _interopRequireDefault(_ColourList);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var mapStateToProps = function mapStateToProps(state) {
+	  return {
+	    colours: state.colours
+	  };
+	};
+
+	var mapDispatchToProps = function mapDispatchToProps() {
+	  return {};
+	};
+
+	var ColourListContainer = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_ColourList2.default);
+
+	exports.default = ColourListContainer;
 
 /***/ }
 /******/ ]);

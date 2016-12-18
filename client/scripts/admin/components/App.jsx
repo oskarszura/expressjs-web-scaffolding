@@ -1,19 +1,13 @@
 import React from 'react';
-import ColourList from './ColourList';
-
-const colours = [{
-  code: 'fff',
-}, {
-  code: 'f00',
-}, {
-  code: '0f0',
-}];
+import ColourList from '../containers/ColourList';
+import AddColour from './AddColour';
 
 const App = () => (
   <div>
     Admin Application
     <div>
-      <ColourList colours={colours} />
+      <ColourList />
+      <AddColour />
     </div>
   </div>
 )

@@ -5,11 +5,11 @@ import { createStore } from 'redux';
 import adminReducer from './reducers';
 import AdminApp from './components/App';
 
-const store = createStore(adminReducer)
+const store = createStore(adminReducer);
 
 render(
   <Provider store={store}>
     <AdminApp />
   </Provider>,
   document.querySelector('.js-admin')
-)
+);
