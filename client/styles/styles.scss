@@ -66,7 +66,11 @@
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/_utilities.scss";
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/_responsive-utilities.scss";
 
+@import "colours";
 @import "variables";
+
+@import "./components/admin/admin";
+
 @import "./templates/header";
 @import "./templates/main-content";
 

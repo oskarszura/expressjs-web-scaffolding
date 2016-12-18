@@ -22016,6 +22016,7 @@
 	  switch (action.type) {
 	    case 'ADD_COLOUR':
 	      return {
+	        id: action.id,
 	        code: action.code
 	      };
 
@@ -22030,12 +22031,7 @@
 
 	  switch (action.type) {
 	    case 'ADD_COLOUR':
-	      console.log('action add colour zzz', state);
 	      return [].concat(_toConsumableArray(state), [colour(undefined, action)]);
-	    case 'TOGGLE_TODO':
-	      return state.map(function (t) {
-	        return colour(t, action);
-	      });
 	    default:
 	      return state;
 	  }
@@ -22057,11 +22053,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _ColourList = __webpack_require__(205);
+	var _ColourList = __webpack_require__(201);
 
 	var _ColourList2 = _interopRequireDefault(_ColourList);
 
-	var _AddColour = __webpack_require__(203);
+	var _AddColour = __webpack_require__(204);
 
 	var _AddColour2 = _interopRequireDefault(_AddColour);
 
@@ -22070,14 +22066,14 @@
 	var App = function App() {
 	  return _react2.default.createElement(
 	    'div',
-	    null,
-	    'Admin Application',
+	    { className: 'c-admin' },
 	    _react2.default.createElement(
-	      'div',
+	      'h2',
 	      null,
-	      _react2.default.createElement(_ColourList2.default, null),
-	      _react2.default.createElement(_AddColour2.default, null)
-	    )
+	      'Colour Manager'
+	    ),
+	    _react2.default.createElement(_ColourList2.default, null),
+	    _react2.default.createElement(_AddColour2.default, null)
 	  );
 	};
 
@@ -22093,11 +22089,43 @@
 	  value: true
 	});
 
+	var _reactRedux = __webpack_require__(181);
+
+	var _ColourList = __webpack_require__(202);
+
+	var _ColourList2 = _interopRequireDefault(_ColourList);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var mapStateToProps = function mapStateToProps(state) {
+	  return {
+	    colours: state.colours
+	  };
+	};
+
+	var mapDispatchToProps = function mapDispatchToProps() {
+	  return {};
+	};
+
+	var ColourListContainer = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_ColourList2.default);
+
+	exports.default = ColourListContainer;
+
+/***/ },
+/* 202 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
 	var _react = __webpack_require__(24);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _ColourRow = __webpack_require__(202);
+	var _ColourRow = __webpack_require__(203);
 
 	var _ColourRow2 = _interopRequireDefault(_ColourRow);
 
@@ -22110,6 +22138,7 @@
 	    null,
 	    colours.map(function (colour) {
 	      return _react2.default.createElement(_ColourRow2.default, {
+	        key: colour.id,
 	        code: colour.code
 	      });
 	    })
@@ -22117,15 +22146,13 @@
 	};
 
 	ColourList.propTypes = {
-	  colours: _react.PropTypes.arrayOf(_react.PropTypes.shape({
-	    code: _react.PropTypes.string.isRequired
-	  }).isRequired).isRequired
+	  colours: _react.PropTypes.arrayOf(_react.PropTypes.shape({}).isRequired).isRequired
 	};
 
 	exports.default = ColourList;
 
 /***/ },
-/* 202 */
+/* 203 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22156,7 +22183,7 @@
 	exports.default = ColourRow;
 
 /***/ },
-/* 203 */
+/* 204 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22171,11 +22198,11 @@
 
 	var _reactRedux = __webpack_require__(181);
 
-	var _actions = __webpack_require__(204);
+	var _actions = __webpack_require__(205);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var AddColour = function AddColour(_ref) {
+	var AddColour = (0, _reactRedux.connect)()(function (_ref) {
 	  var dispatch = _ref.dispatch;
 
 	  var input = void 0;
@@ -22198,8 +22225,14 @@
 	        }
 	      },
 	      _react2.default.createElement('input', {
+	        className: 'c-admin__colour-value',
 	        ref: function ref(node) {
 	          input = node;
+	        },
+	        onChange: function onChange(e) {
+	          e.preventDefault();
+	          var isValid = /[0-9A-Fa-f]{6}/g.test(input.value);
+	          input.classList.toggle('c-admin__colour-value--is-invalid', !isValid);
 	        }
 	      }),
 	      _react2.default.createElement(
@@ -22209,14 +22242,12 @@
 	      )
 	    )
 	  );
-	};
-
-	AddColour = (0, _reactRedux.connect)()(AddColour);
+	});
 
 	exports.default = AddColour;
 
 /***/ },
-/* 204 */
+/* 205 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -22227,48 +22258,15 @@
 	var nextColourId = 0;
 
 	var addColour = exports.addColour = function addColour(code) {
-	  return {
-	    type: 'ADD_COLOUR',
-	    id: nextColourId += 1,
-	    code: code
-	  };
+	  var id = nextColourId += 1;
+	  var type = 'ADD_COLOUR';
+
+	  return { type: type, id: id, code: code };
 	};
 
 	var removeColour = exports.removeColour = function removeColour() {
 	  return {};
 	};
-
-/***/ },
-/* 205 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _reactRedux = __webpack_require__(181);
-
-	var _ColourList = __webpack_require__(201);
-
-	var _ColourList2 = _interopRequireDefault(_ColourList);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var mapStateToProps = function mapStateToProps(state) {
-	  return {
-	    colours: state.colours
-	  };
-	};
-
-	var mapDispatchToProps = function mapDispatchToProps() {
-	  return {};
-	};
-
-	var ColourListContainer = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_ColourList2.default);
-
-	exports.default = ColourListContainer;
 
 /***/ }
 /******/ ]);

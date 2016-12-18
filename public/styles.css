@@ -4243,6 +4243,9 @@ button.close {
   .hidden-print {
     display: none !important; } }
 
+.c-admin__colour-value--is-invalid {
+  background-color: #FFDBDB; }
+
 .header {
   display: -webkit-box;
   display: -ms-flexbox;

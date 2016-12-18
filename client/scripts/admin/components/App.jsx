@@ -1,14 +1,12 @@
 import React from 'react';
 import ColourList from '../containers/ColourList';
-import AddColour from './AddColour';
+import AddColour from '../containers/AddColour';
 
 const App = () => (
-  <div>
-    Admin Application
-    <div>
-      <ColourList />
-      <AddColour />
-    </div>
+  <div className="c-admin">
+    <h2>Colour Manager</h2>
+    <ColourList />
+    <AddColour />
   </div>
 )
 

@@ -4,6 +4,7 @@ import ColourRow from './ColourRow';
 const ColourList = ({ colours }) => (
   <ul>
     { colours.map(colour => <ColourRow
+      key={colour.id}
       code={colour.code}
     />)}
   </ul>
@@ -11,7 +12,6 @@ const ColourList = ({ colours }) => (
 
 ColourList.propTypes = {
   colours: PropTypes.arrayOf(PropTypes.shape({
-    code: PropTypes.string.isRequired,
   }).isRequired).isRequired,
 }
 

@@ -2,6 +2,7 @@ const colour = (state = {}, action) => {
   switch (action.type) {
     case 'ADD_COLOUR':
       return {
+        id: action.id,
         code: action.code,
       };
 
@@ -13,15 +14,10 @@ const colour = (state = {}, action) => {
 const colours = (state = [], action) => {
   switch (action.type) {
     case 'ADD_COLOUR':
-      console.log('action add colour zzz', state);
       return [
         ...state,
         colour(undefined, action),
-      ]
-    case 'TOGGLE_TODO':
-      return state.map(t =>
-        colour(t, action)
-      )
+      ];
     default:
       return state;
   }
