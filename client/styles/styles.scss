@@ -64,15 +64,15 @@
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/_popovers.scss";
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/_carousel.scss";
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/_utilities.scss";
-@import "~bootstrap-sass/assets/stylesheets/bootstrap/_responsive-utilities.scss";
 
 @import "colours";
 @import "variables";
 
-@import "./components/admin/admin";
+@import "./components/admin/admin-colours";
 
 @import "./templates/header";
 @import "./templates/main-content";
+@import "./templates/left-menu";
 
 body {
   background-color: $color-michka;

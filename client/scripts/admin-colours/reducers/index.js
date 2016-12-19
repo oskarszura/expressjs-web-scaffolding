@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 import colours from './colours';
 
-const adminApp = combineReducers({
+const rootReducer = combineReducers({
   colours,
 })
 
-export default adminApp;
+export default rootReducer;

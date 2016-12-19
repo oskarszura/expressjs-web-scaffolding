@@ -3,6 +3,7 @@ const colour = (state = {}, action) => {
     case 'ADD_COLOUR':
       return {
         id: action.id,
+        name: action.name,
         code: action.code,
       };
 

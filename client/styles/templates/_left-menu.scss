@@ -1,0 +1,54 @@
+$left-menu-active-width: 15vw;
+$left-menu-inactive-width: 4vw;
+
+.left-menu {
+  width: $left-menu-inactive-width;
+  height: 100vh;
+  position: absolute;
+  background-color: $color-white;
+  transition: width .35s ease-in-out;
+
+  &--is-active {
+    width: $left-menu-active-width;
+  }
+
+  &__activator {
+    font-size: 4rem;
+    width: 100%;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+    background-color: $colour-gallery;
+    user-select: none;
+    color: $colour-mine-shaft;
+  }
+
+  &__list {
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    transition: all 0.75s ease-in-out;
+    opacity: 0;
+    width: 0px;
+
+    .left-menu--is-active & {
+      opacity: 1;
+      width: 100%;
+    }
+  }
+
+  &__list-item {
+    padding: 5px 10px;
+    width: $left-menu-active-width;
+  }
+
+  &__list-link {
+    color: $colour-mine-shaft;
+    font-size: 1.3rem;
+
+    &:hover {
+      color: $colour-mine-shaft;
+    }
+  }
+}

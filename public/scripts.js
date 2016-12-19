@@ -46,9 +46,9 @@
 
 	'use strict';
 
-	var _redux = __webpack_require__(1);
+	__webpack_require__(206);
 
-	__webpack_require__(23);
+	__webpack_require__(207);
 
 /***/ },
 /* 1 */
@@ -1270,40 +1270,7 @@
 	}
 
 /***/ },
-/* 23 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _react = __webpack_require__(24);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactDom = __webpack_require__(180);
-
-	var _reactRedux = __webpack_require__(181);
-
-	var _redux = __webpack_require__(1);
-
-	var _reducers = __webpack_require__(198);
-
-	var _reducers2 = _interopRequireDefault(_reducers);
-
-	var _App = __webpack_require__(200);
-
-	var _App2 = _interopRequireDefault(_App);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var store = (0, _redux.createStore)(_reducers2.default);
-
-	(0, _reactDom.render)(_react2.default.createElement(
-	  _reactRedux.Provider,
-	  { store: store },
-	  _react2.default.createElement(_App2.default, null)
-	), document.querySelector('.js-admin'));
-
-/***/ },
+/* 23 */,
 /* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -21974,7 +21941,62 @@
 	}
 
 /***/ },
-/* 198 */
+/* 198 */,
+/* 199 */,
+/* 200 */,
+/* 201 */,
+/* 202 */,
+/* 203 */,
+/* 204 */,
+/* 205 */,
+/* 206 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	var leftMenuDOM = document.querySelector('.js-left-menu');
+	var leftMenuActivatorDOM = document.querySelector('.js-left-menu-activator');
+
+	leftMenuActivatorDOM.addEventListener('click', function () {
+	  leftMenuDOM.classList.toggle('left-menu--is-active');
+	});
+
+/***/ },
+/* 207 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _react = __webpack_require__(24);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(180);
+
+	var _reactRedux = __webpack_require__(181);
+
+	var _redux = __webpack_require__(1);
+
+	var _reducers = __webpack_require__(208);
+
+	var _reducers2 = _interopRequireDefault(_reducers);
+
+	var _App = __webpack_require__(210);
+
+	var _App2 = _interopRequireDefault(_App);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var store = (0, _redux.createStore)(_reducers2.default);
+
+	(0, _reactDom.render)(_react2.default.createElement(
+	  _reactRedux.Provider,
+	  { store: store },
+	  _react2.default.createElement(_App2.default, null)
+	), document.querySelector('.js-admin-colours'));
+
+/***/ },
+/* 208 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21985,20 +22007,20 @@
 
 	var _redux = __webpack_require__(1);
 
-	var _colours = __webpack_require__(199);
+	var _colours = __webpack_require__(209);
 
 	var _colours2 = _interopRequireDefault(_colours);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var adminApp = (0, _redux.combineReducers)({
+	var rootReducer = (0, _redux.combineReducers)({
 	  colours: _colours2.default
 	});
 
-	exports.default = adminApp;
+	exports.default = rootReducer;
 
 /***/ },
-/* 199 */
+/* 209 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -22017,6 +22039,7 @@
 	    case 'ADD_COLOUR':
 	      return {
 	        id: action.id,
+	        name: action.name,
 	        code: action.code
 	      };
 
@@ -22040,7 +22063,7 @@
 	exports.default = colours;
 
 /***/ },
-/* 200 */
+/* 210 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22053,11 +22076,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _ColourList = __webpack_require__(201);
+	var _ColourList = __webpack_require__(211);
 
 	var _ColourList2 = _interopRequireDefault(_ColourList);
 
-	var _AddColour = __webpack_require__(204);
+	var _AddColour = __webpack_require__(214);
 
 	var _AddColour2 = _interopRequireDefault(_AddColour);
 
@@ -22066,7 +22089,7 @@
 	var App = function App() {
 	  return _react2.default.createElement(
 	    'div',
-	    { className: 'c-admin' },
+	    { className: 'c-admin-colours' },
 	    _react2.default.createElement(
 	      'h2',
 	      null,
@@ -22080,7 +22103,7 @@
 	exports.default = App;
 
 /***/ },
-/* 201 */
+/* 211 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22091,7 +22114,7 @@
 
 	var _reactRedux = __webpack_require__(181);
 
-	var _ColourList = __webpack_require__(202);
+	var _ColourList = __webpack_require__(212);
 
 	var _ColourList2 = _interopRequireDefault(_ColourList);
 
@@ -22112,7 +22135,7 @@
 	exports.default = ColourListContainer;
 
 /***/ },
-/* 202 */
+/* 212 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22125,7 +22148,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _ColourRow = __webpack_require__(203);
+	var _ColourRow = __webpack_require__(213);
 
 	var _ColourRow2 = _interopRequireDefault(_ColourRow);
 
@@ -22135,10 +22158,11 @@
 	  var colours = _ref.colours;
 	  return _react2.default.createElement(
 	    'ul',
-	    null,
+	    { className: 'c-admin-colours__colour-list' },
 	    colours.map(function (colour) {
 	      return _react2.default.createElement(_ColourRow2.default, {
 	        key: colour.id,
+	        name: colour.name,
 	        code: colour.code
 	      });
 	    })
@@ -22152,7 +22176,7 @@
 	exports.default = ColourList;
 
 /***/ },
-/* 203 */
+/* 213 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22168,22 +22192,41 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var ColourRow = function ColourRow(_ref) {
-	  var code = _ref.code;
+	  var name = _ref.name,
+	      code = _ref.code;
+
+	  var style = {
+	    'background-color': '#' + code
+	  };
+
 	  return _react2.default.createElement(
 	    'li',
-	    null,
-	    code
+	    { className: 'c-admin-colours__colour-list-item' },
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'c-admin-colours__colour-list-name' },
+	      name
+	    ),
+	    _react2.default.createElement(
+	      'div',
+	      {
+	        className: 'c-admin-colours__colour-list-code',
+	        style: style
+	      },
+	      code
+	    )
 	  );
 	};
 
 	ColourRow.propTypes = {
+	  name: _react.PropTypes.string.isRequired,
 	  code: _react.PropTypes.string.isRequired
 	};
 
 	exports.default = ColourRow;
 
 /***/ },
-/* 204 */
+/* 214 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22198,47 +22241,80 @@
 
 	var _reactRedux = __webpack_require__(181);
 
-	var _actions = __webpack_require__(205);
+	var _actions = __webpack_require__(215);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var nameInput = void 0;
+	var valueInput = void 0;
+	var codeDiv = void 0;
+
+	var onColourNameChange = function onColourNameChange(e) {
+	  e.preventDefault();
+	  var isValid = /[0-9A-Fa-f]{6}/g.test(nameInput.value);
+	  nameInput.classList.toggle('c-admin-colours__colour-name--is-invalid', !isValid);
+	};
+
+	var onColourValueChange = function onColourValueChange(e) {
+	  e.preventDefault();
+	  var isValid = /[0-9A-Fa-f]{6}/g.test(valueInput.value);
+	  valueInput.classList.toggle('c-admin-colours__colour-value--is-invalid', !isValid);
+	  codeDiv.style.backgroundColor = '#' + valueInput.value;
+	};
 
 	var AddColour = (0, _reactRedux.connect)()(function (_ref) {
 	  var dispatch = _ref.dispatch;
 
-	  var input = void 0;
-
 	  return _react2.default.createElement(
 	    'div',
-	    null,
+	    { className: 'c-admin-colours__adder' },
 	    _react2.default.createElement(
 	      'form',
 	      {
 	        onSubmit: function onSubmit(e) {
 	          e.preventDefault();
 
-	          if (!input.value.trim()) {
+	          if (!valueInput.value.trim()) {
 	            return;
 	          }
 
-	          dispatch((0, _actions.addColour)(input.value));
-	          input.value = '';
+	          dispatch((0, _actions.addColour)({
+	            name: nameInput.value,
+	            code: valueInput.value
+	          }));
+	          valueInput.value = '';
 	        }
 	      },
 	      _react2.default.createElement('input', {
-	        className: 'c-admin__colour-value',
+	        className: 'c-admin-colours__colour-name',
 	        ref: function ref(node) {
-	          input = node;
+	          nameInput = node;
 	        },
-	        onChange: function onChange(e) {
-	          e.preventDefault();
-	          var isValid = /[0-9A-Fa-f]{6}/g.test(input.value);
-	          input.classList.toggle('c-admin__colour-value--is-invalid', !isValid);
-	        }
+	        onChange: onColourNameChange
 	      }),
 	      _react2.default.createElement(
+	        'div',
+	        {
+	          className: 'c-admin-colours__colour-list-code',
+	          ref: function ref(node) {
+	            codeDiv = node;
+	          }
+	        },
+	        _react2.default.createElement('input', {
+	          className: 'c-admin-colours__colour-value',
+	          ref: function ref(node) {
+	            valueInput = node;
+	          },
+	          onChange: onColourValueChange
+	        })
+	      ),
+	      _react2.default.createElement(
 	        'button',
-	        { type: 'submit' },
-	        'Add Colour'
+	        {
+	          className: 'c-admin-colours__colour-submit',
+	          type: 'submit'
+	        },
+	        'Add'
 	      )
 	    )
 	  );
@@ -22247,7 +22323,7 @@
 	exports.default = AddColour;
 
 /***/ },
-/* 205 */
+/* 215 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -22257,11 +22333,14 @@
 	});
 	var nextColourId = 0;
 
-	var addColour = exports.addColour = function addColour(code) {
+	var addColour = exports.addColour = function addColour(_ref) {
+	  var name = _ref.name,
+	      code = _ref.code;
+
 	  var id = nextColourId += 1;
 	  var type = 'ADD_COLOUR';
 
-	  return { type: type, id: id, code: code };
+	  return { type: type, id: id, name: name, code: code };
 	};
 
 	var removeColour = exports.removeColour = function removeColour() {

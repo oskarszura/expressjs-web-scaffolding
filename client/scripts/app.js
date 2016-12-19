@@ -1,2 +1,2 @@
-import { createStore } from 'redux';
-import './admin';
+import './template/left-menu';
+import './admin-colours';

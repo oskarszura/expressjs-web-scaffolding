@@ -4086,165 +4086,38 @@ button.close {
 .affix {
   position: fixed; }
 
-@-ms-viewport {
-  width: device-width; }
+.c-admin-colours__colour-list {
+  margin: 0;
+  padding: 0;
+  list-style: none; }
 
-.visible-xs {
-  display: none !important; }
+.c-admin-colours__colour-list-item {
+  display: inline-block; }
 
-.visible-sm {
-  display: none !important; }
+.c-admin-colours__colour-list-name {
+  text-align: center; }
 
-.visible-md {
-  display: none !important; }
+.c-admin-colours__colour-list-code {
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  text-align: center; }
 
-.visible-lg {
-  display: none !important; }
+.c-admin-colours__adder {
+  width: 80px;
+  height: 80px; }
 
-.visible-xs-block, .visible-xs-inline, .visible-xs-inline-block, .visible-sm-block, .visible-sm-inline, .visible-sm-inline-block, .visible-md-block, .visible-md-inline, .visible-md-inline-block, .visible-lg-block, .visible-lg-inline, .visible-lg-inline-block {
-  display: none !important; }
+.c-admin-colours__colour-value, .c-admin-colours__colour-name {
+  width: 100%; }
+  .c-admin-colours__colour-value--is-invalid, .c-admin-colours__colour-name--is-invalid {
+    background-color: #FFDBDB; }
 
-@media (max-width: 767px) {
-  .visible-xs {
-    display: block !important; }
-  table.visible-xs {
-    display: table !important; }
-  tr.visible-xs {
-    display: table-row !important; }
-  th.visible-xs, td.visible-xs {
-    display: table-cell !important; } }
+.c-admin-colours__colour-value {
+  background-color: transparent;
+  border: 0; }
 
-@media (max-width: 767px) {
-  .visible-xs-block {
-    display: block !important; } }
-
-@media (max-width: 767px) {
-  .visible-xs-inline {
-    display: inline !important; } }
-
-@media (max-width: 767px) {
-  .visible-xs-inline-block {
-    display: inline-block !important; } }
-
-@media (min-width: 768px) and (max-width: 991px) {
-  .visible-sm {
-    display: block !important; }
-  table.visible-sm {
-    display: table !important; }
-  tr.visible-sm {
-    display: table-row !important; }
-  th.visible-sm, td.visible-sm {
-    display: table-cell !important; } }
-
-@media (min-width: 768px) and (max-width: 991px) {
-  .visible-sm-block {
-    display: block !important; } }
-
-@media (min-width: 768px) and (max-width: 991px) {
-  .visible-sm-inline {
-    display: inline !important; } }
-
-@media (min-width: 768px) and (max-width: 991px) {
-  .visible-sm-inline-block {
-    display: inline-block !important; } }
-
-@media (min-width: 992px) and (max-width: 1199px) {
-  .visible-md {
-    display: block !important; }
-  table.visible-md {
-    display: table !important; }
-  tr.visible-md {
-    display: table-row !important; }
-  th.visible-md, td.visible-md {
-    display: table-cell !important; } }
-
-@media (min-width: 992px) and (max-width: 1199px) {
-  .visible-md-block {
-    display: block !important; } }
-
-@media (min-width: 992px) and (max-width: 1199px) {
-  .visible-md-inline {
-    display: inline !important; } }
-
-@media (min-width: 992px) and (max-width: 1199px) {
-  .visible-md-inline-block {
-    display: inline-block !important; } }
-
-@media (min-width: 1200px) {
-  .visible-lg {
-    display: block !important; }
-  table.visible-lg {
-    display: table !important; }
-  tr.visible-lg {
-    display: table-row !important; }
-  th.visible-lg, td.visible-lg {
-    display: table-cell !important; } }
-
-@media (min-width: 1200px) {
-  .visible-lg-block {
-    display: block !important; } }
-
-@media (min-width: 1200px) {
-  .visible-lg-inline {
-    display: inline !important; } }
-
-@media (min-width: 1200px) {
-  .visible-lg-inline-block {
-    display: inline-block !important; } }
-
-@media (max-width: 767px) {
-  .hidden-xs {
-    display: none !important; } }
-
-@media (min-width: 768px) and (max-width: 991px) {
-  .hidden-sm {
-    display: none !important; } }
-
-@media (min-width: 992px) and (max-width: 1199px) {
-  .hidden-md {
-    display: none !important; } }
-
-@media (min-width: 1200px) {
-  .hidden-lg {
-    display: none !important; } }
-
-.visible-print {
-  display: none !important; }
-
-@media print {
-  .visible-print {
-    display: block !important; }
-  table.visible-print {
-    display: table !important; }
-  tr.visible-print {
-    display: table-row !important; }
-  th.visible-print, td.visible-print {
-    display: table-cell !important; } }
-
-.visible-print-block {
-  display: none !important; }
-  @media print {
-    .visible-print-block {
-      display: block !important; } }
-
-.visible-print-inline {
-  display: none !important; }
-  @media print {
-    .visible-print-inline {
-      display: inline !important; } }
-
-.visible-print-inline-block {
-  display: none !important; }
-  @media print {
-    .visible-print-inline-block {
-      display: inline-block !important; } }
-
-@media print {
-  .hidden-print {
-    display: none !important; } }
-
-.c-admin__colour-value--is-invalid {
-  background-color: #FFDBDB; }
+.c-admin-colours__colour-submit {
+  width: 100%; }
 
 .header {
   display: -webkit-box;
@@ -4277,7 +4150,52 @@ button.close {
       padding: 15px 10px; }
 
 .main-content {
-  padding: 0 10px; }
+  padding-right: 10px;
+  padding-left: calc(4vw + 10px); }
+
+.left-menu {
+  width: 4vw;
+  height: 100vh;
+  position: absolute;
+  background-color: #FFFFFF;
+  -webkit-transition: width .35s ease-in-out;
+  transition: width .35s ease-in-out; }
+  .left-menu--is-active {
+    width: 15vw; }
+  .left-menu__activator {
+    font-size: 40px;
+    font-size: 4rem;
+    width: 100%;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+    background-color: #EDEDED;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    color: #2E2E2E; }
+  .left-menu__list {
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    -webkit-transition: all 0.75s ease-in-out;
+    transition: all 0.75s ease-in-out;
+    opacity: 0;
+    width: 0px; }
+    .left-menu--is-active .left-menu__list {
+      opacity: 1;
+      width: 100%; }
+  .left-menu__list-item {
+    padding: 5px 10px;
+    width: 15vw; }
+  .left-menu__list-link {
+    color: #2E2E2E;
+    font-size: 13px;
+    font-size: 1.3rem; }
+    .left-menu__list-link:hover {
+      color: #2E2E2E; }
 
 body {
   background-color: #D7DADF; }

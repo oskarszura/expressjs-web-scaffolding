@@ -2,9 +2,10 @@ import React, { PropTypes } from 'react';
 import ColourRow from './ColourRow';
 
 const ColourList = ({ colours }) => (
-  <ul>
+  <ul className="c-admin-colours__colour-list">
     { colours.map(colour => <ColourRow
       key={colour.id}
+      name={colour.name}
       code={colour.code}
     />)}
   </ul>
