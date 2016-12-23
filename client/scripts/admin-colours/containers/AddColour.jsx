@@ -1,70 +1,85 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addColour } from '../actions';
+import { bindActionCreators } from 'redux';
+import * as actions from '../actions';
 
 let nameInput;
 let valueInput;
 let codeDiv;
 
-const onColourNameChange = (e) => {
-  e.preventDefault();
-  const isValid = /[0-9A-Fa-f]{6}/g.test(nameInput.value);
-  nameInput.classList.toggle('c-admin-colours__colour-name--is-invalid'
-    , !isValid);
-};
+@connect(
+  state => ({}),
+  dispatch => bindActionCreators(actions, dispatch)
+)
+export default class AddColour extends Component {
+  constructor(props) {
+    super(props);
+    this.onColourNameChange = this.onColourNameChange.bind(this);
+    this.onColourValueChange = this.onColourValueChange.bind(this);
+  }
 
-const onColourValueChange = (e) => {
-  e.preventDefault();
-  const isValid = /[0-9A-Fa-f]{6}/g.test(valueInput.value);
-  valueInput.classList.toggle('c-admin-colours__colour-value--is-invalid'
-    , !isValid);
-  codeDiv.style.backgroundColor = `#${valueInput.value}`;
-};
+  onColourNameChange(e) {
+    e.preventDefault();
+    const isValid = /[0-9A-Fa-f]{6}/g.test(nameInput.value);
+    nameInput.classList.toggle('c-admin-colours__colour-name--is-invalid'
+      , !isValid);
+  };
 
-const AddColour = connect()(({ dispatch }) => {
-  return (
-    <div className="c-admin-colours__adder">
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
+  onColourValueChange(e) {
+    e.preventDefault();
+    const isValid = /[0-9A-Fa-f]{6}/g.test(valueInput.value);
+    valueInput.classList.toggle('c-admin-colours__colour-value--is-invalid'
+      , !isValid);
+    codeDiv.style.backgroundColor = `#${valueInput.value}`;
+  };
 
-          if (!valueInput.value.trim()) {
-            return;
-          }
 
-          dispatch(addColour({
-            name: nameInput.value,
-            code: valueInput.value,
-          }));
-          valueInput.value = '';
-        }}
-      >
-        <input
-          className="c-admin-colours__colour-name"
-          ref={(node) => { nameInput = node; }}
-          onChange={onColourNameChange}
-        />
+  render() {
+    const { dispatch } = this.props;
 
-        <div
-          className="c-admin-colours__colour-list-code"
-          ref={(node) => { codeDiv = node; }}
+    return (
+      <div className="c-admin-colours__adder">
+        <form
+          onSubmit={(e) => {
+        e.preventDefault();
+
+        if (!valueInput.value.trim()) {
+          return;
+        }
+
+        dispatch(this.props.addColour({
+          name: nameInput.value,
+          code: valueInput.value,
+        }));
+        valueInput.value = '';
+      }}
         >
           <input
-            className="c-admin-colours__colour-value"
-            ref={(node) => { valueInput = node; }}
-            onChange={onColourValueChange}
+            className="c-admin-colours__colour-name"
+            ref={(node) => { nameInput = node; }}
+            onChange={this.onColourNameChange}
           />
-        </div>
 
-        <button
-          className="c-admin-colours__colour-submit"
-          type="submit"
-        >
-          Add
-        </button>
-      </form>
-    </div>
-  );
-});
+          <div
+            className="c-admin-colours__colour-list-code"
+            ref={(node) => { codeDiv = node; }}
+          >
+            <input
+              className="c-admin-colours__colour-value"
+              ref={(node) => { valueInput = node; }}
+              onChange={this.onColourValueChange}
+            />
+          </div>
 
-export default AddColour;
+          <button
+            className="c-admin-colours__colour-submit"
+            type="submit"
+          >
+            Add
+          </button>
+        </form>
+      </div>
+    );
+  }
+}
+
