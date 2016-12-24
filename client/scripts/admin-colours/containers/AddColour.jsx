@@ -4,12 +4,13 @@ import { bindActionCreators } from 'redux';
 import * as actions from '../actions';
 
 @connect(
-  () => ({}),
+  store => ({ colours: store.colours }),
   dispatch => bindActionCreators(actions, dispatch)
 )
 export default class AddColour extends Component {
   static propTypes = {
     addColour: PropTypes.func.isRequired,
+    persistColour: PropTypes.func.isRequired,
   }
 
   constructor(props) {
@@ -17,6 +18,7 @@ export default class AddColour extends Component {
 
     this.onColourNameChange = this.onColourNameChange.bind(this);
     this.onColourValueChange = this.onColourValueChange.bind(this);
+    this.handleOnSubmit = this.handleOnSubmit.bind(this);
   }
 
   onColourNameChange(e) {
@@ -34,6 +36,25 @@ export default class AddColour extends Component {
     this.codeDiv.style.backgroundColor = `#${this.valueInput.value}`;
   }
 
+  handleOnSubmit(e) {
+    e.preventDefault();
+
+    if (!this.valueInput.value.trim()) {
+      return;
+    }
+
+    const colour = {
+      name: this.nameInput.value,
+      code: this.valueInput.value,
+    };
+
+    this.props.addColour(colour);
+    this.props.persistColour(colour);
+
+    this.valueInput.value = '';
+    this.nameInput.value = '';
+  }
+
   valueInput;
   nameInput;
   codeDiv;
@@ -42,19 +63,7 @@ export default class AddColour extends Component {
     return (
       <div className="c-admin-colours__adder">
         <form
-          onSubmit={(e) => {
-            e.preventDefault();
-
-            if (!this.valueInput.value.trim()) {
-              return;
-            }
-
-            this.props.addColour({
-              name: this.nameInput.value,
-              code: this.valueInput.value,
-            });
-            this.valueInput.value = '';
-          }}
+          onSubmit={this.handleOnSubmit}
         >
           <input
             className="c-admin-colours__colour-name"

@@ -24,6 +24,8 @@ const colours = (state = [], action) => {
           code: action.code,
         }),
       ];
+    case 'LOADED_COLOURS':
+      return action.colours;
     default:
       return state;
   }
