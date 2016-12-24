@@ -22045,7 +22045,12 @@
 
 	  switch (action.type) {
 	    case 'ADD_COLOUR':
-	      return [].concat(_toConsumableArray(state), [colour(undefined, action)]);
+	      return [].concat(_toConsumableArray(state), [colour(undefined, {
+	        type: action.type,
+	        id: state.length,
+	        name: action.name,
+	        code: action.code
+	      })]);
 	    default:
 	      return state;
 	  }
@@ -22170,7 +22175,7 @@
 /* 204 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -22187,21 +22192,21 @@
 	      code = _ref.code;
 
 	  var style = {
-	    'background-color': '#' + code
+	    backgroundColor: code
 	  };
 
 	  return _react2.default.createElement(
-	    'li',
-	    { className: 'c-admin-colours__colour-list-item' },
+	    "li",
+	    { className: "c-admin-colours__colour-list-item" },
 	    _react2.default.createElement(
-	      'div',
-	      { className: 'c-admin-colours__colour-list-name' },
+	      "div",
+	      { className: "c-admin-colours__colour-list-name" },
 	      name
 	    ),
 	    _react2.default.createElement(
-	      'div',
+	      "div",
 	      {
-	        className: 'c-admin-colours__colour-list-code',
+	        className: "c-admin-colours__colour-list-code",
 	        style: style
 	      },
 	      code
@@ -22229,7 +22234,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _dec, _class;
+	var _dec, _class, _class2, _temp;
 
 	var _react = __webpack_require__(3);
 
@@ -22253,15 +22258,11 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var nameInput = void 0;
-	var valueInput = void 0;
-	var codeDiv = void 0;
-
-	var AddColour = (_dec = (0, _reactRedux.connect)(function (state) {
+	var AddColour = (_dec = (0, _reactRedux.connect)(function () {
 	  return {};
 	}, function (dispatch) {
 	  return (0, _redux.bindActionCreators)(actions, dispatch);
-	}), _dec(_class = function (_Component) {
+	}), _dec(_class = (_temp = _class2 = function (_Component) {
 	  _inherits(AddColour, _Component);
 
 	  function AddColour(props) {
@@ -22278,24 +22279,21 @@
 	    key: 'onColourNameChange',
 	    value: function onColourNameChange(e) {
 	      e.preventDefault();
-	      var isValid = /[0-9A-Fa-f]{6}/g.test(nameInput.value);
-	      nameInput.classList.toggle('c-admin-colours__colour-name--is-invalid', !isValid);
+	      var isValid = true;
+	      this.nameInput.classList.toggle('c-admin-colours__colour-name--is-invalid', !isValid);
 	    }
 	  }, {
 	    key: 'onColourValueChange',
 	    value: function onColourValueChange(e) {
 	      e.preventDefault();
-	      var isValid = /[0-9A-Fa-f]{6}/g.test(valueInput.value);
-	      valueInput.classList.toggle('c-admin-colours__colour-value--is-invalid', !isValid);
-	      codeDiv.style.backgroundColor = '#' + valueInput.value;
+	      var isValid = /[0-9A-Fa-f]{6}/g.test(this.valueInput.value);
+	      this.valueInput.classList.toggle('c-admin-colours__colour-value--is-invalid', !isValid);
+	      this.codeDiv.style.backgroundColor = '#' + this.valueInput.value;
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var _this2 = this;
-
-	      var dispatch = this.props.dispatch;
-
 
 	      return _react2.default.createElement(
 	        'div',
@@ -22306,21 +22304,21 @@
 	            onSubmit: function onSubmit(e) {
 	              e.preventDefault();
 
-	              if (!valueInput.value.trim()) {
+	              if (!_this2.valueInput.value.trim()) {
 	                return;
 	              }
 
-	              dispatch(_this2.props.addColour({
-	                name: nameInput.value,
-	                code: valueInput.value
-	              }));
-	              valueInput.value = '';
+	              _this2.props.addColour({
+	                name: _this2.nameInput.value,
+	                code: _this2.valueInput.value
+	              });
+	              _this2.valueInput.value = '';
 	            }
 	          },
 	          _react2.default.createElement('input', {
 	            className: 'c-admin-colours__colour-name',
 	            ref: function ref(node) {
-	              nameInput = node;
+	              _this2.nameInput = node;
 	            },
 	            onChange: this.onColourNameChange
 	          }),
@@ -22329,13 +22327,14 @@
 	            {
 	              className: 'c-admin-colours__colour-list-code',
 	              ref: function ref(node) {
-	                codeDiv = node;
+	                _this2.codeDiv = node;
 	              }
 	            },
 	            _react2.default.createElement('input', {
+	              type: 'color',
 	              className: 'c-admin-colours__colour-value',
 	              ref: function ref(node) {
-	                valueInput = node;
+	                _this2.valueInput = node;
 	              },
 	              onChange: this.onColourValueChange
 	            })
@@ -22354,7 +22353,9 @@
 	  }]);
 
 	  return AddColour;
-	}(_react.Component)) || _class);
+	}(_react.Component), _class2.propTypes = {
+	  addColour: _react.PropTypes.func.isRequired
+	}, _temp)) || _class);
 	exports.default = AddColour;
 
 /***/ },
@@ -22366,16 +22367,13 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	var nextColourId = 0;
-
 	var addColour = exports.addColour = function addColour(_ref) {
 	  var name = _ref.name,
 	      code = _ref.code;
 
-	  var id = nextColourId += 1;
 	  var type = 'ADD_COLOUR';
 
-	  return { type: type, id: id, name: name, code: code };
+	  return { type: type, name: name, code: code };
 	};
 
 	var removeColour = exports.removeColour = function removeColour() {

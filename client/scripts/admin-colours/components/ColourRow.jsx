@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 
 const ColourRow = ({ name, code }) => {
   const style = {
-    'background-color': `#${code}`,
+    backgroundColor: code,
   };
 
   return (<li className="c-admin-colours__colour-list-item">

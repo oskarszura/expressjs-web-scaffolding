@@ -1,72 +1,75 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions';
 
-let nameInput;
-let valueInput;
-let codeDiv;
-
 @connect(
-  state => ({}),
+  () => ({}),
   dispatch => bindActionCreators(actions, dispatch)
 )
 export default class AddColour extends Component {
+  static propTypes = {
+    addColour: PropTypes.func.isRequired,
+  }
+
   constructor(props) {
     super(props);
+
     this.onColourNameChange = this.onColourNameChange.bind(this);
     this.onColourValueChange = this.onColourValueChange.bind(this);
   }
 
   onColourNameChange(e) {
     e.preventDefault();
-    const isValid = /[0-9A-Fa-f]{6}/g.test(nameInput.value);
-    nameInput.classList.toggle('c-admin-colours__colour-name--is-invalid'
+    const isValid = true;
+    this.nameInput.classList.toggle('c-admin-colours__colour-name--is-invalid'
       , !isValid);
-  };
+  }
 
   onColourValueChange(e) {
     e.preventDefault();
-    const isValid = /[0-9A-Fa-f]{6}/g.test(valueInput.value);
-    valueInput.classList.toggle('c-admin-colours__colour-value--is-invalid'
+    const isValid = /[0-9A-Fa-f]{6}/g.test(this.valueInput.value);
+    this.valueInput.classList.toggle('c-admin-colours__colour-value--is-invalid'
       , !isValid);
-    codeDiv.style.backgroundColor = `#${valueInput.value}`;
-  };
+    this.codeDiv.style.backgroundColor = `#${this.valueInput.value}`;
+  }
 
+  valueInput;
+  nameInput;
+  codeDiv;
 
   render() {
-    const { dispatch } = this.props;
-
     return (
       <div className="c-admin-colours__adder">
         <form
           onSubmit={(e) => {
-        e.preventDefault();
+            e.preventDefault();
 
-        if (!valueInput.value.trim()) {
-          return;
-        }
+            if (!this.valueInput.value.trim()) {
+              return;
+            }
 
-        dispatch(this.props.addColour({
-          name: nameInput.value,
-          code: valueInput.value,
-        }));
-        valueInput.value = '';
-      }}
+            this.props.addColour({
+              name: this.nameInput.value,
+              code: this.valueInput.value,
+            });
+            this.valueInput.value = '';
+          }}
         >
           <input
             className="c-admin-colours__colour-name"
-            ref={(node) => { nameInput = node; }}
+            ref={(node) => { this.nameInput = node; }}
             onChange={this.onColourNameChange}
           />
 
           <div
             className="c-admin-colours__colour-list-code"
-            ref={(node) => { codeDiv = node; }}
+            ref={(node) => { this.codeDiv = node; }}
           >
             <input
+              type="color"
               className="c-admin-colours__colour-value"
-              ref={(node) => { valueInput = node; }}
+              ref={(node) => { this.valueInput = node; }}
               onChange={this.onColourValueChange}
             />
           </div>

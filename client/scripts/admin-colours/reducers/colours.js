@@ -10,18 +10,23 @@ const colour = (state = {}, action) => {
     default:
       return state;
   }
-}
+};
 
 const colours = (state = [], action) => {
   switch (action.type) {
     case 'ADD_COLOUR':
       return [
         ...state,
-        colour(undefined, action),
+        colour(undefined, {
+          type: action.type,
+          id: state.length,
+          name: action.name,
+          code: action.code,
+        }),
       ];
     default:
       return state;
   }
-}
+};
 
 export default colours;

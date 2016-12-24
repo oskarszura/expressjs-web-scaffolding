@@ -4104,8 +4104,7 @@ button.close {
   text-align: center; }
 
 .c-admin-colours__adder {
-  width: 80px;
-  height: 80px; }
+  width: 80px; }
 
 .c-admin-colours__colour-value, .c-admin-colours__colour-name {
   width: 100%; }
@@ -4114,7 +4113,9 @@ button.close {
 
 .c-admin-colours__colour-value {
   background-color: transparent;
-  border: 0; }
+  border: 0;
+  padding: 0;
+  height: 80px; }
 
 .c-admin-colours__colour-submit {
   width: 100%; }

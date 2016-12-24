@@ -23,7 +23,6 @@
 
   &__adder {
     width: 80px;
-    height: 80px;
   }
 
   &__colour-value, &__colour-name {
@@ -37,6 +36,8 @@
   &__colour-value {
     background-color: transparent;
     border: 0;
+    padding: 0;
+    height: 80px;
   }
 
   &__colour-submit {
