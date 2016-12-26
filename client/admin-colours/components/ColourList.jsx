@@ -1,10 +1,11 @@
 import React, { PropTypes } from 'react';
-import ColourRow from './ColourRow';
+import ColourRow from './../containers/ColourRow';
 
 const ColourList = ({ colours }) => (
-  <ul className="c-admin-colours__colour-list">
+  <ul className="colour-list">
     { colours.map(colour => <ColourRow
-      key={colour.id}
+      key={colour._id}
+      _id={colour._id}
       name={colour.name}
       code={colour.code}
     />)}

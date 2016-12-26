@@ -24,14 +24,14 @@ export default class AddColour extends Component {
   onColourNameChange(e) {
     e.preventDefault();
     const isValid = true;
-    this.nameInput.classList.toggle('c-admin-colours__colour-name--is-invalid'
+    this.nameInput.classList.toggle('colour-adder__name--is-invalid'
       , !isValid);
   }
 
   onColourValueChange(e) {
     e.preventDefault();
     const isValid = /[0-9A-Fa-f]{6}/g.test(this.valueInput.value);
-    this.valueInput.classList.toggle('c-admin-colours__colour-value--is-invalid'
+    this.valueInput.classList.toggle('colour-adder__value--is-invalid'
       , !isValid);
     this.codeDiv.style.backgroundColor = `#${this.valueInput.value}`;
   }
@@ -48,7 +48,6 @@ export default class AddColour extends Component {
       code: this.valueInput.value,
     };
 
-    this.props.addColour(colour);
     this.props.persistColour(colour);
 
     this.valueInput.value = '';
@@ -61,30 +60,30 @@ export default class AddColour extends Component {
 
   render() {
     return (
-      <div className="c-admin-colours__adder">
+      <div className="colour-adder">
         <form
           onSubmit={this.handleOnSubmit}
         >
           <input
-            className="c-admin-colours__colour-name"
+            className="colour-adder__name"
             ref={(node) => { this.nameInput = node; }}
             onChange={this.onColourNameChange}
           />
 
           <div
-            className="c-admin-colours__colour-list-code"
+            className="colour-adder__code"
             ref={(node) => { this.codeDiv = node; }}
           >
             <input
               type="color"
-              className="c-admin-colours__colour-value"
+              className="colour-adder__value"
               ref={(node) => { this.valueInput = node; }}
               onChange={this.onColourValueChange}
             />
           </div>
 
           <button
-            className="c-admin-colours__colour-submit"
+            className="colour-adder__submit"
             type="submit"
           >
             Add

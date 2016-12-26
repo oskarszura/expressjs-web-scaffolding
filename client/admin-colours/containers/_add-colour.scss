@@ -1,0 +1,29 @@
+.colour-adder {
+  margin-top: 10px;
+  width: 150px;
+
+  &__value, &__name {
+    width: 100%;
+
+    &--is-invalid {
+      background-color: $colour-cosmos;
+    }
+  }
+
+  &__name {
+    @extend .form-control;
+  }
+
+  &__value {
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+    height: 80px;
+  }
+
+  &__submit {
+    @extend .btn;
+    @extend .btn-default;
+    width: 100%;
+  }
+}

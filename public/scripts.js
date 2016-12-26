@@ -87,7 +87,7 @@
 
 	var _reducers2 = _interopRequireDefault(_reducers);
 
-	var _ColoursApp = __webpack_require__(210);
+	var _ColoursApp = __webpack_require__(202);
 
 	var _ColoursApp2 = _interopRequireDefault(_ColoursApp);
 
@@ -22061,7 +22061,7 @@
 	  switch (action.type) {
 	    case 'ADD_COLOUR':
 	      return {
-	        id: action.id,
+	        _id: action._id,
 	        name: action.name,
 	        code: action.code
 	      };
@@ -22079,10 +22079,14 @@
 	    case 'ADD_COLOUR':
 	      return [].concat(_toConsumableArray(state), [colour(undefined, {
 	        type: action.type,
-	        id: state.length,
+	        _id: action._id,
 	        name: action.name,
 	        code: action.code
 	      })]);
+	    case 'REMOVE_COLOUR':
+	      return state.filter(function (colour) {
+	        return colour._id !== action._id;
+	      });
 	    case 'LOADED_COLOURS':
 	      return action.colours;
 	    default:
@@ -22093,7 +22097,93 @@
 	exports.default = colours;
 
 /***/ },
-/* 202 */,
+/* 202 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = undefined;
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _dec, _class, _class2, _temp;
+
+	var _react = __webpack_require__(3);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _redux = __webpack_require__(172);
+
+	var _reactRedux = __webpack_require__(161);
+
+	var _ColourList = __webpack_require__(203);
+
+	var _ColourList2 = _interopRequireDefault(_ColourList);
+
+	var _AddColour = __webpack_require__(208);
+
+	var _AddColour2 = _interopRequireDefault(_AddColour);
+
+	var _actions = __webpack_require__(206);
+
+	var actions = _interopRequireWildcard(_actions);
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var App = (_dec = (0, _reactRedux.connect)(function () {
+	  return {};
+	}, function (dispatch) {
+	  return (0, _redux.bindActionCreators)(actions, dispatch);
+	}), _dec(_class = (_temp = _class2 = function (_Component) {
+	  _inherits(App, _Component);
+
+	  function App(props) {
+	    _classCallCheck(this, App);
+
+	    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+	  }
+
+	  _createClass(App, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      this.props.loadColours();
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'c-admin-colours' },
+	        _react2.default.createElement(
+	          'h2',
+	          null,
+	          'Colour Manager'
+	        ),
+	        _react2.default.createElement(_ColourList2.default, null),
+	        _react2.default.createElement(_AddColour2.default, null)
+	      );
+	    }
+	  }]);
+
+	  return App;
+	}(_react.Component), _class2.propTypes = {
+	  loadColours: _react.PropTypes.func.isRequired
+	}, _temp)) || _class);
+	exports.default = App;
+	;
+
+/***/ },
 /* 203 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -22149,10 +22239,11 @@
 	  var colours = _ref.colours;
 	  return _react2.default.createElement(
 	    'ul',
-	    { className: 'c-admin-colours__colour-list' },
+	    { className: 'colour-list' },
 	    colours.map(function (colour) {
 	      return _react2.default.createElement(_ColourRow2.default, {
-	        key: colour.id,
+	        key: colour._id,
+	        _id: colour._id,
 	        name: colour.name,
 	        code: colour.code
 	      });
@@ -22170,56 +22261,6 @@
 /* 205 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(3);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var ColourRow = function ColourRow(_ref) {
-	  var name = _ref.name,
-	      code = _ref.code;
-
-	  var style = {
-	    backgroundColor: code
-	  };
-
-	  return _react2.default.createElement(
-	    "li",
-	    { className: "c-admin-colours__colour-list-item" },
-	    _react2.default.createElement(
-	      "div",
-	      { className: "c-admin-colours__colour-list-name" },
-	      name
-	    ),
-	    _react2.default.createElement(
-	      "div",
-	      {
-	        className: "c-admin-colours__colour-list-code",
-	        style: style
-	      },
-	      code
-	    )
-	  );
-	};
-
-	ColourRow.propTypes = {
-	  name: _react.PropTypes.string.isRequired,
-	  code: _react.PropTypes.string.isRequired
-	};
-
-	exports.default = ColourRow;
-
-/***/ },
-/* 206 */
-/***/ function(module, exports, __webpack_require__) {
-
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
@@ -22235,11 +22276,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactRedux = __webpack_require__(161);
-
 	var _redux = __webpack_require__(172);
 
-	var _actions = __webpack_require__(207);
+	var _reactRedux = __webpack_require__(161);
+
+	var _actions = __webpack_require__(206);
 
 	var actions = _interopRequireWildcard(_actions);
 
@@ -22253,118 +22294,79 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var AddColour = (_dec = (0, _reactRedux.connect)(function (store) {
-	  return { colours: store.colours };
+	var ColourRow = (_dec = (0, _reactRedux.connect)(function () {
+	  return {};
 	}, function (dispatch) {
 	  return (0, _redux.bindActionCreators)(actions, dispatch);
 	}), _dec(_class = (_temp = _class2 = function (_Component) {
-	  _inherits(AddColour, _Component);
+	  _inherits(ColourRow, _Component);
 
-	  function AddColour(props) {
-	    _classCallCheck(this, AddColour);
+	  function ColourRow(props) {
+	    _classCallCheck(this, ColourRow);
 
-	    var _this = _possibleConstructorReturn(this, (AddColour.__proto__ || Object.getPrototypeOf(AddColour)).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (ColourRow.__proto__ || Object.getPrototypeOf(ColourRow)).call(this, props));
 
-	    _this.onColourNameChange = _this.onColourNameChange.bind(_this);
-	    _this.onColourValueChange = _this.onColourValueChange.bind(_this);
-	    _this.handleOnSubmit = _this.handleOnSubmit.bind(_this);
+	    _this.handleRemoveClick = _this.handleRemoveClick.bind(_this);
 	    return _this;
 	  }
 
-	  _createClass(AddColour, [{
-	    key: 'onColourNameChange',
-	    value: function onColourNameChange(e) {
-	      e.preventDefault();
-	      var isValid = true;
-	      this.nameInput.classList.toggle('c-admin-colours__colour-name--is-invalid', !isValid);
-	    }
-	  }, {
-	    key: 'onColourValueChange',
-	    value: function onColourValueChange(e) {
-	      e.preventDefault();
-	      var isValid = /[0-9A-Fa-f]{6}/g.test(this.valueInput.value);
-	      this.valueInput.classList.toggle('c-admin-colours__colour-value--is-invalid', !isValid);
-	      this.codeDiv.style.backgroundColor = '#' + this.valueInput.value;
-	    }
-	  }, {
-	    key: 'handleOnSubmit',
-	    value: function handleOnSubmit(e) {
-	      e.preventDefault();
-
-	      if (!this.valueInput.value.trim()) {
-	        return;
-	      }
-
-	      var colour = {
-	        name: this.nameInput.value,
-	        code: this.valueInput.value
-	      };
-
-	      this.props.addColour(colour);
-	      this.props.persistColour(colour);
-
-	      this.valueInput.value = '';
-	      this.nameInput.value = '';
+	  _createClass(ColourRow, [{
+	    key: 'handleRemoveClick',
+	    value: function handleRemoveClick() {
+	      this.props.removeColour(this.props._id);
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var _this2 = this;
+	      var style = {
+	        backgroundColor: this.props.code
+	      };
 
 	      return _react2.default.createElement(
-	        'div',
-	        { className: 'c-admin-colours__adder' },
+	        'li',
+	        {
+	          className: 'colour-list__item'
+	        },
 	        _react2.default.createElement(
-	          'form',
+	          'div',
+	          { className: 'colour-list__name' },
+	          this.props.name
+	        ),
+	        _react2.default.createElement(
+	          'div',
 	          {
-	            onSubmit: this.handleOnSubmit
+	            className: 'colour-list__code',
+	            style: style
 	          },
-	          _react2.default.createElement('input', {
-	            className: 'c-admin-colours__colour-name',
-	            ref: function ref(node) {
-	              _this2.nameInput = node;
-	            },
-	            onChange: this.onColourNameChange
-	          }),
+	          this.props.code,
 	          _react2.default.createElement(
 	            'div',
-	            {
-	              className: 'c-admin-colours__colour-list-code',
-	              ref: function ref(node) {
-	                _this2.codeDiv = node;
-	              }
-	            },
-	            _react2.default.createElement('input', {
-	              type: 'color',
-	              className: 'c-admin-colours__colour-value',
-	              ref: function ref(node) {
-	                _this2.valueInput = node;
+	            { className: 'tool-tip' },
+	            _react2.default.createElement(
+	              'button',
+	              {
+	                className: 'colour-list__remove',
+	                onClick: this.handleRemoveClick
 	              },
-	              onChange: this.onColourValueChange
-	            })
-	          ),
-	          _react2.default.createElement(
-	            'button',
-	            {
-	              className: 'c-admin-colours__colour-submit',
-	              type: 'submit'
-	            },
-	            'Add'
+	              'Remove'
+	            )
 	          )
-	        )
+	        ),
+	        _react2.default.createElement('div', null)
 	      );
 	    }
 	  }]);
 
-	  return AddColour;
+	  return ColourRow;
 	}(_react.Component), _class2.propTypes = {
-	  addColour: _react.PropTypes.func.isRequired,
-	  persistColour: _react.PropTypes.func.isRequired
+	  _id: _react.PropTypes.string.isRequired,
+	  name: _react.PropTypes.string.isRequired,
+	  code: _react.PropTypes.string.isRequired
 	}, _temp)) || _class);
-	exports.default = AddColour;
+	exports.default = ColourRow;
 
 /***/ },
-/* 207 */
+/* 206 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22372,25 +22374,44 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	var $ = __webpack_require__(208);
+	var $ = __webpack_require__(207);
 
 	var addColour = exports.addColour = function addColour(_ref) {
-	  var name = _ref.name,
+	  var _id = _ref._id,
+	      name = _ref.name,
 	      code = _ref.code;
 
 	  var type = 'ADD_COLOUR';
-
-	  return { type: type, name: name, code: code };
+	  return { type: type, _id: _id, name: name, code: code };
 	};
 
-	var removeColour = exports.removeColour = function removeColour() {
-	  return {};
+	var deleteColour = exports.deleteColour = function deleteColour(_id) {
+	  var type = 'REMOVE_COLOUR';
+	  return { type: type, _id: _id };
+	};
+
+	var removeColour = exports.removeColour = function removeColour(colourId) {
+	  return function (dispatch) {
+	    $.ajax({
+	      url: '/api/colour/' + colourId,
+	      type: 'DELETE',
+	      success: function success() {
+	        dispatch(deleteColour(colourId));
+	      }
+	    });
+	  };
 	};
 
 	var persistColour = exports.persistColour = function persistColour(colour) {
-	  return function () {
-	    $.post('/api/colour', colour, function () {
-	      console.log('store persisted');
+	  return function (dispatch) {
+	    $.post('/api/colour', colour, function (data) {
+	      var addedColour = {
+	        _id: data.model._id,
+	        name: data.model.name,
+	        code: data.model.code
+	      };
+
+	      dispatch(addColour(addedColour));
 	    });
 	  };
 	};
@@ -22411,7 +22432,7 @@
 	};
 
 /***/ },
-/* 208 */
+/* 207 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -31627,8 +31648,7 @@
 
 
 /***/ },
-/* 209 */,
-/* 210 */
+/* 208 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31646,19 +31666,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _redux = __webpack_require__(172);
-
 	var _reactRedux = __webpack_require__(161);
 
-	var _ColourList = __webpack_require__(203);
+	var _redux = __webpack_require__(172);
 
-	var _ColourList2 = _interopRequireDefault(_ColourList);
-
-	var _AddColour = __webpack_require__(206);
-
-	var _AddColour2 = _interopRequireDefault(_AddColour);
-
-	var _actions = __webpack_require__(207);
+	var _actions = __webpack_require__(206);
 
 	var actions = _interopRequireWildcard(_actions);
 
@@ -31672,47 +31684,114 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var App = (_dec = (0, _reactRedux.connect)(function () {
-	  return {};
+	var AddColour = (_dec = (0, _reactRedux.connect)(function (store) {
+	  return { colours: store.colours };
 	}, function (dispatch) {
 	  return (0, _redux.bindActionCreators)(actions, dispatch);
 	}), _dec(_class = (_temp = _class2 = function (_Component) {
-	  _inherits(App, _Component);
+	  _inherits(AddColour, _Component);
 
-	  function App(props) {
-	    _classCallCheck(this, App);
+	  function AddColour(props) {
+	    _classCallCheck(this, AddColour);
 
-	    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (AddColour.__proto__ || Object.getPrototypeOf(AddColour)).call(this, props));
+
+	    _this.onColourNameChange = _this.onColourNameChange.bind(_this);
+	    _this.onColourValueChange = _this.onColourValueChange.bind(_this);
+	    _this.handleOnSubmit = _this.handleOnSubmit.bind(_this);
+	    return _this;
 	  }
 
-	  _createClass(App, [{
-	    key: 'componentWillMount',
-	    value: function componentWillMount() {
-	      this.props.loadColours();
+	  _createClass(AddColour, [{
+	    key: 'onColourNameChange',
+	    value: function onColourNameChange(e) {
+	      e.preventDefault();
+	      var isValid = true;
+	      this.nameInput.classList.toggle('colour-adder__name--is-invalid', !isValid);
+	    }
+	  }, {
+	    key: 'onColourValueChange',
+	    value: function onColourValueChange(e) {
+	      e.preventDefault();
+	      var isValid = /[0-9A-Fa-f]{6}/g.test(this.valueInput.value);
+	      this.valueInput.classList.toggle('colour-adder__value--is-invalid', !isValid);
+	      this.codeDiv.style.backgroundColor = '#' + this.valueInput.value;
+	    }
+	  }, {
+	    key: 'handleOnSubmit',
+	    value: function handleOnSubmit(e) {
+	      e.preventDefault();
+
+	      if (!this.valueInput.value.trim()) {
+	        return;
+	      }
+
+	      var colour = {
+	        name: this.nameInput.value,
+	        code: this.valueInput.value
+	      };
+
+	      this.props.persistColour(colour);
+
+	      this.valueInput.value = '';
+	      this.nameInput.value = '';
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'c-admin-colours' },
+	        { className: 'colour-adder' },
 	        _react2.default.createElement(
-	          'h2',
-	          null,
-	          'Colour Manager'
-	        ),
-	        _react2.default.createElement(_ColourList2.default, null),
-	        _react2.default.createElement(_AddColour2.default, null)
+	          'form',
+	          {
+	            onSubmit: this.handleOnSubmit
+	          },
+	          _react2.default.createElement('input', {
+	            className: 'colour-adder__name',
+	            ref: function ref(node) {
+	              _this2.nameInput = node;
+	            },
+	            onChange: this.onColourNameChange
+	          }),
+	          _react2.default.createElement(
+	            'div',
+	            {
+	              className: 'colour-adder__code',
+	              ref: function ref(node) {
+	                _this2.codeDiv = node;
+	              }
+	            },
+	            _react2.default.createElement('input', {
+	              type: 'color',
+	              className: 'colour-adder__value',
+	              ref: function ref(node) {
+	                _this2.valueInput = node;
+	              },
+	              onChange: this.onColourValueChange
+	            })
+	          ),
+	          _react2.default.createElement(
+	            'button',
+	            {
+	              className: 'colour-adder__submit',
+	              type: 'submit'
+	            },
+	            'Add'
+	          )
+	        )
 	      );
 	    }
 	  }]);
 
-	  return App;
+	  return AddColour;
 	}(_react.Component), _class2.propTypes = {
-	  loadColours: _react.PropTypes.func.isRequired
+	  addColour: _react.PropTypes.func.isRequired,
+	  persistColour: _react.PropTypes.func.isRequired
 	}, _temp)) || _class);
-	exports.default = App;
-	;
+	exports.default = AddColour;
 
 /***/ }
 /******/ ]);

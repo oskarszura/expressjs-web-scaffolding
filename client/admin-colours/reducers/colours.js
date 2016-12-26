@@ -2,7 +2,7 @@ const colour = (state = {}, action) => {
   switch (action.type) {
     case 'ADD_COLOUR':
       return {
-        id: action.id,
+        _id: action._id,
         name: action.name,
         code: action.code,
       };
@@ -19,11 +19,13 @@ const colours = (state = [], action) => {
         ...state,
         colour(undefined, {
           type: action.type,
-          id: state.length,
+          _id: action._id,
           name: action.name,
           code: action.code,
         }),
       ];
+    case 'REMOVE_COLOUR':
+      return state.filter(colour => colour._id !== action._id);
     case 'LOADED_COLOURS':
       return action.colours;
     default:

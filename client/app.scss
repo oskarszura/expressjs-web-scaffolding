@@ -65,15 +65,13 @@
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/_carousel.scss";
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/_utilities.scss";
 
-@import "colours";
-@import "variables";
+@import "common/variables";
+@import "common/tooltip";
 
-@import "../scripts/admin-colours/admin-colours";
+@import "template/body";
+@import "template/header";
+@import "template/main-content";
+@import "template/left-menu";
 
-@import "./templates/header";
-@import "./templates/main-content";
-@import "./templates/left-menu";
-
-body {
-  background-color: $color-michka;
-}
+@import "admin-colours/containers/colour-list";
+@import "admin-colours/containers/add-colour";

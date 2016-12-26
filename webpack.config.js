@@ -3,8 +3,8 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
   context: `${__dirname}/client`,
   entry: {
-    scripts: './scripts/app.js',
-    css: './styles/styles.scss',
+    scripts: './app.js',
+    css: './app.scss',
   },
   output: {
     path: `${__dirname}/public`,

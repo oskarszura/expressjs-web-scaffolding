@@ -7,6 +7,7 @@ $left-menu-inactive-width: 4vw;
   position: absolute;
   background-color: $color-white;
   transition: width .35s ease-in-out;
+  z-index: 100;
 
   &--is-active {
     width: $left-menu-active-width;

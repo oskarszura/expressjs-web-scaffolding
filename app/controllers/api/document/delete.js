@@ -1,16 +1,16 @@
 const models = require('../../../models');
 
 module.exports = (req, res) => {
-  const responseModel = models[req.params.collection]
-    , documentId = req.params.document
+  const responseModel = models[req.params.collection];
+  const documentId = req.params.document;
 
-    , onDelete = (err, model) => {
-        const outputData = {
-          status: 200
-          , model: model
-        };
-        res.json(outputData);
-      };
+  const onDelete = (err, model) => {
+    const outputData = {
+      status: 200,
+      model,
+    };
+    res.json(outputData);
+  };
 
-  responseModel.where({_id: documentId}).findOneAndRemove(onDelete)
+  responseModel.where({ _id: documentId }).findOneAndRemove(onDelete);
 }

@@ -1,0 +1,10 @@
+.tool-tip {
+  position: absolute;
+  display: none;
+  background-color: $color-white;
+  border-radius: 4px;
+  box-shadow: -1px -1px 5px 0px rgba(0,0,0,0.75);
+  top: 0px;
+  right: -55px;
+  z-index: 99;
+}
