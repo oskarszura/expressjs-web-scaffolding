@@ -25,7 +25,7 @@ const express = require('express')
   , db = mongoose.connect(process.env.MONGOLAB_URI || mongoURI, onDbConnect)
 
 module.exports = (app, config) => {
-  const controllers = glob.sync(config.root + '/app/controllers/*(*.js|api)')
+  const controllers = glob.sync(config.root + '/app/controllers/*(*.js|api|admin)')
 
   app.set('views', config.root + '/app/views');
   app.set('view engine', 'ejs');

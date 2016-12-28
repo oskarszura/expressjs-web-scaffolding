@@ -4093,8 +4093,18 @@ button.close {
   border-radius: 4px;
   box-shadow: -1px -1px 5px 0px rgba(0, 0, 0, .75);
   top: 0px;
-  right: -55px;
+  right: -62px;
   z-index: 99; }
+  .tool-tip::before {
+    content: '';
+    position: absolute;
+    top: 31px;
+    left: -10px;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 10px solid white; }
 
 body {
   background-color: #F0F6F7; }

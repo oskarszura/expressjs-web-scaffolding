@@ -12,7 +12,7 @@ const options = {
   key: hskey,
   cert: hscert,
 };
-const workers = os.cpus().length;
+const workers = 1; //os.cpus().length;
 const app = express();
 const expressApp = require('./config/express')(app, config);
 
