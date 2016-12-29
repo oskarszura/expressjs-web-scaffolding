@@ -3,5 +3,8 @@
   "extends": "airbnb",
   "globals": {
     "document": true
+  },
+  "rules": {
+    "no-underscore-dangle": "off"
   }
 }

@@ -1,2 +1,2 @@
 import './template/left-menu';
-import './admin-colours';
+import './admin';

@@ -29,9 +29,19 @@
     }
   }
 
-  &__remove {
+  &__edit, &__remove {
     @extend .btn;
-    @extend .btn-danger;
     @extend .btn-xs;
+    vertical-align: top;
+    display: block;
+    width: 100%;
+  }
+
+  &__remove {
+    @extend .btn-danger;
+  }
+
+  &__edit {
+    @extend .btn-info;
   }
 }

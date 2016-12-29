@@ -11,9 +11,13 @@ const store = createStore(
   applyMiddleware(thunk)
 );
 
-render(
-  <Provider store={store}>
-    <ColoursApp />
-  </Provider>,
-  document.querySelector('.js-admin-colours')
-);
+const applicationNode = document.querySelector('.js-admin-colours');
+
+if (applicationNode) {
+  render(
+    <Provider store={store}>
+      <ColoursApp />
+    </Provider>,
+    applicationNode
+  );
+}

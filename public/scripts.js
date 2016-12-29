@@ -48,7 +48,7 @@
 
 	__webpack_require__(1);
 
-	__webpack_require__(2);
+	__webpack_require__(218);
 
 /***/ },
 /* 1 */
@@ -59,49 +59,14 @@
 	var leftMenuDOM = document.querySelector('.js-left-menu');
 	var leftMenuActivatorDOM = document.querySelector('.js-left-menu-activator');
 
-	leftMenuActivatorDOM.addEventListener('click', function () {
-	  leftMenuDOM.classList.toggle('left-menu--is-active');
-	});
+	if (leftMenuDOM) {
+	  leftMenuActivatorDOM.addEventListener('click', function () {
+	    leftMenuDOM.classList.toggle('left-menu--is-active');
+	  });
+	}
 
 /***/ },
-/* 2 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _react = __webpack_require__(3);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactDom = __webpack_require__(160);
-
-	var _reactRedux = __webpack_require__(161);
-
-	var _redux = __webpack_require__(172);
-
-	var _reduxThunk = __webpack_require__(199);
-
-	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
-
-	var _reducers = __webpack_require__(200);
-
-	var _reducers2 = _interopRequireDefault(_reducers);
-
-	var _ColoursApp = __webpack_require__(202);
-
-	var _ColoursApp2 = _interopRequireDefault(_ColoursApp);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var store = (0, _redux.createStore)(_reducers2.default, (0, _redux.applyMiddleware)(_reduxThunk2.default));
-
-	(0, _reactDom.render)(_react2.default.createElement(
-	  _reactRedux.Provider,
-	  { store: store },
-	  _react2.default.createElement(_ColoursApp2.default, null)
-	), document.querySelector('.js-admin-colours'));
-
-/***/ },
+/* 2 */,
 /* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -22019,421 +21984,13 @@
 	exports['default'] = thunk;
 
 /***/ },
-/* 200 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _redux = __webpack_require__(172);
-
-	var _colours = __webpack_require__(201);
-
-	var _colours2 = _interopRequireDefault(_colours);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var rootReducer = (0, _redux.combineReducers)({
-	  colours: _colours2.default
-	});
-
-	exports.default = rootReducer;
-
-/***/ },
-/* 201 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-	var colour = function colour() {
-	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-	  var action = arguments[1];
-
-	  switch (action.type) {
-	    case 'ADD_COLOUR':
-	      return {
-	        _id: action._id,
-	        name: action.name,
-	        code: action.code
-	      };
-
-	    default:
-	      return state;
-	  }
-	};
-
-	var colours = function colours() {
-	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-	  var action = arguments[1];
-
-	  switch (action.type) {
-	    case 'ADD_COLOUR':
-	      return [].concat(_toConsumableArray(state), [colour(undefined, {
-	        type: action.type,
-	        _id: action._id,
-	        name: action.name,
-	        code: action.code
-	      })]);
-	    case 'REMOVE_COLOUR':
-	      return state.filter(function (colour) {
-	        return colour._id !== action._id;
-	      });
-	    case 'LOADED_COLOURS':
-	      return action.colours;
-	    default:
-	      return state;
-	  }
-	};
-
-	exports.default = colours;
-
-/***/ },
-/* 202 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.default = undefined;
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _dec, _class, _class2, _temp;
-
-	var _react = __webpack_require__(3);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _redux = __webpack_require__(172);
-
-	var _reactRedux = __webpack_require__(161);
-
-	var _ColourList = __webpack_require__(203);
-
-	var _ColourList2 = _interopRequireDefault(_ColourList);
-
-	var _AddColour = __webpack_require__(208);
-
-	var _AddColour2 = _interopRequireDefault(_AddColour);
-
-	var _actions = __webpack_require__(206);
-
-	var actions = _interopRequireWildcard(_actions);
-
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var App = (_dec = (0, _reactRedux.connect)(function () {
-	  return {};
-	}, function (dispatch) {
-	  return (0, _redux.bindActionCreators)(actions, dispatch);
-	}), _dec(_class = (_temp = _class2 = function (_Component) {
-	  _inherits(App, _Component);
-
-	  function App(props) {
-	    _classCallCheck(this, App);
-
-	    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
-	  }
-
-	  _createClass(App, [{
-	    key: 'componentWillMount',
-	    value: function componentWillMount() {
-	      this.props.loadColours();
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'c-admin-colours' },
-	        _react2.default.createElement(
-	          'h2',
-	          null,
-	          'Colour Manager'
-	        ),
-	        _react2.default.createElement(_ColourList2.default, null),
-	        _react2.default.createElement(_AddColour2.default, null)
-	      );
-	    }
-	  }]);
-
-	  return App;
-	}(_react.Component), _class2.propTypes = {
-	  loadColours: _react.PropTypes.func.isRequired
-	}, _temp)) || _class);
-	exports.default = App;
-	;
-
-/***/ },
-/* 203 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _reactRedux = __webpack_require__(161);
-
-	var _ColourList = __webpack_require__(204);
-
-	var _ColourList2 = _interopRequireDefault(_ColourList);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var mapStateToProps = function mapStateToProps(state) {
-	  return {
-	    colours: state.colours
-	  };
-	};
-
-	var mapDispatchToProps = function mapDispatchToProps() {
-	  return {};
-	};
-
-	var ColourListContainer = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_ColourList2.default);
-
-	exports.default = ColourListContainer;
-
-/***/ },
-/* 204 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(3);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _ColourRow = __webpack_require__(205);
-
-	var _ColourRow2 = _interopRequireDefault(_ColourRow);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var ColourList = function ColourList(_ref) {
-	  var colours = _ref.colours;
-	  return _react2.default.createElement(
-	    'ul',
-	    { className: 'colour-list' },
-	    colours.map(function (colour) {
-	      return _react2.default.createElement(_ColourRow2.default, {
-	        key: colour._id,
-	        _id: colour._id,
-	        name: colour.name,
-	        code: colour.code
-	      });
-	    })
-	  );
-	};
-
-	ColourList.propTypes = {
-	  colours: _react.PropTypes.arrayOf(_react.PropTypes.shape({}).isRequired).isRequired
-	};
-
-	exports.default = ColourList;
-
-/***/ },
-/* 205 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.default = undefined;
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _dec, _class, _class2, _temp;
-
-	var _react = __webpack_require__(3);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _redux = __webpack_require__(172);
-
-	var _reactRedux = __webpack_require__(161);
-
-	var _actions = __webpack_require__(206);
-
-	var actions = _interopRequireWildcard(_actions);
-
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var ColourRow = (_dec = (0, _reactRedux.connect)(function () {
-	  return {};
-	}, function (dispatch) {
-	  return (0, _redux.bindActionCreators)(actions, dispatch);
-	}), _dec(_class = (_temp = _class2 = function (_Component) {
-	  _inherits(ColourRow, _Component);
-
-	  function ColourRow(props) {
-	    _classCallCheck(this, ColourRow);
-
-	    var _this = _possibleConstructorReturn(this, (ColourRow.__proto__ || Object.getPrototypeOf(ColourRow)).call(this, props));
-
-	    _this.handleRemoveClick = _this.handleRemoveClick.bind(_this);
-	    return _this;
-	  }
-
-	  _createClass(ColourRow, [{
-	    key: 'handleRemoveClick',
-	    value: function handleRemoveClick() {
-	      this.props.removeColour(this.props._id);
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var style = {
-	        backgroundColor: this.props.code
-	      };
-
-	      return _react2.default.createElement(
-	        'li',
-	        {
-	          className: 'colour-list__item'
-	        },
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'colour-list__name' },
-	          this.props.name
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          {
-	            className: 'colour-list__code',
-	            style: style
-	          },
-	          this.props.code,
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'tool-tip' },
-	            _react2.default.createElement(
-	              'button',
-	              {
-	                className: 'colour-list__remove',
-	                onClick: this.handleRemoveClick
-	              },
-	              'Remove'
-	            )
-	          )
-	        ),
-	        _react2.default.createElement('div', null)
-	      );
-	    }
-	  }]);
-
-	  return ColourRow;
-	}(_react.Component), _class2.propTypes = {
-	  _id: _react.PropTypes.string.isRequired,
-	  name: _react.PropTypes.string.isRequired,
-	  code: _react.PropTypes.string.isRequired
-	}, _temp)) || _class);
-	exports.default = ColourRow;
-
-/***/ },
-/* 206 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var $ = __webpack_require__(207);
-
-	var addColour = exports.addColour = function addColour(_ref) {
-	  var _id = _ref._id,
-	      name = _ref.name,
-	      variableName = _ref.variableName,
-	      code = _ref.code;
-
-	  var type = 'ADD_COLOUR';
-	  return { type: type, _id: _id, name: name, variableName: variableName, code: code };
-	};
-
-	var deleteColour = exports.deleteColour = function deleteColour(_id) {
-	  var type = 'REMOVE_COLOUR';
-	  return { type: type, _id: _id };
-	};
-
-	var removeColour = exports.removeColour = function removeColour(colourId) {
-	  return function (dispatch) {
-	    $.ajax({
-	      url: '/api/colour/' + colourId,
-	      type: 'DELETE',
-	      success: function success() {
-	        dispatch(deleteColour(colourId));
-	      }
-	    });
-	  };
-	};
-
-	var persistColour = exports.persistColour = function persistColour(colour) {
-	  return function (dispatch) {
-	    $.post('/api/colour', colour, function (data) {
-	      var addedColour = {
-	        _id: data.model._id,
-	        name: data.model.name,
-	        variableName: data.model.variableName,
-	        code: data.model.code
-	      };
-
-	      dispatch(addColour(addedColour));
-	    });
-	  };
-	};
-
-	var loadedColours = exports.loadedColours = function loadedColours(colours) {
-	  return {
-	    type: 'LOADED_COLOURS',
-	    colours: colours
-	  };
-	};
-
-	var loadColours = exports.loadColours = function loadColours() {
-	  return function (dispatch) {
-	    $.get('/api/colour', function (colours) {
-	      dispatch(loadedColours(colours));
-	    });
-	  };
-	};
-
-/***/ },
+/* 200 */,
+/* 201 */,
+/* 202 */,
+/* 203 */,
+/* 204 */,
+/* 205 */,
+/* 206 */,
 /* 207 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -31650,7 +31207,473 @@
 
 
 /***/ },
-/* 208 */
+/* 208 */,
+/* 209 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _react = __webpack_require__(3);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(160);
+
+	var _reactRedux = __webpack_require__(161);
+
+	var _redux = __webpack_require__(172);
+
+	var _reduxThunk = __webpack_require__(199);
+
+	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
+
+	var _reducers = __webpack_require__(210);
+
+	var _reducers2 = _interopRequireDefault(_reducers);
+
+	var _ColoursApp = __webpack_require__(212);
+
+	var _ColoursApp2 = _interopRequireDefault(_ColoursApp);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var store = (0, _redux.createStore)(_reducers2.default, (0, _redux.applyMiddleware)(_reduxThunk2.default));
+
+	var applicationNode = document.querySelector('.js-admin-colours');
+
+	if (applicationNode) {
+	  (0, _reactDom.render)(_react2.default.createElement(
+	    _reactRedux.Provider,
+	    { store: store },
+	    _react2.default.createElement(_ColoursApp2.default, null)
+	  ), applicationNode);
+	}
+
+/***/ },
+/* 210 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _redux = __webpack_require__(172);
+
+	var _colours = __webpack_require__(211);
+
+	var _colours2 = _interopRequireDefault(_colours);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var rootReducer = (0, _redux.combineReducers)({
+	  colours: _colours2.default
+	});
+
+	exports.default = rootReducer;
+
+/***/ },
+/* 211 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+	var colour = function colour() {
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+	  var action = arguments[1];
+
+	  switch (action.type) {
+	    case 'ADD_COLOUR':
+	      return {
+	        _id: action._id,
+	        name: action.name,
+	        code: action.code
+	      };
+
+	    default:
+	      return state;
+	  }
+	};
+
+	var colours = function colours() {
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+	  var action = arguments[1];
+
+	  switch (action.type) {
+	    case 'ADD_COLOUR':
+	      return [].concat(_toConsumableArray(state), [colour(undefined, {
+	        type: action.type,
+	        _id: action._id,
+	        name: action.name,
+	        code: action.code
+	      })]);
+	    case 'REMOVE_COLOUR':
+	      return state.filter(function (colour) {
+	        return colour._id !== action._id;
+	      });
+	    case 'LOADED_COLOURS':
+	      return action.colours;
+	    default:
+	      return state;
+	  }
+	};
+
+	exports.default = colours;
+
+/***/ },
+/* 212 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = undefined;
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _dec, _class, _class2, _temp;
+
+	var _react = __webpack_require__(3);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _redux = __webpack_require__(172);
+
+	var _reactRedux = __webpack_require__(161);
+
+	var _ColourList = __webpack_require__(213);
+
+	var _ColourList2 = _interopRequireDefault(_ColourList);
+
+	var _AddColour = __webpack_require__(217);
+
+	var _AddColour2 = _interopRequireDefault(_AddColour);
+
+	var _actions = __webpack_require__(216);
+
+	var actions = _interopRequireWildcard(_actions);
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var App = (_dec = (0, _reactRedux.connect)(function () {
+	  return {};
+	}, function (dispatch) {
+	  return (0, _redux.bindActionCreators)(actions, dispatch);
+	}), _dec(_class = (_temp = _class2 = function (_Component) {
+	  _inherits(App, _Component);
+
+	  function App(props) {
+	    _classCallCheck(this, App);
+
+	    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+	  }
+
+	  _createClass(App, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      this.props.loadColours();
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'c-admin-colours' },
+	        _react2.default.createElement(
+	          'h2',
+	          null,
+	          'Colour Manager'
+	        ),
+	        _react2.default.createElement(_ColourList2.default, null),
+	        _react2.default.createElement(_AddColour2.default, null)
+	      );
+	    }
+	  }]);
+
+	  return App;
+	}(_react.Component), _class2.propTypes = {
+	  loadColours: _react.PropTypes.func.isRequired
+	}, _temp)) || _class);
+	exports.default = App;
+	;
+
+/***/ },
+/* 213 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _reactRedux = __webpack_require__(161);
+
+	var _ColourList = __webpack_require__(214);
+
+	var _ColourList2 = _interopRequireDefault(_ColourList);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var mapStateToProps = function mapStateToProps(state) {
+	  return {
+	    colours: state.colours
+	  };
+	};
+
+	var mapDispatchToProps = function mapDispatchToProps() {
+	  return {};
+	};
+
+	var ColourListContainer = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_ColourList2.default);
+
+	exports.default = ColourListContainer;
+
+/***/ },
+/* 214 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(3);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _ColourRow = __webpack_require__(215);
+
+	var _ColourRow2 = _interopRequireDefault(_ColourRow);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var ColourList = function ColourList(_ref) {
+	  var colours = _ref.colours;
+	  return _react2.default.createElement(
+	    'ul',
+	    { className: 'colour-list' },
+	    colours.map(function (colour) {
+	      return _react2.default.createElement(_ColourRow2.default, {
+	        key: colour._id,
+	        _id: colour._id,
+	        name: colour.name,
+	        code: colour.code
+	      });
+	    })
+	  );
+	};
+
+	ColourList.propTypes = {
+	  colours: _react.PropTypes.arrayOf(_react.PropTypes.shape({}).isRequired).isRequired
+	};
+
+	exports.default = ColourList;
+
+/***/ },
+/* 215 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = undefined;
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _dec, _class, _class2, _temp;
+
+	var _react = __webpack_require__(3);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _redux = __webpack_require__(172);
+
+	var _reactRedux = __webpack_require__(161);
+
+	var _actions = __webpack_require__(216);
+
+	var actions = _interopRequireWildcard(_actions);
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var ColourRow = (_dec = (0, _reactRedux.connect)(function () {
+	  return {};
+	}, function (dispatch) {
+	  return (0, _redux.bindActionCreators)(actions, dispatch);
+	}), _dec(_class = (_temp = _class2 = function (_Component) {
+	  _inherits(ColourRow, _Component);
+
+	  function ColourRow(props) {
+	    _classCallCheck(this, ColourRow);
+
+	    var _this = _possibleConstructorReturn(this, (ColourRow.__proto__ || Object.getPrototypeOf(ColourRow)).call(this, props));
+
+	    _this.handleRemoveClick = _this.handleRemoveClick.bind(_this);
+	    return _this;
+	  }
+
+	  _createClass(ColourRow, [{
+	    key: 'handleRemoveClick',
+	    value: function handleRemoveClick() {
+	      this.props.removeColour(this.props._id);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var style = {
+	        backgroundColor: this.props.code
+	      };
+
+	      return _react2.default.createElement(
+	        'li',
+	        {
+	          className: 'colour-list__item'
+	        },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'colour-list__name' },
+	          this.props.name
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          {
+	            className: 'colour-list__code',
+	            style: style
+	          },
+	          this.props.code,
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'tool-tip' },
+	            _react2.default.createElement(
+	              'button',
+	              {
+	                className: 'colour-list__edit',
+	                onClick: this.handleRemoveClick
+	              },
+	              'Edit'
+	            ),
+	            _react2.default.createElement(
+	              'button',
+	              {
+	                className: 'colour-list__remove',
+	                onClick: this.handleRemoveClick
+	              },
+	              'Remove'
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return ColourRow;
+	}(_react.Component), _class2.propTypes = {
+	  _id: _react.PropTypes.string.isRequired,
+	  name: _react.PropTypes.string.isRequired,
+	  code: _react.PropTypes.string.isRequired,
+	  removeColour: _react.PropTypes.func
+	}, _temp)) || _class);
+	exports.default = ColourRow;
+
+/***/ },
+/* 216 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var $ = __webpack_require__(207);
+
+	var addColour = exports.addColour = function addColour(_ref) {
+	  var _id = _ref._id,
+	      name = _ref.name,
+	      variableName = _ref.variableName,
+	      code = _ref.code;
+
+	  var type = 'ADD_COLOUR';
+	  return { type: type, _id: _id, name: name, variableName: variableName, code: code };
+	};
+
+	var deleteColour = exports.deleteColour = function deleteColour(_id) {
+	  var type = 'REMOVE_COLOUR';
+	  return { type: type, _id: _id };
+	};
+
+	var removeColour = exports.removeColour = function removeColour(colourId) {
+	  return function (dispatch) {
+	    $.ajax({
+	      url: '/api/colour/' + colourId,
+	      type: 'DELETE',
+	      success: function success() {
+	        dispatch(deleteColour(colourId));
+	      }
+	    });
+	  };
+	};
+
+	var persistColour = exports.persistColour = function persistColour(colour) {
+	  return function (dispatch) {
+	    $.post('/api/colour', colour, function (data) {
+	      var addedColour = {
+	        _id: data.model._id,
+	        name: data.model.name,
+	        variableName: data.model.variableName,
+	        code: data.model.code
+	      };
+
+	      dispatch(addColour(addedColour));
+	    });
+	  };
+	};
+
+	var loadedColours = exports.loadedColours = function loadedColours(colours) {
+	  return {
+	    type: 'LOADED_COLOURS',
+	    colours: colours
+	  };
+	};
+
+	var loadColours = exports.loadColours = function loadColours() {
+	  return function (dispatch) {
+	    $.get('/api/colour', function (colours) {
+	      dispatch(loadedColours(colours));
+	    });
+	  };
+	};
+
+/***/ },
+/* 217 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31672,7 +31695,7 @@
 
 	var _redux = __webpack_require__(172);
 
-	var _actions = __webpack_require__(206);
+	var _actions = __webpack_require__(216);
 
 	var actions = _interopRequireWildcard(_actions);
 
@@ -31800,10 +31823,232 @@
 
 	  return AddColour;
 	}(_react.Component), _class2.propTypes = {
-	  addColour: _react.PropTypes.func.isRequired,
 	  persistColour: _react.PropTypes.func.isRequired
 	}, _temp)) || _class);
 	exports.default = AddColour;
+
+/***/ },
+/* 218 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	__webpack_require__(209);
+
+	__webpack_require__(219);
+
+/***/ },
+/* 219 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _react = __webpack_require__(3);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(160);
+
+	var _reactRedux = __webpack_require__(161);
+
+	var _redux = __webpack_require__(172);
+
+	var _reduxThunk = __webpack_require__(199);
+
+	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
+
+	var _reducers = __webpack_require__(221);
+
+	var _reducers2 = _interopRequireDefault(_reducers);
+
+	var _GeneratorApp = __webpack_require__(220);
+
+	var _GeneratorApp2 = _interopRequireDefault(_GeneratorApp);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var store = (0, _redux.createStore)(_reducers2.default, (0, _redux.applyMiddleware)(_reduxThunk2.default));
+
+	var applicationNode = document.querySelector('.js-admin-generator');
+
+	if (applicationNode) {
+	  (0, _reactDom.render)(_react2.default.createElement(
+	    _reactRedux.Provider,
+	    { store: store },
+	    _react2.default.createElement(_GeneratorApp2.default, null)
+	  ), applicationNode);
+	}
+
+/***/ },
+/* 220 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = undefined;
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _dec, _class, _class2, _temp;
+
+	var _react = __webpack_require__(3);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _redux = __webpack_require__(172);
+
+	var _reactRedux = __webpack_require__(161);
+
+	var _actions = __webpack_require__(223);
+
+	var actions = _interopRequireWildcard(_actions);
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var App = (_dec = (0, _reactRedux.connect)(function (state) {
+	  return { generator: state.generator };
+	}, function (dispatch) {
+	  return (0, _redux.bindActionCreators)(actions, dispatch);
+	}), _dec(_class = (_temp = _class2 = function (_Component) {
+	  _inherits(App, _Component);
+
+	  function App(props) {
+	    _classCallCheck(this, App);
+
+	    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+
+	    _this.handleButtonClick = _this.handleButtonClick.bind(_this);
+	    return _this;
+	  }
+
+	  _createClass(App, [{
+	    key: 'handleButtonClick',
+	    value: function handleButtonClick() {
+	      this.props.generate();
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'c-admin-generator' },
+	        _react2.default.createElement(
+	          'h2',
+	          null,
+	          'Generator'
+	        ),
+	        _react2.default.createElement(
+	          'button',
+	          {
+	            onClick: this.handleButtonClick
+	          },
+	          'Generate'
+	        )
+	      );
+	    }
+	  }]);
+
+	  return App;
+	}(_react.Component), _class2.propTypes = {
+	  generate: _react.PropTypes.func
+	}, _temp)) || _class);
+	exports.default = App;
+
+/***/ },
+/* 221 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _redux = __webpack_require__(172);
+
+	var _generator = __webpack_require__(222);
+
+	var _generator2 = _interopRequireDefault(_generator);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var rootReducer = (0, _redux.combineReducers)({
+	  generator: _generator2.default
+	});
+
+	exports.default = rootReducer;
+
+/***/ },
+/* 222 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var generator = function generator() {
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+	  var action = arguments[1];
+
+	  switch (action.type) {
+	    case 'GENERATING':
+	      return Object.assign({}, state, {
+	        generated: false,
+	        generating: true
+	      });
+	    case 'GENERATED':
+	      return Object.assign({}, state, {
+	        generated: true,
+	        generating: false
+	      });
+	    default:
+	      return state;
+	  }
+	};
+
+	exports.default = generator;
+
+/***/ },
+/* 223 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var $ = __webpack_require__(207);
+
+	var generated = exports.generated = function generated() {
+	  var type = 'GENERATED';
+	  return { type: type };
+	};
+
+	var generating = exports.generating = function generating() {
+	  var type = 'GENERATING';
+	  return { type: type };
+	};
+
+	var generate = exports.generate = function generate() {
+	  return function (dispatch) {
+	    $.get('/admin/generate', function () {
+	      dispatch(generated());
+	    });
+	    dispatch(generating());
+	  };
+	};
 
 /***/ }
 /******/ ]);

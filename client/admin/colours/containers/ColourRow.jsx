@@ -12,6 +12,7 @@ export default class ColourRow extends Component {
     _id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     code: PropTypes.string.isRequired,
+    removeColour: PropTypes.func,
   };
 
   constructor(props) {
@@ -43,15 +44,18 @@ export default class ColourRow extends Component {
 
         <div className="tool-tip">
           <button
+            className="colour-list__edit"
+            onClick={this.handleRemoveClick}
+          >
+            Edit
+          </button>
+          <button
             className="colour-list__remove"
             onClick={this.handleRemoveClick}
           >
             Remove
           </button>
         </div>
-      </div>
-      <div>
-
       </div>
     </li>);
   }

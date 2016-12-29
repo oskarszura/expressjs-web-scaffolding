@@ -9,7 +9,6 @@ import * as actions from '../actions';
 )
 export default class AddColour extends Component {
   static propTypes = {
-    addColour: PropTypes.func.isRequired,
     persistColour: PropTypes.func.isRequired,
   }
 

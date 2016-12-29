@@ -33,7 +33,7 @@ export const persistColour = colour => dispatch => {
 
 export const loadedColours = colours => ({
   type: 'LOADED_COLOURS',
-  colours: colours,
+  colours,
 });
 
 export const loadColours = () => (dispatch) => {
