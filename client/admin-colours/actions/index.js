@@ -1,8 +1,8 @@
 const $ = require('jquery');
 
-export const addColour = ({ _id, name, code }) => {
+export const addColour = ({ _id, name, variableName, code }) => {
   const type = 'ADD_COLOUR';
-  return { type, _id, name, code };
+  return { type, _id, name, variableName, code };
 };
 
 export const deleteColour = (_id) => {
@@ -23,6 +23,7 @@ export const persistColour = colour => dispatch => {
     const addedColour = {
       _id: data.model._id,
       name: data.model.name,
+      variableName: data.model.variableName,
       code: data.model.code,
     };
 

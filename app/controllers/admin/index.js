@@ -21,7 +21,7 @@ router.get('/generate', (req, res, next) => {
 
     request({ url, jar }, (err, colours) => {
       const mappedColours = JSON.parse(colours.body).map((colour) => {
-        return `$colour-${colour.name.toLowerCase()}: ${colour.code};`;
+        return `$colour-${colour.variableName}: ${colour.code};`;
       }).join('\n');
       callback(null, mappedColours);
     });

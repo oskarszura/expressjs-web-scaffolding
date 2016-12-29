@@ -45,17 +45,20 @@ export default class AddColour extends Component {
 
     const colour = {
       name: this.nameInput.value,
+      variableName: this.variableNameInput.value,
       code: this.valueInput.value,
     };
 
     this.props.persistColour(colour);
 
     this.valueInput.value = '';
+    this.variableNameInput = '';
     this.nameInput.value = '';
   }
 
   valueInput;
   nameInput;
+  variableNameInput;
   codeDiv;
 
   render() {
@@ -67,7 +70,14 @@ export default class AddColour extends Component {
           <input
             className="colour-adder__name"
             ref={(node) => { this.nameInput = node; }}
+            placeholder="Colour name"
             onChange={this.onColourNameChange}
+          />
+
+          <input
+            className="colour-adder__variable-name"
+            ref={(node) => { this.variableNameInput = node; }}
+            placeholder="Colour variable name"
           />
 
           <div

@@ -22379,10 +22379,11 @@
 	var addColour = exports.addColour = function addColour(_ref) {
 	  var _id = _ref._id,
 	      name = _ref.name,
+	      variableName = _ref.variableName,
 	      code = _ref.code;
 
 	  var type = 'ADD_COLOUR';
-	  return { type: type, _id: _id, name: name, code: code };
+	  return { type: type, _id: _id, name: name, variableName: variableName, code: code };
 	};
 
 	var deleteColour = exports.deleteColour = function deleteColour(_id) {
@@ -22408,6 +22409,7 @@
 	      var addedColour = {
 	        _id: data.model._id,
 	        name: data.model.name,
+	        variableName: data.model.variableName,
 	        code: data.model.code
 	      };
 
@@ -31728,12 +31730,14 @@
 
 	      var colour = {
 	        name: this.nameInput.value,
+	        variableName: this.variableNameInput.value,
 	        code: this.valueInput.value
 	      };
 
 	      this.props.persistColour(colour);
 
 	      this.valueInput.value = '';
+	      this.variableNameInput = '';
 	      this.nameInput.value = '';
 	    }
 	  }, {
@@ -31754,7 +31758,15 @@
 	            ref: function ref(node) {
 	              _this2.nameInput = node;
 	            },
+	            placeholder: 'Colour name',
 	            onChange: this.onColourNameChange
+	          }),
+	          _react2.default.createElement('input', {
+	            className: 'colour-adder__variable-name',
+	            ref: function ref(node) {
+	              _this2.variableNameInput = node;
+	            },
+	            placeholder: 'Colour variable name'
 	          }),
 	          _react2.default.createElement(
 	            'div',
