@@ -1,13 +1,12 @@
-$left-menu-active-width: 15vw;
-$left-menu-inactive-width: 4vw;
+$left-menu-active-width: 193px;
+$left-menu-inactive-width: 60px;
 
 .left-menu {
   width: $left-menu-inactive-width;
   height: 100vh;
-  position: absolute;
   background-color: $color-white;
   transition: width .35s ease-in-out;
-  z-index: 100;
+  border-right: 1px solid $color-mercury;
 
   &--is-active {
     width: $left-menu-active-width;
@@ -19,9 +18,9 @@ $left-menu-inactive-width: 4vw;
     display: block;
     text-align: center;
     cursor: pointer;
-    background-color: $colour-gallery;
+    background-color: $color-wild-sand;
     user-select: none;
-    color: $colour-mine-shaft;
+    color: $color-mine-shaft;
   }
 
   &__list {
@@ -45,11 +44,11 @@ $left-menu-inactive-width: 4vw;
   }
 
   &__list-link {
-    color: $colour-mine-shaft;
+    color: $color-mine-shaft;
     font-size: 1.3rem;
 
     &:hover {
-      color: $colour-mine-shaft;
+      color: $color-mine-shaft;
     }
   }
 }

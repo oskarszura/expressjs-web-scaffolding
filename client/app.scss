@@ -72,6 +72,9 @@
 @import "template/header";
 @import "template/main-content";
 @import "template/left-menu";
+@import "template/login-box";
+@import "template/admin-content";
 
+@import "admin/colours/containers/admin-colours";
 @import "admin/colours/containers/colour-list";
 @import "admin/colours/containers/add-colour";

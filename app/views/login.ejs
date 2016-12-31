@@ -1,47 +1,44 @@
 <% include header %>
 
 <main class="main-content">
-    <%if(error) { %>
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="alert alert-danger" role="alert">
-                User or password not found.
-            </div>
-        </div>
-    </div>
-    <% } %>
-    <div class="row">
-        <div class="col-sm-12">
-            <h2>Login</h2>
+    <div class="login-box">
+        <h2 class="login-box__title">
+            Login to Digital Asset Manager
+        </h2>
 
-            <form action="/login" method="post">
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email"
-                           class="form-control"
-                           id="exampleInputEmail1"
-                           placeholder="Email"
-                           name="username">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password"
-                           class="form-control"
-                           id="exampleInputPassword1"
-                           placeholder="Password"
-                           name="password">
-                </div>
-                <button type="submit" class="btn btn-default">
-                    Login
-                </button>
-                or
-                <a class="btn btn-primary"
-                   href="/login/register">
-                    Sign up
-                </a>
-                (if you don't have an account yet)
-            </form>
+        <%if(error) { %>
+        <div class="alert alert-danger" role="alert">
+            User or password not found.
         </div>
+        <% } %>
+
+        <form action="/login" method="post">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email"
+                       class="form-control"
+                       id="exampleInputEmail1"
+                       placeholder="Email"
+                       name="username">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password"
+                       class="form-control"
+                       id="exampleInputPassword1"
+                       placeholder="Password"
+                       name="password">
+            </div>
+            <button type="submit" class="btn btn-default">
+                Login
+            </button>
+            or
+            <a class="btn btn-primary"
+               href="/login/register">
+                Sign up
+            </a>
+            (if you don't have an account yet)
+        </form>
     </div>
 </main>
 

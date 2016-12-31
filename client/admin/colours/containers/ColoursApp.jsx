@@ -23,8 +23,10 @@ export default class App extends Component {
   }
 
   render() {
-    return (<div className="c-admin-colours">
-      <h2>Colour Manager</h2>
+    return (<div className="admin-colours">
+      <h3 className="admin-colours__header">
+        Colour Manager
+      </h3>
       <ColourList />
       <AddColour />
     </div>);

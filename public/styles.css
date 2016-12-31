@@ -4108,14 +4108,14 @@ button.close {
     border-right: 10px solid white; }
 
 body {
-  background-color: #F0F6F7; }
+  background-color: #FFFFFF; }
 
 .header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  box-shadow: 0 13px 7px -14px rgba(0, 0, 0, .75);
-  background-color: #FFFFFF; }
+  background-color: #F5F5F5;
+  border-bottom: 1px solid #E5E5E5; }
   .header__logo {
     -ms-flex-preferred-size: 10%;
         flex-basis: 10%;
@@ -4138,22 +4138,25 @@ body {
     display: inline-block; }
     .header__navigation-option a {
       display: block;
-      padding: 15px 10px; }
+      color: #333333;
+      padding: 15px 10px;
+      font-weight: 600; }
+      .header__navigation-option a:hover {
+        color: #4078C0; }
 
 .main-content {
-  padding-right: 10px;
-  padding-left: calc(4vw + 10px); }
+  width: 100vw;
+  height: 100vh; }
 
 .left-menu {
-  width: 4vw;
+  width: 60px;
   height: 100vh;
-  position: absolute;
   background-color: #FFFFFF;
   -webkit-transition: width .35s ease-in-out;
   transition: width .35s ease-in-out;
-  z-index: 100; }
+  border-right: 1px solid #E5E5E5; }
   .left-menu--is-active {
-    width: 15vw; }
+    width: 193px; }
   .left-menu__activator {
     font-size: 40px;
     font-size: 4rem;
@@ -4161,12 +4164,12 @@ body {
     display: block;
     text-align: center;
     cursor: pointer;
-    background-color: #EDEDED;
+    background-color: #F5F5F5;
     -webkit-user-select: none;
        -moz-user-select: none;
         -ms-user-select: none;
             user-select: none;
-    color: #2E2E2E; }
+    color: #333333; }
   .left-menu__list {
     overflow: hidden;
     margin: 0;
@@ -4181,13 +4184,31 @@ body {
       width: 100%; }
   .left-menu__list-item {
     padding: 5px 10px;
-    width: 15vw; }
+    width: 193px; }
   .left-menu__list-link {
-    color: #2E2E2E;
+    color: #333333;
     font-size: 13px;
     font-size: 1.3rem; }
     .left-menu__list-link:hover {
-      color: #2E2E2E; }
+      color: #333333; }
+
+.login-box {
+  width: 500px;
+  margin: 0 auto; }
+  .login-box__title {
+    text-align: center; }
+
+.admin-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+  .admin-content__application {
+    padding: 15px;
+    -ms-flex-preferred-size: 100%;
+        flex-basis: 100%; }
+
+.admin-colours__header {
+  margin-top: 0px; }
 
 .colour-list {
   margin: 0;
