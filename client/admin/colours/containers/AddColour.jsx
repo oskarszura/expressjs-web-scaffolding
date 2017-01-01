@@ -66,37 +66,40 @@ export default class AddColour extends Component {
         <form
           onSubmit={this.handleOnSubmit}
         >
-          <input
-            className="colour-adder__name"
-            ref={(node) => { this.nameInput = node; }}
-            placeholder="Colour name"
-            onChange={this.onColourNameChange}
-          />
-
-          <input
-            className="colour-adder__variable-name"
-            ref={(node) => { this.variableNameInput = node; }}
-            placeholder="Colour variable name"
-          />
-
           <div
             className="colour-adder__code"
             ref={(node) => { this.codeDiv = node; }}
           >
-            <input
-              type="color"
-              className="colour-adder__value"
-              ref={(node) => { this.valueInput = node; }}
-              onChange={this.onColourValueChange}
-            />
-          </div>
+            Add Colour
 
-          <button
-            className="colour-adder__submit"
-            type="submit"
-          >
-            Add
-          </button>
+            <div className="tool-tip">
+              <input
+                className="colour-adder__name"
+                ref={(node) => { this.nameInput = node; }}
+                placeholder="Colour name"
+                onChange={this.onColourNameChange}
+              />
+
+              <input
+                className="colour-adder__variable-name"
+                ref={(node) => { this.variableNameInput = node; }}
+                placeholder="Colour variable name"
+              />
+
+              <input
+                type="color"
+                className="colour-adder__value"
+                ref={(node) => { this.valueInput = node; }}
+                onChange={this.onColourValueChange}
+              />
+              <button
+                className="colour-adder__submit"
+                type="submit"
+              >
+                Add
+              </button>
+            </div>
+          </div>
         </form>
       </div>
     );

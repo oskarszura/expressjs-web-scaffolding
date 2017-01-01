@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import ColourRow from './../containers/ColourRow';
+import AddColour from './../containers/AddColour';
 
 const ColourList = ({ colours }) => (
   <ul className="colour-list">
@@ -9,6 +10,9 @@ const ColourList = ({ colours }) => (
       name={colour.name}
       code={colour.code}
     />)}
+    <li className="colour-list__item">
+      <AddColour />
+    </li>
   </ul>
 );
 

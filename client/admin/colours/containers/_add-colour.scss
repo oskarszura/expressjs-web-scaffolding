@@ -14,11 +14,28 @@
     @extend .form-control;
   }
 
+  &__code {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+    border-radius: 40px;
+    margin-bottom: 5px;
+    border: 1px dashed $color-mine-shaft;
+
+    &:hover {
+      .tool-tip {
+        right: -180px;
+        display: block;
+      }
+    }
+  }
+
   &__value {
     background-color: transparent;
     border: 0;
     padding: 0;
-    height: 80px;
   }
 
   &__submit {

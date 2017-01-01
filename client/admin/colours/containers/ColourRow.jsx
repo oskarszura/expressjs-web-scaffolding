@@ -43,18 +43,21 @@ export default class ColourRow extends Component {
         {this.props.code}
 
         <div className="tool-tip">
-          <button
-            className="colour-list__edit"
-            onClick={this.handleRemoveClick}
-          >
-            Edit
-          </button>
-          <button
-            className="colour-list__remove"
-            onClick={this.handleRemoveClick}
-          >
-            Remove
-          </button>
+          <ul className="small-list">
+            <li
+              className="small-list__item"
+              onClick={this.handleRemoveClick}
+            >
+              Edit
+            </li>
+            <li
+              className="small-list__item"
+              onClick={this.handleRemoveClick}
+            >
+              Remove
+            </li>
+          </ul>
+
         </div>
       </div>
     </li>);

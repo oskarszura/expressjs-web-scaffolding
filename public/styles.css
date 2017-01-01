@@ -4089,12 +4089,13 @@ button.close {
 .tool-tip {
   position: absolute;
   display: none;
-  background-color: #FFFFFF;
+  background-color: #333333;
+  color: #FFFFFF;
   border-radius: 4px;
   box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, .25);
   top: 0px;
   right: -62px;
-  height: 80px;
+  min-height: 80px;
   z-index: 99; }
   .tool-tip::before {
     content: '';
@@ -4105,7 +4106,22 @@ button.close {
     height: 0;
     border-top: 10px solid transparent;
     border-bottom: 10px solid transparent;
-    border-right: 10px solid white; }
+    border-right: 10px solid #333333; }
+
+.small-list {
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+  .small-list__item {
+    font-size: 12px;
+    line-height: 26px;
+    color: #F5F5F5;
+    border-bottom: 1px solid #F5F5F5;
+    padding: 0 5px;
+    cursor: pointer; }
+    .small-list__item:hover {
+      color: #C2C2C2;
+      border-bottom: 1px solid #C2C2C2; }
 
 body {
   background-color: #FFFFFF; }
@@ -4152,8 +4168,8 @@ body {
   width: 60px;
   height: 100vh;
   background-color: #FFFFFF;
-  -webkit-transition: width .35s ease-in-out;
-  transition: width .35s ease-in-out;
+  -webkit-transition: width 0.35s ease-in-out;
+  transition: width 0.35s ease-in-out;
   border-right: 1px solid #E5E5E5; }
   .left-menu--is-active {
     width: 193px; }
@@ -4175,16 +4191,18 @@ body {
     margin: 0;
     padding: 0;
     list-style: none;
-    -webkit-transition: all 0.75s ease-in-out;
-    transition: all 0.75s ease-in-out;
+    -webkit-transition: all 0.35s ease-in-out;
+    transition: all 0.35s ease-in-out;
     opacity: 0;
-    width: 0px; }
+    margin-left: -193px; }
     .left-menu--is-active .left-menu__list {
       opacity: 1;
-      width: 100%; }
+      width: 100%;
+      margin-left: 0px; }
   .left-menu__list-item {
-    padding: 5px 10px;
-    width: 193px; }
+    padding: 10px;
+    width: 193px;
+    border-bottom: 1px solid #F5F5F5; }
   .left-menu__list-link {
     color: #333333;
     font-size: 13px;
@@ -4242,10 +4260,21 @@ body {
     width: 100%; }
     .colour-adder__value--is-invalid, .colour-adder__name--is-invalid {
       background-color: #FFDBDB; }
+  .colour-adder__code {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+    border-radius: 40px;
+    margin-bottom: 5px;
+    border: 1px dashed #333333; }
+    .colour-adder__code:hover .tool-tip {
+      right: -180px;
+      display: block; }
   .colour-adder__value {
     background-color: transparent;
     border: 0;
-    padding: 0;
-    height: 80px; }
+    padding: 0; }
   .colour-adder__submit {
     width: 100%; }

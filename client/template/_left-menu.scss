@@ -5,7 +5,7 @@ $left-menu-inactive-width: 60px;
   width: $left-menu-inactive-width;
   height: 100vh;
   background-color: $color-white;
-  transition: width .35s ease-in-out;
+  transition: width 0.35s ease-in-out;
   border-right: 1px solid $color-mercury;
 
   &--is-active {
@@ -28,19 +28,21 @@ $left-menu-inactive-width: 60px;
     margin: 0;
     padding: 0;
     list-style: none;
-    transition: all 0.75s ease-in-out;
+    transition: all 0.35s ease-in-out;
     opacity: 0;
-    width: 0px;
+    margin-left: -$left-menu-active-width;
 
     .left-menu--is-active & {
       opacity: 1;
       width: 100%;
+      margin-left: 0px;
     }
   }
 
   &__list-item {
-    padding: 5px 10px;
+    padding: 10px;
     width: $left-menu-active-width;
+    border-bottom: 1px solid $color-wild-sand;
   }
 
   &__list-link {

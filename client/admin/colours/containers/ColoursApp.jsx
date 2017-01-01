@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import ColourList from './ColourList';
-import AddColour from './AddColour';
 import * as actions from '../actions';
 
 @connect(
@@ -28,7 +27,7 @@ export default class App extends Component {
         Colour Manager
       </h3>
       <ColourList />
-      <AddColour />
     </div>);
   }
-};
+}
+

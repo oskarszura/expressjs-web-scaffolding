@@ -22139,10 +22139,6 @@
 
 	var _ColourList2 = _interopRequireDefault(_ColourList);
 
-	var _AddColour = __webpack_require__(209);
-
-	var _AddColour2 = _interopRequireDefault(_AddColour);
-
 	var _actions = __webpack_require__(207);
 
 	var actions = _interopRequireWildcard(_actions);
@@ -22186,8 +22182,7 @@
 	          { className: 'admin-colours__header' },
 	          'Colour Manager'
 	        ),
-	        _react2.default.createElement(_ColourList2.default, null),
-	        _react2.default.createElement(_AddColour2.default, null)
+	        _react2.default.createElement(_ColourList2.default, null)
 	      );
 	    }
 	  }]);
@@ -22197,7 +22192,6 @@
 	  loadColours: _react.PropTypes.func.isRequired
 	}, _temp)) || _class);
 	exports.default = App;
-	;
 
 /***/ },
 /* 204 */
@@ -22249,6 +22243,10 @@
 
 	var _ColourRow2 = _interopRequireDefault(_ColourRow);
 
+	var _AddColour = __webpack_require__(209);
+
+	var _AddColour2 = _interopRequireDefault(_AddColour);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var ColourList = function ColourList(_ref) {
@@ -22263,7 +22261,12 @@
 	        name: colour.name,
 	        code: colour.code
 	      });
-	    })
+	    }),
+	    _react2.default.createElement(
+	      'li',
+	      { className: 'colour-list__item' },
+	      _react2.default.createElement(_AddColour2.default, null)
+	    )
 	  );
 	};
 
@@ -22359,20 +22362,24 @@
 	            'div',
 	            { className: 'tool-tip' },
 	            _react2.default.createElement(
-	              'button',
-	              {
-	                className: 'colour-list__edit',
-	                onClick: this.handleRemoveClick
-	              },
-	              'Edit'
-	            ),
-	            _react2.default.createElement(
-	              'button',
-	              {
-	                className: 'colour-list__remove',
-	                onClick: this.handleRemoveClick
-	              },
-	              'Remove'
+	              'ul',
+	              { className: 'small-list' },
+	              _react2.default.createElement(
+	                'li',
+	                {
+	                  className: 'small-list__item',
+	                  onClick: this.handleRemoveClick
+	                },
+	                'Edit'
+	              ),
+	              _react2.default.createElement(
+	                'li',
+	                {
+	                  className: 'small-list__item',
+	                  onClick: this.handleRemoveClick
+	                },
+	                'Remove'
+	              )
 	            )
 	          )
 	        )
@@ -31777,21 +31784,6 @@
 	          {
 	            onSubmit: this.handleOnSubmit
 	          },
-	          _react2.default.createElement('input', {
-	            className: 'colour-adder__name',
-	            ref: function ref(node) {
-	              _this2.nameInput = node;
-	            },
-	            placeholder: 'Colour name',
-	            onChange: this.onColourNameChange
-	          }),
-	          _react2.default.createElement('input', {
-	            className: 'colour-adder__variable-name',
-	            ref: function ref(node) {
-	              _this2.variableNameInput = node;
-	            },
-	            placeholder: 'Colour variable name'
-	          }),
 	          _react2.default.createElement(
 	            'div',
 	            {
@@ -31800,22 +31792,42 @@
 	                _this2.codeDiv = node;
 	              }
 	            },
-	            _react2.default.createElement('input', {
-	              type: 'color',
-	              className: 'colour-adder__value',
-	              ref: function ref(node) {
-	                _this2.valueInput = node;
-	              },
-	              onChange: this.onColourValueChange
-	            })
-	          ),
-	          _react2.default.createElement(
-	            'button',
-	            {
-	              className: 'colour-adder__submit',
-	              type: 'submit'
-	            },
-	            'Add'
+	            'Add Colour',
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'tool-tip' },
+	              _react2.default.createElement('input', {
+	                className: 'colour-adder__name',
+	                ref: function ref(node) {
+	                  _this2.nameInput = node;
+	                },
+	                placeholder: 'Colour name',
+	                onChange: this.onColourNameChange
+	              }),
+	              _react2.default.createElement('input', {
+	                className: 'colour-adder__variable-name',
+	                ref: function ref(node) {
+	                  _this2.variableNameInput = node;
+	                },
+	                placeholder: 'Colour variable name'
+	              }),
+	              _react2.default.createElement('input', {
+	                type: 'color',
+	                className: 'colour-adder__value',
+	                ref: function ref(node) {
+	                  _this2.valueInput = node;
+	                },
+	                onChange: this.onColourValueChange
+	              }),
+	              _react2.default.createElement(
+	                'button',
+	                {
+	                  className: 'colour-adder__submit',
+	                  type: 'submit'
+	                },
+	                'Add'
+	              )
+	            )
 	          )
 	        )
 	      );
