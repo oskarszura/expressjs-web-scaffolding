@@ -212,7 +212,6 @@ a {
     color: #23527c;
     text-decoration: underline; }
   a:focus {
-    outline: thin dotted;
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px; }
 
@@ -1234,7 +1233,6 @@ select[multiple], select[size] {
   height: auto; }
 
 input[type="file"]:focus, input[type="radio"]:focus, input[type="checkbox"]:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px; }
 
@@ -1611,7 +1609,6 @@ textarea.input-lg, .input-group-lg > textarea.form-control, .input-group-lg > te
   -ms-user-select: none;
   user-select: none; }
   .btn:focus, .colour-list__edit:focus, .colour-list__remove:focus, .colour-adder__submit:focus, .btn.focus, .focus.colour-list__edit, .focus.colour-list__remove, .focus.colour-adder__submit, .btn:active:focus, .colour-list__edit:active:focus, .colour-list__remove:active:focus, .colour-adder__submit:active:focus, .btn:active.focus, .colour-list__edit:active.focus, .colour-list__remove:active.focus, .colour-adder__submit:active.focus, .btn.active:focus, .active.colour-list__edit:focus, .active.colour-list__remove:focus, .active.colour-adder__submit:focus, .btn.active.focus, .active.focus.colour-list__edit, .active.focus.colour-list__remove, .active.focus.colour-adder__submit {
-    outline: thin dotted;
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px; }
   .btn:hover, .colour-list__edit:hover, .colour-list__remove:hover, .colour-adder__submit:hover, .btn:focus, .colour-list__edit:focus, .colour-list__remove:focus, .colour-adder__submit:focus, .btn.focus, .focus.colour-list__edit, .focus.colour-list__remove, .focus.colour-adder__submit {
@@ -4086,6 +4083,9 @@ button.close {
 .affix {
   position: fixed; }
 
+body {
+  background-color: #FFFFFF; }
+
 .tool-tip {
   position: absolute;
   display: none;
@@ -4122,9 +4122,6 @@ button.close {
     .small-list__item:hover {
       color: #C2C2C2;
       border-bottom: 1px solid #C2C2C2; }
-
-body {
-  background-color: #FFFFFF; }
 
 .header {
   display: -webkit-box;
