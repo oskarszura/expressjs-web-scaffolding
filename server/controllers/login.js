@@ -1,11 +1,10 @@
-const express = require('express');
+const router = require('express').Router;
 const passport = require('passport');
 const UserModel = require('../models/user');
 const renderer = require('../services/renderer');
 const passwordManager = require('../services/passwordManager');
 
-const routerConstructor = express.Router;
-const router = routerConstructor();
+const loginRouter = router();
 
 const loginGet = (req, res) => {
   renderer(req, res, 'login', {
@@ -64,9 +63,9 @@ const loginRegisterPost = (req, res) => {
   });
 };
 
-module.exports = (app) => { app.use('/login', router); };
+module.exports = (app) => { app.use('/login', loginRouter); };
 
-router.get('/', loginGet)
+loginRouter.get('/', loginGet)
   .post('/', loginPost)
   .get('/logout', loginLogoutGet)
   .get('/register', loginRegisterGet)

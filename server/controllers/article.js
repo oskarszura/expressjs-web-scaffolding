@@ -1,7 +1,8 @@
-const express = require('express');
-const router = express.Router();
+const router = require('express').Router;
 const renderer = require('../services/renderer');
 const Article = require('../models/article');
+
+const articleRouter = router();
 
 const articleGet = (req, res) => {
   const onFind = (err, article) => {
@@ -14,6 +15,6 @@ const articleGet = (req, res) => {
   Article.findOne({ _id: req.params.id }, onFind);
 };
 
-module.exports = (app) => { app.use('/article', router); };
+module.exports = (app) => { app.use('/article', articleRouter); };
 
-router.get('/:id', articleGet);
+articleRouter.get('/:id', articleGet);

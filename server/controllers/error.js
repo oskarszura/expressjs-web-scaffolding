@@ -1,6 +1,7 @@
-const express = require('express');
-const router = express.Router();
+const router = require('express').Router;
 const renderer = require('../services/renderer');
+
+const errorRouter = router();
 
 const errorGet = (req, res) => {
   renderer(req, res, '404', {
@@ -8,6 +9,6 @@ const errorGet = (req, res) => {
   });
 };
 
-module.exports = (app) => { app.use('/error', router); };
+module.exports = (app) => { app.use('/error', errorRouter); };
 
-router.get('/404', errorGet);
+errorRouter.get('/404', errorGet);

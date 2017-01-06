@@ -1,6 +1,7 @@
-const express = require('express');
-const router = express.Router();
+const router = require('express').Router;
 const renderer = require('../services/renderer');
+
+const homeRouter = router();
 
 const homeGet = (req, res) => {
   renderer(req, res, 'index', {
@@ -8,6 +9,6 @@ const homeGet = (req, res) => {
   });
 };
 
-module.exports = (app) => { app.use('/', router); };
+module.exports = (app) => { app.use('/', homeRouter); };
 
-router.get('/', homeGet);
+homeRouter.get('/', homeGet);
