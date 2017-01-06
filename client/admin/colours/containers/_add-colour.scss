@@ -23,9 +23,15 @@
     border-radius: 40px;
     margin-bottom: 5px;
     border: 1px dashed $color-mine-shaft;
+    user-select: none;
 
-    &:hover {
+    &--active {
+      box-shadow: 0 0 10px $color-cornflower;
+    }
+
+    &:hover, &--active {
       .tool-tip {
+        line-height: normal;
         right: -180px;
         display: block;
       }
@@ -40,7 +46,8 @@
 
   &__submit {
     @extend .btn;
-    @extend .btn-default;
+    @extend .btn-sm;
+    @extend .btn-success;
     width: 100%;
   }
 }

@@ -17,7 +17,9 @@ export default class AddColour extends Component {
 
     this.onColourNameChange = this.onColourNameChange.bind(this);
     this.onColourValueChange = this.onColourValueChange.bind(this);
+    this.onCodeClick = this.onCodeClick.bind(this);
     this.handleOnSubmit = this.handleOnSubmit.bind(this);
+    this.handleToolTipClick = this.handleToolTipClick.bind(this);
   }
 
   onColourNameChange(e) {
@@ -33,6 +35,14 @@ export default class AddColour extends Component {
     this.valueInput.classList.toggle('colour-adder__value--is-invalid'
       , !isValid);
     this.codeDiv.style.backgroundColor = `#${this.valueInput.value}`;
+  }
+
+  onCodeClick() {
+    this.codeDiv.classList.toggle('colour-adder__code--active');
+  }
+
+  handleToolTipClick(e) {
+    e.stopPropagation();
   }
 
   handleOnSubmit(e) {
@@ -59,6 +69,7 @@ export default class AddColour extends Component {
   nameInput;
   variableNameInput;
   codeDiv;
+  tooltip;
 
   render() {
     return (
@@ -68,11 +79,16 @@ export default class AddColour extends Component {
         >
           <div
             className="colour-adder__code"
+            onClick={this.onCodeClick}
             ref={(node) => { this.codeDiv = node; }}
           >
             Add Colour
 
-            <div className="tool-tip">
+            <div
+              className="tool-tip"
+              ref={(node) => { this.tooltip = node; }}
+              onClick={this.handleToolTipClick}
+            >
               <input
                 className="colour-adder__name"
                 ref={(node) => { this.nameInput = node; }}

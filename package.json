@@ -21,7 +21,6 @@
     "body-parser": "1.15.2",
     "bootstrap-sass": "3.3.6",
     "browserify": "13.0.1",
-    "cheerio": "0.20.0",
     "compression": "1.6.2",
     "connect-mongo": "~1.2.1",
     "cookie-parser": "1.4.3",
@@ -63,7 +62,7 @@
   "scripts": {
     "start": "node app.js",
     "build": "webpack",
-    "develop": "webpack --watch",
+    "develop": "webpack --watch -d",
     "lint": "eslint --ext .js .",
     "lint-fix": "eslint --fix ."
   }
