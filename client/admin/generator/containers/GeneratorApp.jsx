@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 
 @connect(
-  state => ({ generator: state.generator }),
+  state => ({ generator: state.generator.generator }),
   dispatch => bindActionCreators(actions, dispatch)
 )
 export default class App extends Component {
@@ -22,7 +22,7 @@ export default class App extends Component {
   }
 
   render() {
-    return (<div className="c-admin-generator">
+    return (<div>
       <h2>Generator</h2>
       <button
         onClick={this.handleButtonClick}
@@ -32,3 +32,4 @@ export default class App extends Component {
     </div>);
   }
 }
+

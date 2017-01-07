@@ -1,23 +1,7 @@
 <% include header %>
 <% include navigation %>
 
-<main class="admin-content">
-  <aside class="js-left-menu left-menu">
-    <div class="js-left-menu-activator left-menu__activator">
-      ☰
-    </div>
-    <ul class="left-menu__list">
-      <li class="left-menu__list-item">
-        <a class="left-menu__list-link"
-           href="/admin/colours">Colour Manager</a>
-      </li>
-      <li class="left-menu__list-item">
-        <a class="left-menu__list-link"
-           href="/admin/generator">Generator</a>
-      </li>
-    </ul>
-  </aside>
-  <div class="admin-content__application <%= clientAppClass %>"></div>
+<main class="<%= clientAppClass %>">
 </main>
 
 <% include footer %>

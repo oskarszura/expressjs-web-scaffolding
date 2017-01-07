@@ -12,7 +12,7 @@ const deserializeUser = (id, done) => {
     return done(null, loggedUser);
   }
 
-  UserModel.findOne(id, onFind);
+  UserModel.findOne({ _id: id }, onFind);
 };
 
 const strategy = () => new LocalStrategy({

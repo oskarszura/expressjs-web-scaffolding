@@ -19,7 +19,7 @@ module.exports = (req, res) => {
   };
   const saveColoursToFile = (coloursSnapshot, callback) => {
     const path = process.cwd();
-    fs.writeFile(`${path}/tmp/colours.scss`, coloursSnapshot, (err) => {
+    fs.writeFile(`${path}/tmp/colours.scss`, coloursSnapshot, () => {
       callback(null);
     });
   };

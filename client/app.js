@@ -1,2 +1,1 @@
-import './template/left-menu';
-import './admin';
+import './admin/index';

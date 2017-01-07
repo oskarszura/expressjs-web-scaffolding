@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import ColourList from '../components/ColourList';
 
 const mapStateToProps = state => ({
-  colours: state.colours,
+  colours: state.colours.colours,
 });
 
 const mapDispatchToProps = () => ({});

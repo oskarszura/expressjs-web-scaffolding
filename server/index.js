@@ -14,8 +14,8 @@ const error404 = require('./middlewares/404');
 const acl = require('./middlewares/acl');
 const passportConfig = require('./config/passport');
 
-const MongoStore = connectMongo(session)
-const mongoURI = 'mongodb://localhost/sample_db'
+const MongoStore = connectMongo(session);
+const mongoURI = 'mongodb://localhost/sample_db';
 
 const onDbConnect = (err) => {
   console.log(err);
@@ -28,7 +28,7 @@ module.exports = (app, config) => {
   app.set('views', `${config.root}/views`);
   app.set('view engine', 'ejs');
 
-  // app.use(favicon(config.root + '/public/img/favicon.ico'));
+  // app.use(favicon(`${config.root}/public/img/favicon.ico`));
   app.use(logger('dev'));
   app.use(bodyParser.json({ limit: '50mb' }));
   app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
