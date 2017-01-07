@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import { Router, Route, browserHistory } from 'react-router';
+import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 import GeneratorApp from './generator/containers/GeneratorApp';
 import ColoursApp from './colours/containers/ColoursApp';
 import rootReducer from './reducer';
@@ -34,8 +34,9 @@ if (applicationNode) {
     <Provider store={store}>
       <Router history={browserHistory}>
         <Route path="/admin" component={App}>
-          <Route path="/admin/generator" component={GeneratorApp} />
+          <IndexRoute component={ColoursApp} />
           <Route path="/admin/colours" component={ColoursApp} />
+          <Route path="/admin/generator" component={GeneratorApp} />
         </Route>
       </Router>
     </Provider>,

@@ -90,7 +90,7 @@
 	
 	var _reducer2 = _interopRequireDefault(_reducer);
 	
-	var _SideMenu = __webpack_require__(/*! ./SideMenu */ 271);
+	var _SideMenu = __webpack_require__(/*! ./SideMenu */ 267);
 	
 	var _SideMenu2 = _interopRequireDefault(_SideMenu);
 	
@@ -144,8 +144,9 @@
 	      _react2.default.createElement(
 	        _reactRouter.Route,
 	        { path: '/admin', component: App },
-	        _react2.default.createElement(_reactRouter.Route, { path: '/admin/generator', component: _GeneratorApp2.default }),
-	        _react2.default.createElement(_reactRouter.Route, { path: '/admin/colours', component: _ColoursApp2.default })
+	        _react2.default.createElement(_reactRouter.IndexRoute, { component: _ColoursApp2.default }),
+	        _react2.default.createElement(_reactRouter.Route, { path: '/admin/colours', component: _ColoursApp2.default }),
+	        _react2.default.createElement(_reactRouter.Route, { path: '/admin/generator', component: _GeneratorApp2.default })
 	      )
 	    )
 	  ), applicationNode);
@@ -38401,11 +38402,7 @@
 	exports.default = generator;
 
 /***/ },
-/* 267 */,
-/* 268 */,
-/* 269 */,
-/* 270 */,
-/* 271 */
+/* 267 */
 /*!****************************!*\
   !*** ./admin/SideMenu.jsx ***!
   \****************************/
@@ -38509,5 +38506,4 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=scripts.js.map
 //# sourceMappingURL=scripts.js.map

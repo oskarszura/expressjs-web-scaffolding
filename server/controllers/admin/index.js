@@ -6,7 +6,7 @@ const router = express.Router();
 
 module.exports = (app) => { app.use('/admin', router); };
 
-router.get('/', adminGet(''));
+router.get('/', adminGet('js-admin'));
 router.get('/colours', adminGet('js-admin'));
 router.get('/generator', adminGet('js-admin'));
 router.get('/generate', adminGenerate);
